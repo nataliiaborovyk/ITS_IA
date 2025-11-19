@@ -22,20 +22,20 @@ import sys
 DB_PATH = '../techstore_oltp.db'
 N_CLIENTI = 20000
 N_ORDINI = 100000
-SEED = 42
+SEED = 42  # Serve per avere sempre gli stessi numeri casuali
 
 # Setup
-random.seed(SEED)
-fake = Faker('it_IT')
-Faker.seed(SEED)
+random.seed(SEED)   # imposta il punto di partenza della sequenza casuale.
+fake = Faker('it_IT')  # crea un oggetto fake per generare dati finti in stile italiano
+Faker.seed(SEED)     # è simile a random.seed(SEED), ma per la libreria Faker.
 
 
 def print_progress(message, step=None, total=None):
     """Stampa messaggio di progresso."""
     if step and total:
         percentage = (step / total) * 100
-        print(f"[{percentage:5.1f}%] {message}")
-    else:
+        print(f"[{percentage:5.1f}%] {message}")   # larghezza minima di 5 caratteri (serve per allineare bene in stampa)
+    else: 
         print(f"[INFO] {message}")
 
 
@@ -48,8 +48,8 @@ def create_tables(cursor):
         'dettagli_ordini', 'spedizioni', 'pagamenti', 'ordini',
         'prodotti', 'categorie', 'clienti'
     ]
-    for table in tables_to_drop:
-        cursor.execute(f"DROP TABLE IF EXISTS {table}")
+    for table in tables_to_drop:                              # cursor è, in pratica, un traduttore tra Python e SQL.
+        cursor.execute(f"DROP TABLE IF EXISTS {table}")      # cursor.execute(...) è il metodo usato per eseguire un singolo comando SQL
     
     # CATEGORIE
     cursor.execute("""
@@ -160,7 +160,12 @@ def populate_categorie(cursor):
         (8, 'Smartwatch', 'Orologi intelligenti e fitness tracker')
     ]
     
-    cursor.executemany("INSERT INTO categorie VALUES (?, ?, ?)", categorie_data)
+    # cursor.executemany(query_string, sequence_of_sequences) - Esegue la stessa query per ogni elemento della lista.
+    cursor.executemany("INSERT INTO categorie VALUES (?, ?, ?)", categorie_data)  # esegui la query una volta per ogni tupla sostituendo i ? con gli elementi della tupla.
+    # esegui N volte:
+    # INSERT INTO ... VALUES (lista[i][0], lista[i][1], lista[i][2]), dove N = len(lista)
+
+    
     print_progress(f"✓ Inserite {len(categorie_data)} categorie")
 
 
@@ -168,7 +173,7 @@ def populate_prodotti(cursor):
     """Popola la tabella prodotti."""
     print_progress("Popolamento prodotti...")
     
-    prodotti_templates = {
+    prodotti_templates: dict = {
         1: [  # Laptop
             ('Dell XPS 13', 'Dell', 1299.99, 850),
             ('MacBook Air M2', 'Apple', 1499.99, 1000),
@@ -232,7 +237,8 @@ def populate_prodotti(cursor):
                 prodotto_id, nome, categoria_id, prezzo, costo, marca, stock
             ))
             prodotto_id += 1
-    
+
+    # .executemany() → ripete lo stesso comando molte volte, con dati diversi     
     cursor.executemany("INSERT INTO prodotti VALUES (?, ?, ?, ?, ?, ?, ?)", prodotti_data)
     print_progress(f"✓ Inseriti {len(prodotti_data)} prodotti")
     
@@ -241,12 +247,21 @@ def populate_prodotti(cursor):
 
 def populate_clienti(cursor, n_clienti):
     """Popola la tabella clienti."""
-    print_progress(f"Popolamento {n_clienti:,} clienti...")
+    print_progress(f"Popolamento {n_clienti:,} clienti...") # :, formatta il numero con il separatore delle migliaia → 20000 diventa 20,000 (in ambiente inglese)
     
     clienti_data = []
     segmenti = ['Bronze', 'Silver', 'Gold', 'Platinum']
-    pesi_segmenti = [0.5, 0.3, 0.15, 0.05]
+    pesi_segmenti = [0.5, 0.3, 0.15, 0.05]   # probabilità relative
+
+    # Lista semplice di regioni italiane 
+    regioni = [ "Lombardia", "Lazio", "Piemonte", "Campania", "Veneto", 
+               "Emilia-Romagna", "Toscana", "Sicilia", "Puglia", "Liguria", 
+               "Marche", "Abruzzo", "Calabria", "Sardegna", "Umbria", 
+               "Trentino-Alto Adige", "Friuli-Venezia Giulia", "Basilicata", 
+               "Molise", "Valle d'Aosta"
+    ]
     
+    # Intervallo di date per la registrazione
     data_inizio = datetime.now() - timedelta(days=1095)
     data_fine = datetime.now()
     
@@ -256,11 +271,14 @@ def populate_clienti(cursor, n_clienti):
         email = f"{nome.lower()}.{cognome.lower()}{i}@{fake.free_email_domain()}"
         telefono = fake.phone_number()
         citta = fake.city()
-        regione = fake.region()
+        regione = random.choice(regioni)
         cap = fake.postcode()
         data_reg = fake.date_between(start_date=data_inizio, end_date=data_fine)
-        segmento = random.choices(segmenti, weights=pesi_segmenti)[0]
-        
+        segmento = random.choices(segmenti, weights=pesi_segmenti)[0] 
+        # random.choices(lista, weights=..., k=1) restituisce una lista di elementi scelti secondo i pesi.
+        # k di default è 1, quindi ottieni una lista lunga 1
+        # Per avere il valore singolo dalla lista, prendono [0]
+
         clienti_data.append((
             i, nome, cognome, email, telefono, citta, regione, cap, data_reg, segmento
         ))
@@ -295,10 +313,11 @@ def populate_ordini(cursor, n_ordini, n_clienti, n_prodotti):
     data_inizio = datetime.now() - timedelta(days=730)
     data_fine = datetime.now()
     
-    dettaglio_id = 1
+    dettaglio_id = 1   # Ogni riga di dettagli_ordini avrà un proprio dettaglio_id univoco
     
     # Prezzi prodotti (per velocità)
     prezzi_prodotti = {i: random.uniform(50, 1500) for i in range(1, n_prodotti + 1)}
+    # Crea un dizionario con chiave = prodotto_id,  valore = un prezzo casuale tra 50 e 1500 (float)
     
     for ordine_id in range(1, n_ordini + 1):
         # Ordine
@@ -310,9 +329,10 @@ def populate_ordini(cursor, n_ordini, n_clienti, n_prodotti):
         ordini_data.append((ordine_id, cliente_id, data_ordine, stato, canale))
         
         # Dettagli ordine
-        n_prodotti_ordine = random.choices([1, 2, 3, 4, 5], weights=[0.4, 0.3, 0.2, 0.07, 0.03])[0]
-        prodotti_ordine = random.sample(range(1, n_prodotti + 1), n_prodotti_ordine)
-        
+        n_prodotti_ordine = random.choices([1, 2, 3, 4, 5], weights=[0.4, 0.3, 0.2, 0.07, 0.03])[0]  # quanti prodotti
+        prodotti_ordine = random.sample(range(1, n_prodotti + 1), n_prodotti_ordine)  # quali prodotti (id)
+        # random.sample(sequenza, k) restituisce k elementi diversi, presi senza ripetizioni, dalla sequenza.
+
         importo_totale = 0
         
         for prodotto_id in prodotti_ordine:
@@ -330,6 +350,7 @@ def populate_ordini(cursor, n_ordini, n_clienti, n_prodotti):
         # Spedizione
         if stato != 'Cancellato':
             data_spedizione = data_ordine + timedelta(days=random.randint(1, 3))
+            # Perché solo un ordine consegnato ha una data di consegna.
             data_consegna = data_spedizione + timedelta(days=random.randint(2, 7)) if stato == 'Consegnato' else None
             corriere = random.choice(corrieri)
             costo_spedizione = random.choice([0, 4.99, 9.99])
@@ -355,7 +376,7 @@ def populate_ordini(cursor, n_ordini, n_clienti, n_prodotti):
     # Inserimento batch
     print_progress("Inserimento dati nel database...")
     
-    cursor.executemany("INSERT INTO ordini VALUES (?, ?, ?, ?, ?)", ordini_data)
+    cursor.executemany("INSERT INTO ordini VALUES (?, ?, ?, ?, ?)", ordini_data)  # esegue molti comandi simili molto velocemente
     print_progress("  ✓ Ordini inseriti")
     
     cursor.executemany("INSERT INTO dettagli_ordini VALUES (?, ?, ?, ?, ?, ?)", dettagli_data)
@@ -380,16 +401,16 @@ def main():
     try:
         # Connessione database
         print_progress(f"Creazione database: {DB_PATH}")
-        conn = sqlite3.connect(DB_PATH)
-        cursor = conn.cursor()
+        conn = sqlite3.connect(DB_PATH)  # se il file non esiste → lo crea, se esiste → lo apre. Crea la connessione al file .db
+        cursor = conn.cursor()    # crea il "traduttore" che esegue SQL
         
         # Creazione tabelle
         create_tables(cursor)
-        conn.commit()
+        conn.commit()           #  se non faccio commit, i dati non vengono salvati.
         
         # Popolamento
         populate_categorie(cursor)
-        conn.commit()
+        conn.commit()   # salva tutto nel file
         
         n_prodotti = populate_prodotti(cursor)
         conn.commit()
@@ -422,6 +443,10 @@ def main():
     except Exception as e:
         print(f"\n[ERRORE] {str(e)}", file=sys.stderr)
         sys.exit(1)
+
+        # sys è un modulo per interagire con l’interprete Python e il sistema:
+        #     sys.stderr → lo “stream” degli errori (stampare errori separati dall’output normale).
+        #     sys.exit(1) → uscire dal programma con codice di errore.
 
 
 if __name__ == "__main__":

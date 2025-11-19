@@ -15,7 +15,7 @@ import sqlite3
 import pandas as pd
 
 # Configurazione
-DB_PATH = '../techstore_oltp.db'
+DB_PATH = './data/techstore_oltp.db'
 
 
 def print_exercise(number, title, description, requirements):
@@ -55,11 +55,18 @@ def esercizio_1():
     
     # Area per scrivere la query
     query = """
-    -- Scrivi qui la tua query
     SELECT 
-        -- ... completa tu
+        o.canale AS canale,
+        COUNT(DISTINCT o.ordine_id) AS n_ordini,
+        SUM(d.quantita * d.prezzo_unitario * (1 - d.sconto/100)) AS ricavi_totali,
+        SUM(d.quantita * d.prezzo_unitario * (1 - d.sconto/100)) 
+            / COUNT(DISTINCT o.ordine_id) AS valore_medio_ordine
     FROM ordini o
-    -- ... completa tu
+        JOIN dettagli_ordini d ON o.ordine_id = d.ordine_id
+    WHERE o.data_ordine >= date('now', '-6 months')
+        AND o.stato != 'Cancellato'
+    GROUP BY o.canale
+    ORDER BY ricavi_totali DESC
     """
     
     print("QUERY DA COMPLETARE:")
@@ -94,11 +101,18 @@ def esercizio_2():
     
     # Area per scrivere la query
     query = """
-    -- Scrivi qui la tua query
     SELECT 
-        -- ... completa tu
+        c.regione AS regione,
+        COUNT(DISTINCT c.cliente_id) AS n_clienti_unici,
+        COUNT(DISTINCT o.ordine_id) AS n_ordini,
+        SUM(d.quantita * d.prezzo_unitario * (1 - d.sconto/100)) AS ricavi_totali
     FROM clienti c
-    -- ... completa tu
+        JOIN ordini o ON c.cliente_id = o.cliente_id
+        JOIN dettagli_ordini d ON o.ordine_id = d.ordine_id
+    WHERE o.stato != 'Cancellato'
+    GROUP BY c.regione
+    ORDER BY ricavi_totali DESC
+    LIMIT 10
     """
     
     print("QUERY DA COMPLETARE:")
@@ -133,11 +147,24 @@ def esercizio_3():
     
     # Area per scrivere la query
     query = """
-    -- Scrivi qui la tua query
     SELECT 
-        -- ... completa tu
+        c.segmento AS segmento,
+        COUNT(DISTINCT c.cliente_id) AS n_clienti,
+        COUNT(DISTINCT o.ordine_id) * 1.0 
+            / COUNT(DISTINCT c.cliente_id) AS n_medio_ordini_per_cliente,
+        SUM(d.quantita * d.prezzo_unitario * (1 - d.sconto/100))
+            / COUNT(DISTINCT o.ordine_id) AS valore_medio_ordine,
+        SUM(d.quantita * d.prezzo_unitario * (1 - d.sconto/100)) AS ricavi_totali,
     FROM clienti c
-    -- ... completa tu
+        JOIN ordini o ON c.cliente_id = o.cliente_id
+        JOIN dettagli_ordini d ON o.ordine_id = d.ordine_id
+    WHERE o.stato != 'Cancellato'
+    GROUP BY c.segmento
+    ORDER BY 
+        (c.segmento = 'Platinum') DESC,
+        (c.segmento = 'Gold')     DESC,
+        (c.segmento = 'Silver')   DESC,
+        (c.segmento = 'Bronze')   DESC
     """
     
     print("QUERY DA COMPLETARE:")

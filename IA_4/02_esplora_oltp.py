@@ -21,16 +21,34 @@ import time
 from pathlib import Path
 
 # Configurazione
-DB_PATH = './data/techstore_oltp.db'
-OUTPUT_DIR = './docs'
+DB_PATH = './data/techstore_oltp.db'  # dove si trova il database SQLite
+OUTPUT_DIR = './docs' # dove verranno salvati i grafici
 
 # Setup visualizzazioni
 sns.set_style('whitegrid')
+'''
+sns.set_style('whitegrid')
+dice a seaborn: “usa uno stile con sfondo bianco + griglia”
+quindi i grafici avranno griglie chiare, visibili è solo estetica, non cambia i dati
+'''
+
 plt.rcParams['figure.figsize'] = (12, 6)
+'''
+plt.rcParams['figure.figsize'] = (12, 6)
+imposta la dimensione di default delle figure:
+larghezza: 12, Altezza: 6 (unità sono “pollici” logici, ma tu puoi pensarla come proporzioni)
+Risultato: ogni grafico creato senza specificare la dimensione sarà un rettangolo orizzontale 12x6.
+'''
 
 # Crea directory output
 Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
-
+'''
+Path(OUTPUT_DIR) crea un oggetto Path che rappresenta la cartella ./docs
+.mkdir(...) prova a creare la cartella
+I parametri:
+    parents=True → se mancano cartelle “padre”, le crea (tipo ./docs/subdir/...)
+    exist_ok=True → se la cartella esiste già, non dà errore
+'''
 
 def print_section(title):
     """Stampa intestazione sezione."""
@@ -39,21 +57,27 @@ def print_section(title):
     print("=" * 70 + "\n")
 
 
-def execute_query(conn, query, description, show_time=True):
+def execute_query(conn, query, description, show_time=True):  # show_time=False per nascondere il tempo
     """Esegue una query e mostra risultati."""
     print(f"Query: {description}")
     print("-" * 70)
     
     start_time = time.time()
-    df = pd.read_sql_query(query, conn)
+    df = pd.read_sql_query(query, conn) # Fa automaticamente TUTTI e 3 i passi e in più crea un DataFrame.
+    '''
+    cursor = conn.cursor() - messaggero
+    cursor.execute(query) - manda la query
+    rows = cursor.fetchall() - prende i risultati,  Ottiene tutte le righe restituite dalla query.
+    '''
+
     elapsed_time = time.time() - start_time
     
-    print(df.to_string(index=False))
+    print(df.to_string(index=False))   # df.to_string() stampa il DataFrame come tabella, index=False → non mostra la colonna degli indici
     
     if show_time:
-        if elapsed_time < 1:
+        if elapsed_time < 1:  # se la query dura meno di 1 secondo → mostra millisecondi
             print(f"\n⏱️  Tempo esecuzione: {elapsed_time*1000:.2f} ms")
-        else:
+        else:  # se dura più di 1 secondo → mostra secondi
             print(f"\n⏱️  Tempo esecuzione: {elapsed_time:.2f} secondi")
     
     print(f"📊 Righe restituite: {len(df)}")
@@ -90,6 +114,9 @@ def query_oltp_examples(conn):
     JOIN prodotti p ON d.prodotto_id = p.prodotto_id
     WHERE o.ordine_id = 12345
     """
+    # || serve per concatenare le stringhe, es. "Luca Rossi"
+    # sistema cerca solo info su ordine 12345
+
     execute_query(conn, query1, "Dettagli ordine #12345")
     
     # Query 2: Ultimi ordini cliente
@@ -107,6 +134,10 @@ def query_oltp_examples(conn):
     ORDER BY o.data_ordine DESC
     LIMIT 10
     """
+    # per ogni ordine, fai un unico gruppo e per ogni gruppo:
+        # conta quanti dettagli ha (COUNT)
+        # somma i valori (SUM)
+
     execute_query(conn, query2, "Ultimi 10 ordini del cliente #1000")
     
     # Query 3: Prodotti disponibili
@@ -156,6 +187,12 @@ def query_olap_examples(conn):
     GROUP BY mese, cat.nome_categoria
     ORDER BY mese, ricavi DESC
     """
+    # strftime() → funzione di SQLite per formattare date 
+        # prende la data dell’ordine: 2024-05-18 14:23:00 e la riduce a 2024-05
+    # COUNT(DISTINCT o.ordine_id) AS n_ordini
+        # Conta quanti ordini ci sono in quel mese per quella categoria.
+    # where... Prende solo gli ordini degli ultimi 12 mesi ed Escludiamo gli ordini annullati
+
     df1, time1 = execute_query(conn, query1, "Vendite mensili per categoria (ultimi 12 mesi)")
     
     print("⚠️  Nota: Query molto più lenta! Scansiona migliaia di record.")
@@ -286,10 +323,18 @@ def confronto_oltp_olap(conn):
 def create_comparison_chart(tempo_oltp, tempo_olap):
     """Crea grafico di confronto tempi."""
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+    '''
+    plt.subplots(1, 2, ...)  → crea 1 riga e 2 colonne di grafici → quindi 2 grafici affiancati
+    fig = l’oggetto figura “grande”
+    (ax1, ax2) = i due assi (i due grafici):
+    ax1 → primo grafico (tempi in ms)
+    ax2 → secondo grafico (quante volte OLAP è più lento)
+    figsize=(14, 6) → dimensione del grafico totale (14 “larghezza”, 6 “altezza”).
+    '''
     
     # Grafico 1: Tempi di esecuzione
     categorie = ['OLTP', 'OLAP']
-    tempi = [tempo_oltp * 1000, tempo_olap * 1000]  # in millisecondi
+    tempi = [tempo_oltp * 1000, tempo_olap * 1000]  # in millisecondi, valori sull’asse Y
     colori = ['#059669', '#3B82F6']
     
     ax1.bar(categorie, tempi, color=colori, alpha=0.8)
