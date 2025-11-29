@@ -4,3 +4,8 @@ caricamento i dati
 	 -> viaualizazione dati (pasati)
 	 -> analisi predittiva
 	 -> generazione (generano a base di analisi preditiva)
+
+Framework per reti neurali 
+	Tenisorflorr TPUs (unita di processamento tensoriali di google)
+	pyTorch
+	Keras

@@ -1,0 +1,31 @@
+"PassengerId","Name","Sex","Age"
+"1","Braund, Mr. Owen Harris","male","22"
+"2","Cumings, Mrs. John Bradley (Florence Briggs Thayer)","female","38"
+"3","Heikkinen, Miss Laina","female","26"
+"4","Futrelle, Mrs. Jacques Heath (Lily May Peel)","female","35"
+"5","Allen, Mr. William Henry","femael","35"
+"6","Moran, Mr. James","male",NULL
+"7","McCarthy, Mr. Timothy J","male",NULL
+"8","Palsson, Master Gosta Leonard","mael","2"
+"9","Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)","female","27"
+"10","Nasser, Mrs. Nicholas (Adele Achem)","female","14"
+"11","Sandstrom, Miss Marguerite Rut","female","4"
+"12","Bonnell, Miss Elizabeth","female","58"
+"13","Saundercock, Mr. William Henry","femael","20"
+"14","Andersson, Mr. Anders Johan","mael","39"
+"15","Vestrom, Miss Hulda Amanda Adolfina","femael","14"
+"16","Hewlett, Mrs. (Mary D Kingcome) ","female","55"
+"17","Rice, Master Eugene","male","2"
+"18","Williams, Mr. Charles Eugene","male",NULL
+"19","Vander Planke, Mrs. Julius (Emelia Maria Vandemoortele)","female",NULL
+"20","Masselmani, Mrs. Fatima","female",NULL
+"21","Fynney, Mr. Joseph J","male","35"
+"22","Beesley, Mr. Lawrence","mael","34"
+"23","McGowan, Miss Anna ""Annie""","female","15"
+"24","Sloper, Mr. William Thompson","male","28"
+"25","Palsson, Miss Torborg Danira","femael",NULL
+"26","Asplund, Mrs. Carl Oscar (Selma Augusta Emilia Johansson)","female","38"
+"27","Emir, Mr. Farred Chehab","mael",NULL
+"28","Fortune, Mr. Charles Alexander","mael","19"
+"29","O'Dwyer, Miss Ellen ""Nellie""","female",NULL
+"30","Todoroff, Mr. Lalio","male","300"
