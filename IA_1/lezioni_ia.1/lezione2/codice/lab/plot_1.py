@@ -35,8 +35,10 @@ plt.savefig('../../visual/lab/matplotlib_bar.png')
 plt.show()
 
 
-
-
+# np.random.uniform(a, b, n)
+    # a = valore minimo
+    # b = valore massimo
+    # n = quanti numeri vuoi
 
 
 

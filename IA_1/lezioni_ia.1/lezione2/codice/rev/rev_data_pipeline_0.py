@@ -21,8 +21,9 @@ class DataPipeline:
 
     def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
         """Operazioni varie di pulizia e pre-processamento dati"""
-        # # # ESERCIZI
+        # # # ESERCIZIO 1
         # # Aggiungere al dataset una colonna 'Total" contenente il fatturato totale prodotto da ogni nazione in tutti i 30 anni 
+        df['Total'] = df[self.years].sum(axis=1)
         return df
 
     def visualize_plot(self, df_in: pd.DataFrame) -> None:        
@@ -39,12 +40,42 @@ class DataPipeline:
         plt.ylabel(ylabel)
         plt.xlabel('Anni')
         plt.savefig(self.config.output_plot_line)
+        plt.savefig("../../visual/rev/plot_line_1.png")
         plt.show()
         plt.close()    
 
-        # # # ESERCIZI
+
+        # # # ESERCIZIO 2
         # # Andamento fatturato solo da diverse nazioni (es. Italy, France, Germany)
-        # # Andamento fatturato per decadi (es. 95-04, 05-14, 15-24)           
+        df.index = df["Country"]
+        rev_parz = df.loc[['Italy','France','Germany'], self.years]
+        rev_new = rev_parz.transpose().plot(kind='line')
+        title ="Andamento faturato per Italia, France, Germany"
+        plt.title(title)
+        plt.ylabel("anni")
+        plt.ylabel("fatturato")
+        plt.savefig("../../visual/rev/es_2_plot_line_1.png")
+        plt.show()
+        plt.close()
+        
+        # # Andamento fatturato per decadi (es. 95-04, 05-14, 15-24)     
+        dec_95_04 = [str(x) for x in range(1995, 2005)]  
+        dec_05_14 = [str(x) for x in range(2005, 2015)]  
+        dec_15_24 = [str(x) for x in range(2015, 2025)]  
+        rev_d1 = df.loc[:,dec_95_04].sum(axis=0).sum()
+        rev_d2 = df.loc[:,dec_05_14].sum(axis=0).sum()
+        rev_d3 = df.loc[:,dec_15_24].sum(axis=0).sum()
+        valori = [rev_d1, rev_d2, rev_d3]
+        decadi = ["1995-2004", "2005-2014", "2015-2024"]
+        plt.figure(figsize=(10,5))
+        plt.bar(decadi, valori, color=['red','blue', 'green'])
+        plt.title('Fatturato per decade')
+        plt.xlabel('Decadi')
+        plt.ylabel('Fatturato')
+        plt.savefig("../../visual/rev/es_2_plot_line_2.png")
+        plt.show()
+        plt.close()
+
         
         print("      -Line plot salvato e mostrato")
 
@@ -66,9 +97,19 @@ class DataPipeline:
         plt.show()
         plt.close() 
 
-        # # # ESERCIZI
+        # # # ESERCIZIO 3
         # # Mostra andamento fatturato da Cina ordinato in senso decrescente       
-       
+        china2 = china.sort_values(ascending= False)
+        plt.figure(figsize=(10,5))
+        china2.plot(kind='bar', color='green')
+        plt.title('Andamento per Cina')
+        plt.xlabel('Anno')
+        plt.ylabel('Fatturato')
+        plt.savefig("../../visual/rev/es_3_bar.png")
+        plt.show()
+        plt.close()
+
+
         print("      -Bar chart salvato e mostrato")        
         
     def visualize_pie(self, df_in: pd.DataFrame) -> None:        
@@ -92,11 +133,64 @@ class DataPipeline:
         plt.show()
         plt.close()  
         
-        # # # ESERCIZI
+        # # # ESERCIZIO 4
         # # Migliora l'aspetto della torta per renderla più leggibile (studia API)
         # # Inserisci in una stessa figura la torta per il 1995 e quella per il 2024 per osservare agevolmente le differenze 
-        
+        df_region_24 = df.groupby(['Region']).agg({'2024': 'sum'})
+        fig, (ax1, ax2) =plt.subplots(2,1)
+        ax1.pie(
+            df_region_95['1995'],
+            labels = df_region_95.index,
+            autopct='%1.1f%%',
+            startangle=90
+        )
+        ax1.set_title("1995")
+        ax2.pie(
+            df_region_24['2024'],
+            labels = df_region_24.index,
+            autopct='%1.1f%%',
+            startangle=90
+        )
+        ax2.set_title("2024")
+        plt.tight_layout() # per non sovraporrere
+        plt.savefig("../../visual/rev/es_4_doppio_pie.png")
+        plt.show()
+        plt.close()      
+
+
         print("      -Pie chart salvato e mostrato")          
+
+    def visualize_data(self, df:pd.DataFrame) -> None:
+        df.index = df["Country"]
+        fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(15, 20))
+        # plot line
+        rev_tot = df.loc[:, self.years].sum(axis=0)
+        ax1.plot(self.years, rev_tot)
+        ax1.set_title('Andatento totale')
+        ax1.set_xlabel('Anni')
+        ax1.set_ylabel('Fatturato')
+        # bar
+        china = df.loc["China", self.years]
+        ax2.bar(self.years, china)
+        ax2.set_title("Fatturato Cina")
+        ax2.set_xlabel("Anni")
+        ax2.set_ylabel("Valori")
+        # pie
+        df_region_95 = df.groupby("Region").agg({"1995": "sum"})
+        ax3.pie(
+        df_region_95["1995"],
+        labels=df_region_95.index,
+        autopct='%1.1f%%',
+        startangle=90
+        )
+        ax3.set_title("Percentuale regioni (1995)")
+
+        plt.tight_layout()
+        plt.savefig("../../visual/rev/es_5_tripla_ax.png")
+        plt.show()
+        plt.close()
+
+
                
     def run_pipeline(self) -> pd.DataFrame:
         """Esegue la pipeline completa"""
@@ -109,16 +203,32 @@ class DataPipeline:
         self.visualize_plot(df_rev)
         self.visualize_bar(df_rev)
         self.visualize_pie(df_rev)
+        self.visualize_data(df_rev)
         print("   -Terminata visualizzazione risultati di analisi")        
         self.data = df_rev
         return df_rev
 
-        # # # ESERCIZI
+        # # # ESERCIZIO 5
         # # Aggiungi alla run_pipeline la chiamata ad una funzione "visualize_data" che generi un'unica immagine con plot line, bar chart e pie chart(s) 
         
 if __name__ == "__main__":
     config = DataSourceConfig()
     pipeline = DataPipeline(config)
+
+    # # carico
+    # df1 = pipeline.load_from_csv()
+    # # print(df1.dtypes)
+    # print(df1.head())
+    
+    # # pulizia
+    # df_clean = pipeline.clean_data(df1)
+    # print(df_clean.head())
+
+    # pipeline.visualize_plot(df1)
+    # pipeline.visualize_bar(df1)
+    # pipeline.visualize_pie(df1)
+
+
     print("Pipeline avviata...")
     final_df = pipeline.run_pipeline()
     print("Pipeline completata con successo!")
