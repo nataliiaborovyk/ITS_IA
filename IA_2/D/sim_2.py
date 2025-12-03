@@ -1,5 +1,5 @@
 import math
-from scipy.stats as ss
+from scipy.stats import binom
 
 def binomiale(n, k, p):
     if k >= 0:
@@ -9,5 +9,9 @@ def binomiale(n, k, p):
 
 print(binomiale(5, 3, 0.5))
 
-def binomiale_2(n, k, p):
-    l = ss.binom.pmf(3,5,0.5)
+def binomiale_2(k, n, p):
+    l = binom.pmf(k,n,p)
+    return l
+
+    
+print(binomiale_2(3,5,0.5))

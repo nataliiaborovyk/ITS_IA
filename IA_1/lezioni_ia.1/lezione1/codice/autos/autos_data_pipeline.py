@@ -107,6 +107,8 @@ class DataPipeline:
 if __name__ == "__main__":
     config = DataSourceConfig()
     pipeline = DataPipeline(config)
+
+ 
     print("Pipeline avviata...")  
     final_df = pipeline.run_pipeline()
     print("Pipeline completata con successo!")

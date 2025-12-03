@@ -20,11 +20,17 @@ df.replace("?", np.nan, inplace=True)
 # print(df)
 # print("\n")
 
-# # Quanti NaNs per colonna
-# missing_data = df.isnull()
-# for column in missing_data.columns.values.tolist():
-#     # print(column)
-#     print (missing_data[column].value_counts())
+print(df.isna().sum())
+print(df.isna().sum().sum())
+
+# Quanti NaNs per colonna
+missing_data = df.isnull()
+for column in missing_data.columns.values.tolist():
+    # print(column)
+    print (missing_data[column].value_counts())
+
+
+
 
 # Media al posto di NaNs    
 avg = df["normalized-losses"].astype("float").mean(axis = 0)

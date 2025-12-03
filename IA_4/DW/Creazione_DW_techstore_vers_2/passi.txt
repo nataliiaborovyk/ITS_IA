@@ -1,0 +1,91 @@
+
+commando per far migrare db in postgresql
+
+    pgloader sqlite:///PERCORSO_FILE \
+            postgresql://postgres:postgres@localhost:5432/NOME_DB_PG
+
+1️⃣ URL della sorgente → da dove prende i dati
+2️⃣ URL della destinazione → dove crea il nuovo database PostgreSQL
+
+- nel mio caso 
+    pgloader sqlite:///home/its/ITS/ITS_IA/IA_4/Creazione_DW/techstore_oltp_2.db \
+         postgresql://postgres:postgres@localhost:5432/techstore_2
+
+URL della sorgente (SQLite)
+
+    sqlite://home/its/ITS/ITS_IA/IA_4/Creazione_DW/techstore_oltp_2.db
+    |       |----------------------------------------------------------|
+    dialetto          percorso del file
+
+        | Pezzo                           | Significato                                               |
+        | ------------------------------- | --------------------------------------------------------- |
+        | `sqlite`                        | dialetto del DB da cui leggere (SQLite)                   |
+        | `///`                           | indica che dopo c’è un *percorso assoluto* nel filesystem |
+        | `/home/its/techstore_oltp_2.db` | file del database SQLite                                  |
+
+
+
+URL della destinazione (PostgreSQL)
+
+    postgresql://postgres:postgres@localhost:5432/techstore_2
+        |          |       |        |          |         |
+        dialetto   utente password host       porta   database
+
+        dialetto = postgresql → pgloader capisce che deve creare un database PostgreSQL.
+        utente = postgres
+        password = postgres
+        host = localhost → PostgreSQL gira nel tuo PC.
+        port = 5432  → porta standard di PostgreSQL.
+        database = techstore_oltp_2 → nome del DB che pgloader creerà automaticamente
+
+\ - serve solo per spezzare un comando lungo in due righe nel terminale.
+
+
+
+prima creo data base
+    techstore_dw=# CREATE DATABASE techstore_2;
+    CREATE DATABASE
+
+poi eseguo comando per migrazione 
+    its@its-Virtual-Machine:~$ pgloader sqlite:///home/its/ITS/ITS_IA/IA_4/Creazione_DW/techstore_oltp_2.db          postgresql://postgres:postgres@localhost:5432/techstore_2
+    2025-12-01T19:10:44.005000Z LOG pgloader version "3.6.3~devel"
+    2025-12-01T19:10:44.046000Z LOG Migrating from #<SQLITE-CONNECTION sqlite:///home/its/ITS/ITS_IA/IA_4/Creazione_DW/techstore_oltp_2.db {100741E1F3}>
+    2025-12-01T19:10:44.046000Z LOG Migrating into #<PGSQL-CONNECTION pgsql://postgres@localhost:5432/techstore_2 {10077D1063}>
+    2025-12-01T19:10:45.055001Z LOG report summary reset
+                table name     errors       rows      bytes      total time
+    -----------------------  ---------  ---------  ---------  --------------
+                    fetch          0          0                     0.000s
+            fetch meta data          0         21                     0.027s
+            Create Schemas          0          0                     0.001s
+        Create SQL Types          0          0                     0.003s
+            Create tables          0         14                     0.023s
+            Set Table OIDs          0          7                     0.003s
+    -----------------------  ---------  ---------  ---------  --------------
+                categorie          0          8     0.3 kB          0.020s
+                    clienti          0      20000     2.1 MB          0.129s
+                prodotti          0         35     1.5 kB          0.037s
+            dettagli_ordini          0     202824     7.3 MB          0.575s
+                    ordini          0     100000     5.3 MB          0.267s
+                spedizioni          0      97020     3.5 MB          0.323s
+                pagamenti          0     100000     7.7 MB          0.405s
+    -----------------------  ---------  ---------  ---------  --------------
+    COPY Threads Completion          0          4                     0.702s
+            Create Indexes          0          8                     0.174s
+    Index Build Completion          0          8                     0.042s
+            Reset Sequences          0          0                     0.026s
+            Primary Keys          0          7                     0.022s
+        Create Foreign Keys          0          6                     0.094s
+            Create Triggers          0          0                     0.001s
+        Install Comments          0          0                     0.000s
+    -----------------------  ---------  ---------  ---------  --------------
+        Total import time          ✓     519887    26.0 MB          1.061s
+    its@its-Virtual-Machine:~$ 
+
+
+poi credo data base per data Warehouse
+    create database techstore_dw_2;
+
+poi attivo l’estensione per parlare con l’OLTP:
+    CREATE EXTENSION dblink;
+
+    dblink è un’estensione di PostgreSQL che permette a un database di parlare con un altro database.
