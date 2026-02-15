@@ -49,98 +49,98 @@ class DataPipeline:
 
 # visualizzazione dati matplotlib
 
-    #     plt.figure(figsize=(10, 6))  # creo la “tela”
+        plt.figure(figsize=(10, 6))  # creo la “tela”
 
-    #     mask_Sani:pd.Series = df["is_healthy"] == True
-    #     mask_nonSani:pd.Series = df["is_healthy"] == False  # ~df["is_healthy"]   # NOT logico
+        mask_Sani:pd.Series = df["is_healthy"] == True
+        mask_nonSani:pd.Series = df["is_healthy"] == False  # ~df["is_healthy"]   # NOT logico
 
-    # # creo sotto-DataFrame con mask booleana
-    #     df_Sani:pd.DataFrame = df[mask_Sani]  # df[condizione] è il filtro di righe (subset) del DataFrame.
-    #     df_nonSani:pd.DataFrame = df[mask_nonSani] 
+    # creo sotto-DataFrame con mask booleana
+        df_Sani:pd.DataFrame = df[mask_Sani]  # df[condizione] è il filtro di righe (subset) del DataFrame.
+        df_nonSani:pd.DataFrame = df[mask_nonSani] 
         
-    #     x_sani:pd.Series = df_Sani["screen_time_hours"]
-    #     y_sani:pd.Series = df_Sani["math_score"]
+        x_sani:pd.Series = df_Sani["screen_time_hours"]
+        y_sani:pd.Series = df_Sani["math_score"]
 
-    #     x_nonSani:pd.Series = df_nonSani["screen_time_hours"]
-    #     y_nonSani:pd.Series = df_nonSani["math_score"]
+        x_nonSani:pd.Series = df_nonSani["screen_time_hours"]
+        y_nonSani:pd.Series = df_nonSani["math_score"]
 
-    # # disegno punti (x,y)
-    #     plt.scatter(
-    #         x_sani, 
-    #         y_sani, 
-    #         color="green", 
-    #         label="Vero"
-    #         )
-    #     plt.scatter(
-    #         x_nonSani, 
-    #         y_nonSani, 
-    #         color="red", 
-    #         label="Falso"
-    #         )
+    # disegno punti (x,y)
+        plt.scatter(
+            x_sani, 
+            y_sani, 
+            color="green", 
+            label="Vero"
+            )
+        plt.scatter(
+            x_nonSani, 
+            y_nonSani, 
+            color="red", 
+            label="Falso"
+            )
 
-    # # etichetta asse
-    #     plt.xlabel("Screen time hours")
-    #     plt.ylabel("Math score")
-
-    #     plt.title("Screen time hours & math score")
-
-    # # mostra la leggenda (tabella di riferimento dei colori)
-    #     plt.legend()
-
-    #     plt.savefig(self.output_plot)
-
-    # # chiudi figura (libera memoria)
-    #     plt.close()
-
-# visualizzazione dati seaborn
-
-        
-
+    # etichetta asse
         plt.xlabel("Screen time hours")
         plt.ylabel("Math score")
 
         plt.title("Screen time hours & math score")
 
-    # Grafico a punti (relazione tra due variabili)
-        plt.figure(figsize=(10, 6))
-        sns.scatterplot(
-            data=df, 
-            x="screen_time_hours", 
-            y="math_score", 
-            hue="is_healthy" # hue="<colonna>" -> dividi i punti in base a questa colonna (True/False) — e colora automaticamente
-            )
+    # mostra la leggenda (tabella di riferimento dei colori)
+        plt.legend()
+
         plt.savefig(self.output_scaterplot)
-        plt.close()
-        
-        plt.figure(figsize=(10, 6))
-        sns.lineplot(
-            data=df, 
-            x="screen_time_hours", 
-            y="math_score", 
-            hue="is_healthy" 
-            )        
-        plt.savefig(self.output_lineplot)
+
+    # chiudi figura (libera memoria)
         plt.close()
 
-        plt.figure(figsize=(10, 6))
-        sns.histplot(
-            data=df, 
-            x="screen_time_hours", 
-            y="math_score", 
-            hue="is_healthy" 
-            )
-        plt.savefig(self.output_histplot)
-        plt.close()
+# visualizzazione dati seaborn
+
+        
+
+    #     plt.xlabel("Screen time hours")
+    #     plt.ylabel("Math score")
+
+    #     plt.title("Screen time hours & math score")
+
+    # # Grafico a punti (relazione tra due variabili)
+    #     plt.figure(figsize=(10, 6))
+    #     sns.scatterplot(
+    #         data=df, 
+    #         x="screen_time_hours", 
+    #         y="math_score", 
+    #         hue="is_healthy" # hue="<colonna>" -> dividi i punti in base a questa colonna (True/False) — e colora automaticamente
+    #         )
+    #     plt.savefig(self.output_scaterplot)
+    #     plt.close()
+        
+    #     plt.figure(figsize=(10, 6))
+    #     sns.lineplot(
+    #         data=df, 
+    #         x="screen_time_hours", 
+    #         y="math_score", 
+    #         hue="is_healthy" 
+    #         )        
+    #     plt.savefig(self.output_lineplot)
+    #     plt.close()
+
+    #     plt.figure(figsize=(10, 6))
+    #     sns.histplot(
+    #         data=df, 
+    #         x="screen_time_hours", 
+    #         y="math_score", 
+    #         hue="is_healthy" 
+    #         )
+    #     plt.savefig(self.output_histplot)
+    #     plt.close()
                 
-        plt.figure(figsize=(10, 6))
-        sns.boxplot(
-            data=df, 
-            x="screen_time_hours", 
-            y="math_score", 
-            hue="is_healthy" 
-            )
-        plt.savefig(self.output_boxplot)
-        plt.close()
+    #     plt.figure(figsize=(10, 6))
+    #     sns.boxplot(
+    #         data=df, 
+    #         x="screen_time_hours", 
+    #         y="math_score", 
+    #         hue="is_healthy" 
+    #         )
+    #     plt.savefig(self.output_boxplot)
+    #     plt.close()
         
     # per il momento non capisco !!!!!!!!!
         # plt.figure(figsize=(10, 6))

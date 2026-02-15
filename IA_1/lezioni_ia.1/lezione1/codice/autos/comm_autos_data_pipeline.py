@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, text   # Importo da SQLAlchemy:
 
 from sqlalchemy.exc import SQLAlchemyError   # Importo il tipo di eccezione usata da SQLAlchemy
                                              # per intercettare errori di lettura/scrittura sul database.
-
+import matplotlib.pyplot as plt
 
 class DataSourceConfig:
     """Configurazione sorgenti dati e destinazione output"""
@@ -150,6 +150,7 @@ class DataPipeline:
         # - Sostituisce tutti i valori "?" nel DataFrame con np.nan (valore mancante di numpy).
         # - inplace=True: modifica direttamente df, non restituisce una copia.
         df.replace("?", np.nan, inplace=True)
+        df.replace('?', np.nan, inplase=True)
 
         # - df["normalized-losses"]: seleziona la colonna come Series.
         # - astype("float"): converte i valori della colonna a float (numeri con la virgola).
@@ -209,7 +210,39 @@ class DataPipeline:
         """Crea e salva visualizzazioni"""
         # Qui più avanti userai Matplotlib / pandas.plot per creare grafici a partire da df.
         # Per ora il metodo è vuoto.
-        pass
+    def visualize(self, df: pd.DataFrame) -> None:
+        """Crea e salva visualizzazioni"""         
+        plt.figure(figsize=(20, 9))
+        
+        # ESEMPIO 1 - Prezzo Medio
+        df_agg = df.groupby('make').agg(mean_price=('price', 'mean'))
+        plt.bar(x=df_agg.index.astype(str), height=df_agg['mean_price'], color='green')
+       
+        # # ESEMPIO 2 - Prezzo Medio Decrescente
+        # df_agg = df.groupby('make').agg(mean_price=('price', 'mean'))
+        # df_agg_mean_down = df_agg.sort_values(by='mean_price', ascending=False).head()
+        # plt.bar(x=df_agg_mean_down.index.astype(str), height=df_agg_mean_down['mean_price'], color='orange')
+        
+        # # ESEMPIO 3 - Prezzo Medio Colorato
+        # df_agg = df.groupby('make').agg(mean_price=('price', 'mean'))
+        # bar_colors = ['tab:blue', 'tab:red', 'tab:orange', 'tab:green', 'tab:purple']
+        # plt.bar(x=df_agg.index.astype(str), height=df_agg['mean_price'], color=bar_colors)
+        
+        # # ESEMPIO 4 - Prezzo Medio Colorato Decrescente Top 5
+        # df_agg = df.groupby('make').agg(mean_price=('price', 'mean'))
+        # df_agg_mean_down = df_agg.sort_values(by='mean_price', ascending=False).head()
+        # bar_colors = ['tab:blue', 'tab:red', 'tab:orange', 'tab:green', 'tab:purple']
+        # plt.bar(x=df_agg_mean_down.head().index.astype(str), height=df_agg_mean_down.head()['mean_price'], color=bar_colors)
+        
+        plt.title('Prezzo Medio Auto per Marca')
+        plt.ylabel('Prezzo Medio')
+        plt.xlabel('Marca')
+        plt.xticks(rotation=30)
+        plt.yticks(rotation=30)
+        plt.savefig(self.config.output_plot)
+        plt.show()        
+        plt.close()        
+        
         
     def run_pipeline(self) -> pd.DataFrame:
         """Esegue la pipeline completa"""

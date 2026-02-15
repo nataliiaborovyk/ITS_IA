@@ -79,7 +79,8 @@ class DataPipeline:
         return df
 
     def visualize(self, df: pd.DataFrame) -> None:
-        """Crea e salva visualizzazioni"""        
+        """Crea e salva visualizzazioni""" 
+               
         
     def run_pipeline(self) -> pd.DataFrame:
         """Esegue la pipeline completa"""
