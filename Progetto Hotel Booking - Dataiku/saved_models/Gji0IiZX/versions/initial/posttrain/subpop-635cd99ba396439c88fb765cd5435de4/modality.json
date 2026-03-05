@@ -1,0 +1,90 @@
+{
+    "feature": "lead_time",
+    "modalities": [
+        {
+            "index": 0,
+            "lte": 0.0041,
+            "count": 1119,
+            "gte": 0.0,
+            "filePath": "modality_perf_0.json",
+            "weightedCount": 1119
+        },
+        {
+            "index": 1,
+            "lte": 0.0163,
+            "count": 939,
+            "gt": 0.0041,
+            "filePath": "modality_perf_1.json",
+            "weightedCount": 939
+        },
+        {
+            "index": 2,
+            "lte": 0.038,
+            "count": 994,
+            "gt": 0.0163,
+            "filePath": "modality_perf_2.json",
+            "weightedCount": 994
+        },
+        {
+            "index": 3,
+            "lte": 0.0624,
+            "count": 969,
+            "gt": 0.038,
+            "filePath": "modality_perf_3.json",
+            "weightedCount": 969
+        },
+        {
+            "index": 4,
+            "lte": 0.0977,
+            "count": 984,
+            "gt": 0.0624,
+            "filePath": "modality_perf_4.json",
+            "weightedCount": 984
+        },
+        {
+            "index": 5,
+            "lte": 0.141,
+            "count": 1008,
+            "gt": 0.0977,
+            "filePath": "modality_perf_5.json",
+            "weightedCount": 1008
+        },
+        {
+            "index": 6,
+            "lte": 0.198,
+            "count": 1005,
+            "gt": 0.141,
+            "filePath": "modality_perf_6.json",
+            "weightedCount": 1005
+        },
+        {
+            "index": 7,
+            "lte": 0.263,
+            "count": 991,
+            "gt": 0.198,
+            "filePath": "modality_perf_7.json",
+            "weightedCount": 991
+        },
+        {
+            "index": 8,
+            "lte": 0.373,
+            "count": 996,
+            "gt": 0.263,
+            "filePath": "modality_perf_8.json",
+            "weightedCount": 996
+        },
+        {
+            "index": 9,
+            "lte": 1.0,
+            "count": 995,
+            "gt": 0.373,
+            "filePath": "modality_perf_9.json",
+            "weightedCount": 995
+        }
+    ],
+    "computed_as_type": "NUMERIC",
+    "isDate": false,
+    "sameNumRowsAsSplit": true,
+    "nbRecords": 10000,
+    "weightedNbRecords": 10000
+}

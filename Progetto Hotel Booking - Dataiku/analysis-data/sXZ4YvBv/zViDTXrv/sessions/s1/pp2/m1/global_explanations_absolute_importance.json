@@ -1,0 +1,24 @@
+{
+    "absoluteImportance": {
+        "deposit_Non Refund": 0.9301170342740313,
+        "country_PRT": 0.817646856551364,
+        "lead_time": 0.33370613042305614,
+        "needs_parking": 0.429067380760485,
+        "room_changed": 0.18889659216811958,
+        "spec_request_0_request": 0.3310310127119896,
+        "agent_agent_9": 0.2753922111130861,
+        "mark_segm_Online TA": 0.28544758227464073,
+        "deposit_No Deposit": 0.11025049601794239,
+        "arrival_date_week_number": 0.14301593335109372,
+        "agent_other_agent": 0.16011152565744807,
+        "agent_agent_240": 0.09072031744537457,
+        "adr": 0.0905924993506563,
+        "cust_type_Transient-Party": 0.10206184582729161,
+        "cust_type_Transient": 0.11070880461975603,
+        "booking_0_change": 0.09433557716227735,
+        "agent_agent_7": 0.010936404454806788,
+        "total_nights": 0.0388447010299862,
+        "mark_segm_Direct": 0.050937950719241495,
+        "mark_segm_Offline TA/TO": 0.09654269599476241
+    }
+}

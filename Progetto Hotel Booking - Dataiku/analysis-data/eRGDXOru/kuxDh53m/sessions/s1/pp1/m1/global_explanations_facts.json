@@ -1,0 +1,99 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_group": {
+                "impact": 0.871409230429991,
+                "rank": 2,
+                "feature": "country_group",
+                "positiveCategoricalValue": "Other",
+                "negativeCategoricalValue": "PRT",
+                "infoGain": 0.6859298002523728,
+                "type": "CATEGORICAL"
+            },
+            "agent_group": {
+                "impact": 0.7757996971467069,
+                "rank": 3,
+                "feature": "agent_group",
+                "positiveCategoricalValue": "other_agent",
+                "negativeCategoricalValue": "agent_9",
+                "infoGain": 0.6730116670092565,
+                "type": "CATEGORICAL"
+            },
+            "lead_time": {
+                "impact": 0.49548163689992,
+                "rank": 4,
+                "feature": "lead_time",
+                "correlation": -0.8945522423361139,
+                "type": "NUMERICAL"
+            },
+            "special_requests_group": {
+                "impact": 0.48025866294439196,
+                "rank": 5,
+                "feature": "special_requests_group",
+                "positiveCategoricalValue": "1_request",
+                "negativeCategoricalValue": "0_request",
+                "infoGain": 0.6571577614973405,
+                "type": "CATEGORICAL"
+            },
+            "customer_type": {
+                "impact": 0.2396334176489684,
+                "rank": 8,
+                "feature": "customer_type",
+                "positiveCategoricalValue": "Transient-Party",
+                "negativeCategoricalValue": "Transient",
+                "infoGain": 0.5269079614313803,
+                "type": "CATEGORICAL"
+            },
+            "adr": {
+                "impact": 0.2205293715553513,
+                "rank": 9,
+                "feature": "adr",
+                "correlation": -0.9193807143606767,
+                "type": "NUMERICAL"
+            },
+            "season": {
+                "impact": 0.17972304456943955,
+                "rank": 10,
+                "feature": "season",
+                "positiveCategoricalValue": "3_summer",
+                "negativeCategoricalValue": "2_spring",
+                "infoGain": 0.6899437584583995,
+                "type": "CATEGORICAL"
+            },
+            "market_segment": {
+                "impact": 0.1367581437338784,
+                "rank": 11,
+                "feature": "market_segment",
+                "positiveCategoricalValue": "Online TA",
+                "negativeCategoricalValue": "Groups",
+                "infoGain": 0.5095066339675122,
+                "type": "CATEGORICAL"
+            },
+            "stay_type": {
+                "impact": 0.11566025263820165,
+                "rank": 13,
+                "feature": "stay_type",
+                "positiveCategoricalValue": "1_night",
+                "negativeCategoricalValue": "2_3_nights",
+                "infoGain": 0.5183397302526579,
+                "type": "CATEGORICAL"
+            },
+            "reserved_room_type": {
+                "impact": 0.07209711879611341,
+                "rank": 16,
+                "feature": "reserved_room_type",
+                "positiveCategoricalValue": "D",
+                "negativeCategoricalValue": "A",
+                "infoGain": 0.5799151714181009,
+                "type": "CATEGORICAL"
+            },
+            "total_nights": {
+                "impact": 0.05697458911186455,
+                "rank": 18,
+                "feature": "total_nights",
+                "correlation": -0.8740616903009355,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

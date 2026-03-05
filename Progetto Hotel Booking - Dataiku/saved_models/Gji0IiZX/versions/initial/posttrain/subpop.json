@@ -1,0 +1,13 @@
+{
+    "features": [
+        {
+            "feature": "lead_time",
+            "folderPath": "subpop-635cd99ba396439c88fb765cd5435de4",
+            "done_at": 1772532980461
+        }
+    ],
+    "computedOn": "test set",
+    "onSample": true,
+    "sampleSize": 10000,
+    "randomState": 1337
+}

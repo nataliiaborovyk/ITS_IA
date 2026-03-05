@@ -1,0 +1,100 @@
+{
+    "startedAt": 1772442968998,
+    "gridSize": 5,
+    "nThreads": 4,
+    "nSplits": 5,
+    "metric": "ROC_AUC",
+    "timeout": null,
+    "gridPoints": [
+        {
+            "finishedAt": 1772442974511,
+            "score": 0.9183437082836329,
+            "testScoreGibMean": 0.9183437082836329,
+            "testScoreMean": 0.9183437082836329,
+            "testScoreStd": 0.0011335206805447781,
+            "trainScoreMean": 0.9187207630887222,
+            "trainScoreStd": 0.0003044449108466917,
+            "time": 6941,
+            "fitTimeMean": 1218.8,
+            "fitTimeStd": 385.62541410026387,
+            "scoreTimeMean": 169.4,
+            "scoreTimeStd": 20.78076033257686,
+            "parameters": {
+                "C": 0.01,
+                "penalty": "l2"
+            }
+        },
+        {
+            "finishedAt": 1772442974975,
+            "score": 0.919909594956774,
+            "testScoreGibMean": 0.919909594956774,
+            "testScoreMean": 0.919909594956774,
+            "testScoreStd": 0.00131332023492125,
+            "trainScoreMean": 0.9204415420057147,
+            "trainScoreStd": 0.0003575409062278672,
+            "time": 14725,
+            "fitTimeMean": 2715.4,
+            "fitTimeStd": 364.4736478814346,
+            "scoreTimeMean": 229.6,
+            "scoreTimeStd": 58.558005430513084,
+            "parameters": {
+                "C": 0.1,
+                "penalty": "l2"
+            }
+        },
+        {
+            "finishedAt": 1772442985858,
+            "score": 0.9201273786178731,
+            "testScoreGibMean": 0.9201273786178731,
+            "testScoreMean": 0.9201273786178731,
+            "testScoreStd": 0.0014812084986203225,
+            "trainScoreMean": 0.920783291361675,
+            "trainScoreStd": 0.0003731576599759403,
+            "time": 30471,
+            "fitTimeMean": 5896.4,
+            "fitTimeStd": 298.2881828031409,
+            "scoreTimeMean": 197.8,
+            "scoreTimeStd": 45.67450054461461,
+            "parameters": {
+                "C": 10.0,
+                "penalty": "l2"
+            }
+        },
+        {
+            "finishedAt": 1772442989403,
+            "score": 0.9201259377410769,
+            "testScoreGibMean": 0.9201259377410769,
+            "testScoreMean": 0.9201259377410769,
+            "testScoreStd": 0.0014480318647411693,
+            "trainScoreMean": 0.9207523599908886,
+            "trainScoreStd": 0.0003715220319864132,
+            "time": 21802,
+            "fitTimeMean": 4177.0,
+            "fitTimeStd": 380.68412102424236,
+            "scoreTimeMean": 183.4,
+            "scoreTimeStd": 26.702808841018953,
+            "parameters": {
+                "C": 1.0,
+                "penalty": "l2"
+            }
+        },
+        {
+            "finishedAt": 1772442999234,
+            "score": 0.9201206974889992,
+            "testScoreGibMean": 0.9201206974889992,
+            "testScoreMean": 0.9201206974889992,
+            "testScoreStd": 0.0014901990741700887,
+            "trainScoreMean": 0.9207886787454177,
+            "trainScoreStd": 0.0003724952475600827,
+            "time": 36610,
+            "fitTimeMean": 7198.4,
+            "fitTimeStd": 1446.1278781629237,
+            "scoreTimeMean": 123.6,
+            "scoreTimeStd": 57.46860012215367,
+            "parameters": {
+                "C": 100.0,
+                "penalty": "l2"
+            }
+        }
+    ]
+}

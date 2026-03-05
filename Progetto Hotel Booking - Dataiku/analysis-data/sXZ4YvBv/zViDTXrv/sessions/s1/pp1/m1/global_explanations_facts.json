@@ -1,0 +1,48 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_PRT": {
+                "impact": 0.6373372431806313,
+                "rank": 1,
+                "feature": "country_PRT",
+                "correlation": -0.7099204870478757,
+                "type": "NUMERICAL"
+            },
+            "lead_time": {
+                "impact": 0.4388150153222286,
+                "rank": 4,
+                "feature": "lead_time",
+                "correlation": -0.9079446577238838,
+                "type": "NUMERICAL"
+            },
+            "adr": {
+                "impact": 0.24029985731448478,
+                "rank": 9,
+                "feature": "adr",
+                "correlation": -0.930420688669579,
+                "type": "NUMERICAL"
+            },
+            "total_nights": {
+                "impact": 0.08883907830498174,
+                "rank": 13,
+                "feature": "total_nights",
+                "correlation": -0.8956730451173786,
+                "type": "NUMERICAL"
+            },
+            "assigned_C": {
+                "impact": 0.017292384353563676,
+                "rank": 18,
+                "feature": "assigned_C",
+                "correlation": -0.9949022607646323,
+                "type": "NUMERICAL"
+            },
+            "mark_segm_Online TA": {
+                "impact": 0.008940557318013258,
+                "rank": 19,
+                "feature": "mark_segm_Online TA",
+                "correlation": -0.7020232732735896,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

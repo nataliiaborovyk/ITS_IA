@@ -1,0 +1,377 @@
+[
+    {
+        "test_score_gib": 0.9204795989588855,
+        "train_score": 0.9181706912972155,
+        "test_score": 0.9204795989588855,
+        "num_samples": 15983,
+        "fit_time": 1963,
+        "score_time": 190,
+        "time": 2153,
+        "parameters": {
+            "C": 0.01,
+            "penalty": "l2"
+        },
+        "done_at": 1772442973785,
+        "split_id": 0
+    },
+    {
+        "test_score_gib": 0.9179685019605791,
+        "train_score": 0.9187368742888282,
+        "test_score": 0.9179685019605791,
+        "num_samples": 15983,
+        "fit_time": 960,
+        "score_time": 164,
+        "time": 1124,
+        "parameters": {
+            "C": 0.01,
+            "penalty": "l2"
+        },
+        "done_at": 1772442973092,
+        "split_id": 1
+    },
+    {
+        "test_score_gib": 0.9171056528142536,
+        "train_score": 0.9191015818537549,
+        "test_score": 0.9171056528142536,
+        "num_samples": 15982,
+        "fit_time": 1086,
+        "score_time": 132,
+        "time": 1218,
+        "parameters": {
+            "C": 0.01,
+            "penalty": "l2"
+        },
+        "done_at": 1772442973430,
+        "split_id": 2
+    },
+    {
+        "test_score_gib": 0.9179211028519569,
+        "train_score": 0.9188411306335562,
+        "test_score": 0.9179211028519569,
+        "num_samples": 15982,
+        "fit_time": 1189,
+        "score_time": 186,
+        "time": 1375,
+        "parameters": {
+            "C": 0.01,
+            "penalty": "l2"
+        },
+        "done_at": 1772442974475,
+        "split_id": 3
+    },
+    {
+        "test_score_gib": 0.9182435746657797,
+        "train_score": 0.9187535707803791,
+        "test_score": 0.9182435746657797,
+        "num_samples": 15982,
+        "fit_time": 896,
+        "score_time": 175,
+        "time": 1071,
+        "parameters": {
+            "C": 0.01,
+            "penalty": "l2"
+        },
+        "done_at": 1772442974511,
+        "split_id": 4
+    },
+    {
+        "test_score_gib": 0.9222936940168946,
+        "train_score": 0.9198439722452758,
+        "test_score": 0.9222936940168946,
+        "num_samples": 15983,
+        "fit_time": 2285,
+        "score_time": 180,
+        "time": 2465,
+        "parameters": {
+            "C": 0.1,
+            "penalty": "l2"
+        },
+        "done_at": 1772442971465,
+        "split_id": 0
+    },
+    {
+        "test_score_gib": 0.9199142308816664,
+        "train_score": 0.9203823154853932,
+        "test_score": 0.9199142308816664,
+        "num_samples": 15983,
+        "fit_time": 2625,
+        "score_time": 334,
+        "time": 2959,
+        "parameters": {
+            "C": 0.1,
+            "penalty": "l2"
+        },
+        "done_at": 1772442971961,
+        "split_id": 1
+    },
+    {
+        "test_score_gib": 0.9183782889173532,
+        "train_score": 0.9209076974295164,
+        "test_score": 0.9183782889173532,
+        "num_samples": 15982,
+        "fit_time": 2949,
+        "score_time": 253,
+        "time": 3202,
+        "parameters": {
+            "C": 0.1,
+            "penalty": "l2"
+        },
+        "done_at": 1772442972204,
+        "split_id": 2
+    },
+    {
+        "test_score_gib": 0.9191436544332561,
+        "train_score": 0.9206836699891346,
+        "test_score": 0.9191436544332561,
+        "num_samples": 15982,
+        "fit_time": 2426,
+        "score_time": 181,
+        "time": 2607,
+        "parameters": {
+            "C": 0.1,
+            "penalty": "l2"
+        },
+        "done_at": 1772442971615,
+        "split_id": 3
+    },
+    {
+        "test_score_gib": 0.9198179570706155,
+        "train_score": 0.9203900959752542,
+        "test_score": 0.9198179570706155,
+        "num_samples": 15982,
+        "fit_time": 3292,
+        "score_time": 200,
+        "time": 3492,
+        "parameters": {
+            "C": 0.1,
+            "penalty": "l2"
+        },
+        "done_at": 1772442974975,
+        "split_id": 4
+    },
+    {
+        "test_score_gib": 0.9226792725996587,
+        "train_score": 0.9201732200198762,
+        "test_score": 0.9226792725996587,
+        "num_samples": 15983,
+        "fit_time": 5978,
+        "score_time": 182,
+        "time": 6160,
+        "parameters": {
+            "C": 10.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442979960,
+        "split_id": 0
+    },
+    {
+        "test_score_gib": 0.9203562239771781,
+        "train_score": 0.9207010584520039,
+        "test_score": 0.9203562239771781,
+        "num_samples": 15983,
+        "fit_time": 5477,
+        "score_time": 257,
+        "time": 5734,
+        "parameters": {
+            "C": 10.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442980210,
+        "split_id": 1
+    },
+    {
+        "test_score_gib": 0.918401147029269,
+        "train_score": 0.921262881648553,
+        "test_score": 0.918401147029269,
+        "num_samples": 15982,
+        "fit_time": 5981,
+        "score_time": 121,
+        "time": 6102,
+        "parameters": {
+            "C": 10.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442980619,
+        "split_id": 2
+    },
+    {
+        "test_score_gib": 0.9189408065603132,
+        "train_score": 0.9210694447828368,
+        "test_score": 0.9189408065603132,
+        "num_samples": 15982,
+        "fit_time": 6357,
+        "score_time": 225,
+        "time": 6582,
+        "parameters": {
+            "C": 10.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442981577,
+        "split_id": 3
+    },
+    {
+        "test_score_gib": 0.920259268930997,
+        "train_score": 0.9207098952228532,
+        "test_score": 0.920259268930997,
+        "num_samples": 15982,
+        "fit_time": 5689,
+        "score_time": 204,
+        "time": 5893,
+        "parameters": {
+            "C": 10.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442985858,
+        "split_id": 4
+    },
+    {
+        "test_score_gib": 0.9226419329263844,
+        "train_score": 0.9201464420169175,
+        "test_score": 0.9226419329263844,
+        "num_samples": 15983,
+        "fit_time": 3929,
+        "score_time": 172,
+        "time": 4101,
+        "parameters": {
+            "C": 1.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442984312,
+        "split_id": 0
+    },
+    {
+        "test_score_gib": 0.920324268459259,
+        "train_score": 0.9206708043270235,
+        "test_score": 0.920324268459259,
+        "num_samples": 15983,
+        "fit_time": 4768,
+        "score_time": 173,
+        "time": 4941,
+        "parameters": {
+            "C": 1.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442985564,
+        "split_id": 1
+    },
+    {
+        "test_score_gib": 0.9184108525931194,
+        "train_score": 0.9212337831275537,
+        "test_score": 0.9184108525931194,
+        "num_samples": 15982,
+        "fit_time": 4069,
+        "score_time": 209,
+        "time": 4278,
+        "parameters": {
+            "C": 1.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442985864,
+        "split_id": 2
+    },
+    {
+        "test_score_gib": 0.9190459951753975,
+        "train_score": 0.9210333724248416,
+        "test_score": 0.9190459951753975,
+        "num_samples": 15982,
+        "fit_time": 4430,
+        "score_time": 218,
+        "time": 4648,
+        "parameters": {
+            "C": 1.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442988965,
+        "split_id": 3
+    },
+    {
+        "test_score_gib": 0.9202064697147888,
+        "train_score": 0.9206774410736012,
+        "test_score": 0.9202064697147888,
+        "num_samples": 15982,
+        "fit_time": 3689,
+        "score_time": 145,
+        "time": 3834,
+        "parameters": {
+            "C": 1.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442989403,
+        "split_id": 4
+    },
+    {
+        "test_score_gib": 0.9226825761522068,
+        "train_score": 0.9201800610756674,
+        "test_score": 0.9226825761522068,
+        "num_samples": 15983,
+        "fit_time": 8658,
+        "score_time": 210,
+        "time": 8868,
+        "parameters": {
+            "C": 100.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442994727,
+        "split_id": 0
+    },
+    {
+        "test_score_gib": 0.9203636887353399,
+        "train_score": 0.9207060738363977,
+        "test_score": 0.9203636887353399,
+        "num_samples": 15983,
+        "fit_time": 8502,
+        "score_time": 158,
+        "time": 8660,
+        "parameters": {
+            "C": 100.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442994538,
+        "split_id": 1
+    },
+    {
+        "test_score_gib": 0.9183997968280788,
+        "train_score": 0.9212693859304031,
+        "test_score": 0.9183997968280788,
+        "num_samples": 15982,
+        "fit_time": 7232,
+        "score_time": 128,
+        "time": 7360,
+        "parameters": {
+            "C": 100.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442996341,
+        "split_id": 2
+    },
+    {
+        "test_score_gib": 0.9188960275349546,
+        "train_score": 0.921071822340076,
+        "test_score": 0.9188960275349546,
+        "num_samples": 15982,
+        "fit_time": 6965,
+        "score_time": 63,
+        "time": 7028,
+        "parameters": {
+            "C": 100.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442996434,
+        "split_id": 3
+    },
+    {
+        "test_score_gib": 0.9202612226926075,
+        "train_score": 0.9207160937946118,
+        "test_score": 0.9202612226926075,
+        "num_samples": 15982,
+        "fit_time": 4635,
+        "score_time": 59,
+        "time": 4694,
+        "parameters": {
+            "C": 100.0,
+            "penalty": "l2"
+        },
+        "done_at": 1772442999234,
+        "split_id": 4
+    }
+]

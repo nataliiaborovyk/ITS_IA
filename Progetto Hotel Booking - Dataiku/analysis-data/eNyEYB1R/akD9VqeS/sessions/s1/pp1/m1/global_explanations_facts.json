@@ -1,0 +1,41 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_PRT": {
+                "impact": 0.5527143358465562,
+                "rank": 1,
+                "feature": "country_PRT",
+                "correlation": -0.7095074007683941,
+                "type": "NUMERICAL"
+            },
+            "lead_time": {
+                "impact": 0.22867487292264754,
+                "rank": 5,
+                "feature": "lead_time",
+                "correlation": -0.775956626419943,
+                "type": "NUMERICAL"
+            },
+            "mark_segm_Online TA": {
+                "impact": 0.16203374324827105,
+                "rank": 7,
+                "feature": "mark_segm_Online TA",
+                "correlation": -0.7018347684753986,
+                "type": "NUMERICAL"
+            },
+            "agent_other_agent": {
+                "impact": 0.12474325914722731,
+                "rank": 10,
+                "feature": "agent_other_agent",
+                "correlation": 0.7032353242205988,
+                "type": "NUMERICAL"
+            },
+            "assigned_A": {
+                "impact": 0.11609510629368937,
+                "rank": 11,
+                "feature": "assigned_A",
+                "correlation": -0.7032038532163888,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

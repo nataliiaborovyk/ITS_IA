@@ -1,0 +1,74 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_group": {
+                "impact": 0.7298795153334997,
+                "rank": 2,
+                "feature": "country_group",
+                "positiveCategoricalValue": "Other",
+                "negativeCategoricalValue": "PRT",
+                "infoGain": 0.6859298002523728,
+                "type": "CATEGORICAL"
+            },
+            "agent_group": {
+                "impact": 0.5780349412300089,
+                "rank": 3,
+                "feature": "agent_group",
+                "positiveCategoricalValue": "other_agent",
+                "negativeCategoricalValue": "agent_9",
+                "infoGain": 0.6730116670092565,
+                "type": "CATEGORICAL"
+            },
+            "lead_time": {
+                "impact": 0.37294280027433785,
+                "rank": 5,
+                "feature": "lead_time",
+                "correlation": -0.7848333318662248,
+                "type": "NUMERICAL"
+            },
+            "market_segment": {
+                "impact": 0.34513156495170405,
+                "rank": 6,
+                "feature": "market_segment",
+                "positiveCategoricalValue": "Groups",
+                "negativeCategoricalValue": "Online TA",
+                "infoGain": 0.5913807171945775,
+                "type": "CATEGORICAL"
+            },
+            "special_requests_group": {
+                "impact": 0.317577257856845,
+                "rank": 7,
+                "feature": "special_requests_group",
+                "positiveCategoricalValue": "1_request",
+                "negativeCategoricalValue": "0_request",
+                "infoGain": 0.6571577614973405,
+                "type": "CATEGORICAL"
+            },
+            "customer_type": {
+                "impact": 0.2177753572746053,
+                "rank": 9,
+                "feature": "customer_type",
+                "positiveCategoricalValue": "Transient-Party",
+                "negativeCategoricalValue": "Transient",
+                "infoGain": 0.5269079614313803,
+                "type": "CATEGORICAL"
+            },
+            "total_nights": {
+                "impact": 0.024750649526726096,
+                "rank": 15,
+                "feature": "total_nights",
+                "correlation": -0.7711384229348421,
+                "type": "NUMERICAL"
+            },
+            "assigned_room_type": {
+                "impact": 0.010733166429504257,
+                "rank": 18,
+                "feature": "assigned_room_type",
+                "positiveCategoricalValue": "D",
+                "negativeCategoricalValue": "A",
+                "infoGain": 0.5788420934960576,
+                "type": "CATEGORICAL"
+            }
+        }
+    }
+}

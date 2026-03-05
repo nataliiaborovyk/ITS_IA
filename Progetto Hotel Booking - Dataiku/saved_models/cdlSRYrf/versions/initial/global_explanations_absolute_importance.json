@@ -1,0 +1,24 @@
+{
+    "absoluteImportance": {
+        "deposit_type": 1.3503310260719303,
+        "country_group": 0.7298795153334998,
+        "agent_group": 0.5780349412300089,
+        "lead_time": 0.37294280027433785,
+        "needs_parking": 0.4025958327508349,
+        "room_changed": 0.2275515865404969,
+        "special_requests_group": 0.31757725785684515,
+        "market_segment": 0.3451315649517041,
+        "customer_type": 0.21777535727460526,
+        "adr": 0.17791790164693924,
+        "arrival_date_week_number": 0.1563723351740853,
+        "booking_changes_group": 0.07440545198979719,
+        "meal": 0.057964096860151575,
+        "distribution_channel": 0.030592441956333573,
+        "total_nights": 0.024750649526726096,
+        "season": 0.017471422592678688,
+        "arrival_month_num": 0.010874795749571453,
+        "has_waiting_list": 0.01015140162993831,
+        "reserved_room_type": 0.006339576627857684,
+        "assigned_room_type": 0.010733166429504256
+    }
+}

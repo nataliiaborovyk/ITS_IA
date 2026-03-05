@@ -1,0 +1,34 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_PRT": {
+                "impact": 0.8176468565513644,
+                "rank": 2,
+                "feature": "country_PRT",
+                "correlation": -0.7096344274278612,
+                "type": "NUMERICAL"
+            },
+            "lead_time": {
+                "impact": 0.3337061304230562,
+                "rank": 4,
+                "feature": "lead_time",
+                "correlation": -0.7749626233146772,
+                "type": "NUMERICAL"
+            },
+            "mark_segm_Online TA": {
+                "impact": 0.2854475822746407,
+                "rank": 6,
+                "feature": "mark_segm_Online TA",
+                "correlation": -0.7019604214651217,
+                "type": "NUMERICAL"
+            },
+            "agent_other_agent": {
+                "impact": 0.16011152565744807,
+                "rank": 9,
+                "feature": "agent_other_agent",
+                "correlation": 0.703298278907106,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

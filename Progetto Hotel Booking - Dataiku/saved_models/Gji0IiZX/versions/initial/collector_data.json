@@ -1,0 +1,1186 @@
+{
+    "per_feature": {
+        "agent_no_agent": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.14348283111422566,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3505667499839951
+            },
+            "missing_impute_with_value": 0.14348283111422566
+        },
+        "agent_agent_1": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.061329962959255184,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.2399360727599577
+            },
+            "missing_impute_with_value": 0.061329962959255184
+        },
+        "1_winter": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.170012013214536,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3756457032772295
+            },
+            "missing_impute_with_value": 0.170012013214536
+        },
+        "country_POL": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.007620882971268395,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.08696493405020998
+            },
+            "missing_impute_with_value": 0.007620882971268395
+        },
+        "distrib_chan_Direct": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.12183401741916108,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.327096053918933
+            },
+            "missing_impute_with_value": 0.12183401741916108
+        },
+        "reserved_F": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.02470217238962859,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.15521686942457652
+            },
+            "missing_impute_with_value": 0.02470217238962859
+        },
+        "meal_Undefined": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.011712884172589848,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.10759106549463454
+            },
+            "missing_impute_with_value": 0.011712884172589848
+        },
+        "reserved_E": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.05997847632395635,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.23744844545708751
+            },
+            "missing_impute_with_value": 0.05997847632395635
+        },
+        "reserved_D": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.16184052457703474,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3683067562130339
+            },
+            "missing_impute_with_value": 0.16184052457703474
+        },
+        "reserved_C": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.00877214936430073,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.09324863307772817
+            },
+            "missing_impute_with_value": 0.00877214936430073
+        },
+        "reserved_B": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.008446791470617679,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.0915180200513272
+            },
+            "missing_impute_with_value": 0.008446791470617679
+        },
+        "mark_segm_Groups": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.16978676544198618,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.37544771097343704
+            },
+            "missing_impute_with_value": 0.16978676544198618
+        },
+        "reserved_A": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.7105065572129342,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.45353011291549966
+            },
+            "missing_impute_with_value": 0.7105065572129342
+        },
+        "reserved_L": {
+            "stats": {
+                "min": 0.0,
+                "average": 7.508259084993493e-05,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.008664750023029901
+            },
+            "missing_impute_with_value": 7.508259084993493e-05
+        },
+        "children": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.035302332565822415,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.67,
+                "std": 0.13411475113960944
+            },
+            "missing_impute_with_value": 0.035302332565822415
+        },
+        "3_summer": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.3193137451196316,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4662136819412974
+            },
+            "missing_impute_with_value": 0.3193137451196316
+        },
+        "reserved_H": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.005881469616578236,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.07646535881751625
+            },
+            "missing_impute_with_value": 0.005881469616578236
+        },
+        "reserved_G": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.019784262688957853,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.1392590690741662
+            },
+            "missing_impute_with_value": 0.019784262688957853
+        },
+        "company_booking": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.05950295324857343,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.23656511178056516
+            },
+            "missing_impute_with_value": 0.05950295324857343
+        },
+        "spec_request_0_request": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.6065797377114827,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4885117663284732
+            },
+            "missing_impute_with_value": 0.6065797377114827
+        },
+        "country_IRL": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.02940734808289118,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.16894648010824717
+            },
+            "missing_impute_with_value": 0.02940734808289118
+        },
+        "meal_HB": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.12702722995294824,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3330055562429082
+            },
+            "missing_impute_with_value": 0.12702722995294824
+        },
+        "country_NLD": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.01608018820702773,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.12578479138882917
+            },
+            "missing_impute_with_value": 0.01608018820702773
+        },
+        "reserved_P": {
+            "stats": {
+                "min": 0.0,
+                "average": 1.2513765141655821e-05,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.0035374800552993163
+            },
+            "missing_impute_with_value": 1.2513765141655821e-05
+        },
+        "guest_large_group": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0012263489838822705,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.03499800536695281
+            },
+            "missing_impute_with_value": 0.0012263489838822705
+        },
+        "has_children": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.07329312243467814,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.260618668939022
+            },
+            "missing_impute_with_value": 0.07329312243467814
+        },
+        "cust_type_Group": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0047302032235459,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.06861404604315474
+            },
+            "missing_impute_with_value": 0.0047302032235459
+        },
+        "mark_segm_Complementary": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0062318550405445995,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.07869622940307858
+            },
+            "missing_impute_with_value": 0.0062318550405445995
+        },
+        "cust_type_Transient": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.7659925918510362,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4233794801060797
+            },
+            "missing_impute_with_value": 0.7659925918510362
+        },
+        "assigned_H": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.006957653418760637,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.08312238530872063
+            },
+            "missing_impute_with_value": 0.006957653418760637
+        },
+        "assigned_G": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.023676043648012814,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.15203873805905355
+            },
+            "missing_impute_with_value": 0.023676043648012814
+        },
+        "assigned_F": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.032360596656321954,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.1769570012564235
+            },
+            "missing_impute_with_value": 0.032360596656321954
+        },
+        "assigned_E": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0701897086795475,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.2554680609636408
+            },
+            "missing_impute_with_value": 0.0701897086795475
+        },
+        "assigned_D": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.20857943738111923,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4062956084018294
+            },
+            "missing_impute_with_value": 0.20857943738111923
+        },
+        "assigned_C": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.022687456201822005,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.14890605427843978
+            },
+            "missing_impute_with_value": 0.022687456201822005
+        },
+        "assigned_B": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.01674341775953549,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.12830932054571192
+            },
+            "missing_impute_with_value": 0.01674341775953549
+        },
+        "assigned_A": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.6134497947742517,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4869621253046225
+            },
+            "missing_impute_with_value": 0.6134497947742517
+        },
+        "country_ESP": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0709280208229052,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.25670617701548004
+            },
+            "missing_impute_with_value": 0.0709280208229052
+        },
+        "assigned_P": {
+            "stats": {
+                "min": 0.0,
+                "average": 1.2513765141655821e-05,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.0035374800552993163
+            },
+            "missing_impute_with_value": 1.2513765141655821e-05
+        },
+        "country_SWE": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.00793372709980979,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.08871798897896427
+            },
+            "missing_impute_with_value": 0.00793372709980979
+        },
+        "mark_segm_Offline TA/TO": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.20981830013014316,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4071813549277885
+            },
+            "missing_impute_with_value": 0.20981830013014316
+        },
+        "assigned_L": {
+            "stats": {
+                "min": 0.0,
+                "average": 1.2513765141655821e-05,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.0035374800552986792
+            },
+            "missing_impute_with_value": 1.2513765141655821e-05
+        },
+        "assigned_K": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0017894684152567825,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.04226450722819632
+            },
+            "missing_impute_with_value": 0.0017894684152567825
+        },
+        "assigned_I": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0035413955350885973,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.05940453023597226
+            },
+            "missing_impute_with_value": 0.0035413955350885973
+        },
+        "distrib_chan_TA/TO": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.8166357993793173,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3869672394509103
+            },
+            "missing_impute_with_value": 0.8166357993793173
+        },
+        "deposit_No Deposit": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.8527380118129942,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.35436911048977526
+            },
+            "missing_impute_with_value": 0.8527380118129942
+        },
+        "needs_parking": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.06666082690960055,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.24943524138741466
+            },
+            "missing_impute_with_value": 0.06666082690960055
+        },
+        "babies": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.004054459905896486,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.04553444936964194
+            },
+            "missing_impute_with_value": 0.004054459905896486
+        },
+        "total_nights": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.06138178246070678,
+                "median": 0.053,
+                "max": 1.0,
+                "p99": 0.246,
+                "std": 0.046439907459050675
+            },
+            "missing_impute_with_value": 0.06138178246070678
+        },
+        "meal_FB": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.007858644508959857,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.08830053105770233
+            },
+            "missing_impute_with_value": 0.007858644508959857
+        },
+        "type_mixed_trip": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.5108118930823906,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4998862170390299
+            },
+            "missing_impute_with_value": 0.5108118930823906
+        },
+        "type_business_trip": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.43087396135749323,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.49520163516020765
+            },
+            "missing_impute_with_value": 0.43087396135749323
+        },
+        "deposit_Non Refund": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.14558514365802383,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.35269202742972705
+            },
+            "missing_impute_with_value": 0.14558514365802383
+        },
+        "country_PRT": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.4459780758834718,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4970761749217354
+            },
+            "missing_impute_with_value": 0.4459780758834718
+        },
+        "distrib_chan_Corporate": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.06040394433877265,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.2382352158655877
+            },
+            "missing_impute_with_value": 0.06040394433877265
+        },
+        "mark_segm_Aviation": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0017394133546901592,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.04167024747815246
+            },
+            "missing_impute_with_value": 0.0017394133546901592
+        },
+        "weekend_flag": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.5691260386425068,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.49520163516020765
+            },
+            "missing_impute_with_value": 0.5691260386425068
+        },
+        "guest_couple": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.6891580738812694,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4628411215610982
+            },
+            "missing_impute_with_value": 0.6891580738812694
+        },
+        "arrival_date_week_number": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.52249381820002,
+                "median": 0.538,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.2608516287776135
+            },
+            "missing_impute_with_value": 0.52249381820002
+        },
+        "agent_agent_9": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.24393082390629692,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4294541709884267
+            },
+            "missing_impute_with_value": 0.24393082390629692
+        },
+        "arrival_month_num": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.5244075858444288,
+                "median": 0.545,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.28063214336372755
+            },
+            "missing_impute_with_value": 0.5244075858444288
+        },
+        "spec_request_2_requests": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.10425217739513465,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.30558931509334314
+            },
+            "missing_impute_with_value": 0.10425217739513465
+        },
+        "agent_agent_6": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.02751776954650115,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.16358752026068285
+            },
+            "missing_impute_with_value": 0.02751776954650115
+        },
+        "booking_confirmed": {
+            "stats": {}
+        },
+        "agent_agent_7": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.022061767944739213,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.14688538500586923
+            },
+            "missing_impute_with_value": 0.022061767944739213
+        },
+        "country_Other": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.16007608369206128,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3666788971844003
+            },
+            "missing_impute_with_value": 0.16007608369206128
+        },
+        "room_changed": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.12178396235859446,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.32703817402194535
+            },
+            "missing_impute_with_value": 0.12178396235859446
+        },
+        "cust_type_Contract": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.03397487235959556,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.1811656455345885
+            },
+            "missing_impute_with_value": 0.03397487235959556
+        },
+        "mark_segm_Online TA": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.46235859445389926,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.49858423093619947
+            },
+            "missing_impute_with_value": 0.46235859445389926
+        },
+        "meal_SC": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0768220042046251,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.2663104792658706
+            },
+            "missing_impute_with_value": 0.0768220042046251
+        },
+        "type_weekend_trip": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.058314145560116125,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.23433798917858348
+            },
+            "missing_impute_with_value": 0.058314145560116125
+        },
+        "agent_other_agent": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.3410751827009711,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.47407353317987594
+            },
+            "missing_impute_with_value": 0.3410751827009711
+        },
+        "has_waiting_list": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.02943237561317449,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.16901617778483774
+            },
+            "missing_impute_with_value": 0.02943237561317449
+        },
+        "adr": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.01983659525478026,
+                "median": 0.018,
+                "max": 1.0,
+                "p99": 0.048,
+                "std": 0.009654257790318707
+            },
+            "missing_impute_with_value": 0.01983659525478026
+        },
+        "country_GBR": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.10448993893282611,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3058969802803942
+            },
+            "missing_impute_with_value": 0.10448993893282611
+        },
+        "mark_segm_Direct": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.10245019521473621,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.30324132868444054
+            },
+            "missing_impute_with_value": 0.10245019521473621
+        },
+        "2_spring": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.25451746921613777,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.43559235696983944
+            },
+            "missing_impute_with_value": 0.25451746921613777
+        },
+        "booking_0_change": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.8547026729402343,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.35240256506318857
+            },
+            "missing_impute_with_value": 0.8547026729402343
+        },
+        "deposit_Refundable": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.00167684452898188,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.04091520096643046
+            },
+            "missing_impute_with_value": 0.00167684452898188
+        },
+        "distrib_chan_GDS": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.001126238862749024,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.033540788997353715
+            },
+            "missing_impute_with_value": 0.001126238862749024
+        },
+        "adults": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.03354299729702673,
+                "median": 0.036,
+                "max": 1.0,
+                "p99": 0.055,
+                "std": 0.010926641813079074
+            },
+            "missing_impute_with_value": 0.03354299729702673
+        },
+        "country_BRA": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.017481729902893182,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.13105851350870718
+            },
+            "missing_impute_with_value": 0.017481729902893182
+        },
+        "country_DEU": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.053158474321753926,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.22435079850189824
+            },
+            "missing_impute_with_value": 0.053158474321753926
+        },
+        "country_FRA": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.07587095805385924,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.26479318946292985
+            },
+            "missing_impute_with_value": 0.07587095805385924
+        },
+        "agent_agent_14": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.022975272800080087,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.14982553368816284
+            },
+            "missing_impute_with_value": 0.022975272800080087
+        },
+        "agent_agent_240": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.13762638902793073,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3445095808399093
+            },
+            "missing_impute_with_value": 0.13762638902793073
+        },
+        "spec_request_1_request": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.2681825007508259,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.44301591735765333
+            },
+            "missing_impute_with_value": 0.2681825007508259
+        },
+        "meal_BB": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.776579237160877,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4165406304147744
+            },
+            "missing_impute_with_value": 0.776579237160877
+        },
+        "lead_time": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.14640542096305936,
+                "median": 0.0977,
+                "max": 0.962,
+                "p99": 0.616,
+                "std": 0.14857515996321874
+            },
+            "missing_impute_with_value": 0.14640542096305936
+        },
+        "4_autumn": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.25615677244969465,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4365121588070308
+            },
+            "missing_impute_with_value": 0.25615677244969465
+        },
+        "cust_type_Transient-Party": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.1953023325658224,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3964357427626429
+            },
+            "missing_impute_with_value": 0.1953023325658224
+        },
+        "guest_single": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.1864926419060967,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3895061423744148
+            },
+            "missing_impute_with_value": 0.1864926419060967
+        },
+        "spec_request_3_requests": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0182700971068175,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.13392731279317827
+            },
+            "missing_impute_with_value": 0.0182700971068175
+        },
+        "guest_small_group": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.12312293522875163,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.32858032366282336
+            },
+            "missing_impute_with_value": 0.12312293522875163
+        },
+        "country_CN": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.010974572029232155,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.10418381172599778
+            },
+            "missing_impute_with_value": 0.010974572029232155
+        },
+        "spec_request_4+_requests": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0027154870357393134,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 0.0,
+                "std": 0.05203986025165129
+            },
+            "missing_impute_with_value": 0.0027154870357393134
+        },
+        "booking_1_change": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.10159925918510361,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.30212247839175604
+            },
+            "missing_impute_with_value": 0.10159925918510361
+        },
+        "mark_segm_Corporate": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.0476148763640004,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.21295132634121644
+            },
+            "missing_impute_with_value": 0.0476148763640004
+        },
+        "booking_2+_change": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.04369806787466213,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.2044237502769555
+            },
+            "missing_impute_with_value": 0.04369806787466213
+        }
+    },
+    "feature_order": [
+        "agent_no_agent",
+        "agent_agent_1",
+        "1_winter",
+        "country_POL",
+        "distrib_chan_Direct",
+        "reserved_F",
+        "meal_Undefined",
+        "reserved_E",
+        "reserved_D",
+        "reserved_C",
+        "reserved_B",
+        "mark_segm_Groups",
+        "reserved_A",
+        "reserved_L",
+        "children",
+        "3_summer",
+        "reserved_H",
+        "reserved_G",
+        "company_booking",
+        "spec_request_0_request",
+        "country_IRL",
+        "meal_HB",
+        "country_NLD",
+        "reserved_P",
+        "guest_large_group",
+        "has_children",
+        "cust_type_Group",
+        "mark_segm_Complementary",
+        "cust_type_Transient",
+        "assigned_H",
+        "assigned_G",
+        "assigned_F",
+        "assigned_E",
+        "assigned_D",
+        "assigned_C",
+        "assigned_B",
+        "assigned_A",
+        "country_ESP",
+        "assigned_P",
+        "country_SWE",
+        "mark_segm_Offline TA/TO",
+        "assigned_L",
+        "assigned_K",
+        "assigned_I",
+        "distrib_chan_TA/TO",
+        "deposit_No Deposit",
+        "needs_parking",
+        "babies",
+        "total_nights",
+        "meal_FB",
+        "type_mixed_trip",
+        "type_business_trip",
+        "deposit_Non Refund",
+        "country_PRT",
+        "distrib_chan_Corporate",
+        "mark_segm_Aviation",
+        "weekend_flag",
+        "guest_couple",
+        "arrival_date_week_number",
+        "agent_agent_9",
+        "arrival_month_num",
+        "spec_request_2_requests",
+        "agent_agent_6",
+        "booking_confirmed",
+        "agent_agent_7",
+        "country_Other",
+        "room_changed",
+        "cust_type_Contract",
+        "mark_segm_Online TA",
+        "meal_SC",
+        "type_weekend_trip",
+        "agent_other_agent",
+        "has_waiting_list",
+        "adr",
+        "country_GBR",
+        "mark_segm_Direct",
+        "2_spring",
+        "booking_0_change",
+        "deposit_Refundable",
+        "distrib_chan_GDS",
+        "adults",
+        "country_BRA",
+        "country_DEU",
+        "country_FRA",
+        "agent_agent_14",
+        "agent_agent_240",
+        "spec_request_1_request",
+        "meal_BB",
+        "lead_time",
+        "4_autumn",
+        "cust_type_Transient-Party",
+        "guest_single",
+        "spec_request_3_requests",
+        "guest_small_group",
+        "country_CN",
+        "spec_request_4+_requests",
+        "booking_1_change",
+        "mark_segm_Corporate",
+        "booking_2+_change"
+    ]
+}

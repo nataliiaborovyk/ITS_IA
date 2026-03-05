@@ -1,0 +1,11 @@
+booking_confirmed,lead_time,arrival_month_num,season,arrival_date_week_number,weekend_flag,trip_type,total_nights,stay_type,adults,has_children,guest_group,meal,country_group,market_segment,distribution_channel,reserved_room_type,assigned_room_type,room_changed,booking_changes_group,deposit_type,agent_group,company_booking,has_waiting_list,customer_type,adr,needs_parking,special_requests_group
+1,342,7,3_summer,27,0,business_trip,0,2_3_nights,2,0,couple,BB,PRT,Direct,Direct,C,C,0,2+_change,No Deposit,no_agent,0,0,Transient,0.0,0,0_request
+1,737,7,3_summer,27,0,business_trip,0,2_3_nights,2,0,couple,BB,PRT,Direct,Direct,C,C,0,2+_change,No Deposit,no_agent,0,0,Transient,0.0,0,0_request
+1,7,7,3_summer,27,0,business_trip,1,1_night,1,0,single,BB,GBR,Direct,Direct,A,C,1,0_change,No Deposit,no_agent,0,0,Transient,75.0,0,0_request
+1,13,7,3_summer,27,0,business_trip,1,1_night,1,0,single,BB,GBR,Corporate,Corporate,A,A,0,0_change,No Deposit,other_agent,0,0,Transient,75.0,0,0_request
+1,14,7,3_summer,27,0,business_trip,2,2_3_nights,2,0,couple,BB,GBR,Online TA,TA/TO,A,A,0,0_change,No Deposit,agent_240,0,0,Transient,98.0,0,1_request
+1,14,7,3_summer,27,0,business_trip,2,2_3_nights,2,0,couple,BB,GBR,Online TA,TA/TO,A,A,0,0_change,No Deposit,agent_240,0,0,Transient,98.0,0,1_request
+1,0,7,3_summer,27,0,business_trip,2,2_3_nights,2,0,couple,BB,PRT,Direct,Direct,C,C,0,0_change,No Deposit,no_agent,0,0,Transient,107.0,0,0_request
+1,9,7,3_summer,27,0,business_trip,2,2_3_nights,2,0,couple,FB,PRT,Direct,Direct,C,C,0,0_change,No Deposit,other_agent,0,0,Transient,103.0,0,1_request
+0,85,7,3_summer,27,0,business_trip,3,2_3_nights,2,0,couple,BB,PRT,Online TA,TA/TO,A,A,0,0_change,No Deposit,agent_240,0,0,Transient,82.0,0,1_request
+0,75,7,3_summer,27,0,business_trip,3,2_3_nights,2,0,couple,HB,PRT,Offline TA/TO,TA/TO,D,D,0,0_change,No Deposit,other_agent,0,0,Transient,105.5,0,0_request

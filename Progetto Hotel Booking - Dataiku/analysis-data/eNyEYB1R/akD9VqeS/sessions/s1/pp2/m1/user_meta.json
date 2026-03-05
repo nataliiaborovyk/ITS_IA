@@ -1,0 +1,46 @@
+{
+  "starred": false,
+  "clusterMetas": {},
+  "sessionName": "rf-lr_1",
+  "customMeta": {
+    "kv": {}
+  },
+  "tags": [],
+  "activeClassifierThreshold": 0.4,
+  "description": "",
+  "name": "Logistic Regression (rf-lr_1)",
+  "labels": [
+    {
+      "key": "trainDataset:dataset-name",
+      "value": "hotel_bookings_normalise"
+    },
+    {
+      "key": "testDataset:dataset-name",
+      "value": "hotel_bookings_normalise"
+    },
+    {
+      "key": "evaluationDataset:dataset-name",
+      "value": "hotel_bookings_normalise"
+    },
+    {
+      "key": "model:algorithm",
+      "value": "LOGISTIC_REGRESSION"
+    },
+    {
+      "key": "model:name",
+      "value": "Logistic Regression (rf-lr_1)"
+    },
+    {
+      "key": "model:session-name",
+      "value": "rf-lr_1"
+    },
+    {
+      "key": "model:date",
+      "value": "2026-03-01T00:40:19.765+0000"
+    },
+    {
+      "key": "evaluation:date",
+      "value": "2026-03-01T00:40:19.765+0000"
+    }
+  ]
+}

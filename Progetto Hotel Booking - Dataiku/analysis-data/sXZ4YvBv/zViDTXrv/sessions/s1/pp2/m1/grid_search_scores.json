@@ -1,0 +1,62 @@
+{
+    "startedAt": 1772440945414,
+    "gridSize": 2,
+    "nThreads": 4,
+    "nSplits": 5,
+    "metric": "ROC_AUC",
+    "timeout": null,
+    "gridPoints": [
+        {
+            "finishedAt": 1772440955793,
+            "score": 0.9523992072184729,
+            "testScoreGibMean": 0.9523992072184729,
+            "testScoreMean": 0.9523992072184729,
+            "testScoreStd": 0.0023071288785640677,
+            "trainScoreMean": 0.9551154448614916,
+            "trainScoreStd": 0.0005143306219332262,
+            "time": 34564,
+            "fitTimeMean": 6512.0,
+            "fitTimeStd": 1814.6482854812389,
+            "scoreTimeMean": 400.8,
+            "scoreTimeStd": 73.39863758953568,
+            "parameters": {
+                "boosting_type": "gbdt",
+                "colsample_bytree": 0.7,
+                "learning_rate": 0.05,
+                "min_child_samples": 20,
+                "min_child_weight": 0.001,
+                "min_split_gain": 0.0,
+                "n_estimators": 101,
+                "num_leaves": 31,
+                "reg_alpha": 0.0,
+                "reg_lambda": 0.0
+            }
+        },
+        {
+            "finishedAt": 1772440959956,
+            "score": 0.9525913251766817,
+            "testScoreGibMean": 0.9525913251766817,
+            "testScoreMean": 0.9525913251766817,
+            "testScoreStd": 0.002231580990996483,
+            "trainScoreMean": 0.9555099403461518,
+            "trainScoreStd": 0.0005681558069464611,
+            "time": 22704,
+            "fitTimeMean": 4257.4,
+            "fitTimeStd": 1294.536457578542,
+            "scoreTimeMean": 283.4,
+            "scoreTimeStd": 58.830604280425334,
+            "parameters": {
+                "boosting_type": "gbdt",
+                "colsample_bytree": 0.9,
+                "learning_rate": 0.05,
+                "min_child_samples": 20,
+                "min_child_weight": 0.001,
+                "min_split_gain": 0.0,
+                "n_estimators": 101,
+                "num_leaves": 31,
+                "reg_alpha": 0.0,
+                "reg_lambda": 0.0
+            }
+        }
+    ]
+}
