@@ -1,0 +1,34 @@
+{
+    "num_columns": [
+        "needs_parking",
+        "adults",
+        "room_changed",
+        "total_nights",
+        "lead_time",
+        "company_booking",
+        "has_children",
+        "has_waiting_list",
+        "is_repeated_guest",
+        "adr",
+        "weekend_flag",
+        "arrival_date_week_number",
+        "arrival_month_num"
+    ],
+    "num_values": [
+        0.06836269896886575,
+        1.8567424166583242,
+        0.1295550105115627,
+        3.4954700170187207,
+        106.78642757032736,
+        0.05796376013614977,
+        0.07016468114926419,
+        0.03690309340274302,
+        0.03621483631995195,
+        99.54525565622183,
+        0.565409450395435,
+        27.663492341575733,
+        6.653231054159575
+    ],
+    "cat_columns": [],
+    "cat_values": []
+}

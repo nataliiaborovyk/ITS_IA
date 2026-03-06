@@ -1,0 +1,20 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_PRT": {
+                "impact": 0.8571666617786762,
+                "rank": 1,
+                "feature": "country_PRT",
+                "correlation": -0.7054595451608833,
+                "type": "NUMERICAL"
+            },
+            "agent_other_agent": {
+                "impact": 0.21965013080694515,
+                "rank": 8,
+                "feature": "agent_other_agent",
+                "correlation": 0.7031723864369473,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_group": {
+                "impact": 0.5214354229573588,
+                "rank": 2,
+                "feature": "country_group",
+                "positiveCategoricalValue": "Other",
+                "negativeCategoricalValue": "PRT",
+                "infoGain": 0.6859298002523728,
+                "type": "CATEGORICAL"
+            },
+            "special_requests_group": {
+                "impact": 0.3092125803653,
+                "rank": 3,
+                "feature": "special_requests_group",
+                "positiveCategoricalValue": "1_request",
+                "negativeCategoricalValue": "0_request",
+                "infoGain": 0.6571577614973405,
+                "type": "CATEGORICAL"
+            },
+            "agent_group": {
+                "impact": 0.2595842138693581,
+                "rank": 4,
+                "feature": "agent_group",
+                "positiveCategoricalValue": "other_agent",
+                "negativeCategoricalValue": "agent_9",
+                "infoGain": 0.5668341149162138,
+                "type": "CATEGORICAL"
+            },
+            "lead_time": {
+                "impact": 0.20800364119378686,
+                "rank": 5,
+                "feature": "lead_time",
+                "correlation": -0.8563943092047718,
+                "type": "NUMERICAL"
+            },
+            "market_segment": {
+                "impact": 0.2020557560308955,
+                "rank": 6,
+                "feature": "market_segment",
+                "positiveCategoricalValue": "Offline TA/TO",
+                "negativeCategoricalValue": "Online TA",
+                "infoGain": 0.5762381001079213,
+                "type": "CATEGORICAL"
+            },
+            "customer_type": {
+                "impact": 0.18630460678791688,
+                "rank": 7,
+                "feature": "customer_type",
+                "positiveCategoricalValue": "Transient-Party",
+                "negativeCategoricalValue": "Transient",
+                "infoGain": 0.5269079614313803,
+                "type": "CATEGORICAL"
+            },
+            "hotel": {
+                "impact": 0.1602348135859648,
+                "rank": 8,
+                "feature": "hotel",
+                "positiveCategoricalValue": "Resort Hotel",
+                "negativeCategoricalValue": "City Hotel",
+                "infoGain": 0.5980657811434887,
+                "type": "CATEGORICAL"
+            },
+            "assigned_room_type": {
+                "impact": 0.14217177710916684,
+                "rank": 11,
+                "feature": "assigned_room_type",
+                "positiveCategoricalValue": "D",
+                "negativeCategoricalValue": "A",
+                "infoGain": 0.6606300806889921,
+                "type": "CATEGORICAL"
+            },
+            "adr": {
+                "impact": 0.07240177238348114,
+                "rank": 14,
+                "feature": "adr",
+                "correlation": -0.7479950844144643,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

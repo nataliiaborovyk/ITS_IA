@@ -1,0 +1,24 @@
+{
+    "absoluteImportance": {
+        "deposit_type": 0.7040024449007813,
+        "needs_parking": 0.28830801822984115,
+        "room_changed": 0.4496810760921746,
+        "market_segment": 0.11586262181054018,
+        "previous_cancellation_group": 0.1157365472303506,
+        "country_group": 0.9221150557131875,
+        "agent_group": 0.7924355168723657,
+        "lead_time": 0.344668949813927,
+        "special_requests_group": 0.5562332930576348,
+        "assigned_room_type": 0.07599977469164347,
+        "company_booking": 0.09508196601113462,
+        "distribution_channel": 0.0919732008484027,
+        "adr": 0.10460675404884838,
+        "season": 0.07428956322724141,
+        "is_repeated_guest": 0.1259329607652541,
+        "hotel": 0.05040895370518996,
+        "arrival_date_week_number": 0.2531091751448205,
+        "total_nights": 0.09865287368923945,
+        "arrival_month_num": 0.25380292393808135,
+        "booking_changes_group": 0.15245206181897614
+    }
+}

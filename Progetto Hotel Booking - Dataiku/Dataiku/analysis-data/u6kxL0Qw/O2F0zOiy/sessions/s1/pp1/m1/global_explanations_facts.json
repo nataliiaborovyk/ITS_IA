@@ -1,0 +1,104 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_group": {
+                "impact": 0.9221150557131864,
+                "rank": 1,
+                "feature": "country_group",
+                "positiveCategoricalValue": "Other",
+                "negativeCategoricalValue": "PRT",
+                "infoGain": 0.6164075757682482,
+                "type": "CATEGORICAL"
+            },
+            "agent_group": {
+                "impact": 0.7924355168723656,
+                "rank": 2,
+                "feature": "agent_group",
+                "positiveCategoricalValue": "other_agent",
+                "negativeCategoricalValue": "agent_9",
+                "infoGain": 0.6730116670092565,
+                "type": "CATEGORICAL"
+            },
+            "special_requests_group": {
+                "impact": 0.5562332930576349,
+                "rank": 4,
+                "feature": "special_requests_group",
+                "positiveCategoricalValue": "1_request",
+                "negativeCategoricalValue": "0_request",
+                "infoGain": 0.6640641265641081,
+                "type": "CATEGORICAL"
+            },
+            "lead_time": {
+                "impact": 0.34466894981392715,
+                "rank": 6,
+                "feature": "lead_time",
+                "correlation": -0.9002769382823933,
+                "type": "NUMERICAL"
+            },
+            "arrival_month_num": {
+                "impact": 0.2538029239380814,
+                "rank": 8,
+                "feature": "arrival_month_num",
+                "correlation": -0.920720722542886,
+                "type": "NUMERICAL"
+            },
+            "arrival_date_week_number": {
+                "impact": 0.2531091751448205,
+                "rank": 9,
+                "feature": "arrival_date_week_number",
+                "correlation": 0.9183389531045163,
+                "type": "NUMERICAL"
+            },
+            "market_segment": {
+                "impact": 0.11586262181054015,
+                "rank": 12,
+                "feature": "market_segment",
+                "positiveCategoricalValue": "Offline TA/TO",
+                "negativeCategoricalValue": "Online TA",
+                "infoGain": 0.5872200362827485,
+                "type": "CATEGORICAL"
+            },
+            "adr": {
+                "impact": 0.10460675404884837,
+                "rank": 14,
+                "feature": "adr",
+                "correlation": -0.9119407476211983,
+                "type": "NUMERICAL"
+            },
+            "total_nights": {
+                "impact": 0.09865287368923945,
+                "rank": 15,
+                "feature": "total_nights",
+                "correlation": -0.8751992960817584,
+                "type": "NUMERICAL"
+            },
+            "assigned_room_type": {
+                "impact": 0.07599977469164353,
+                "rank": 18,
+                "feature": "assigned_room_type",
+                "positiveCategoricalValue": "A",
+                "negativeCategoricalValue": "D",
+                "infoGain": 0.6756223432913728,
+                "type": "CATEGORICAL"
+            },
+            "season": {
+                "impact": 0.07428956322724145,
+                "rank": 19,
+                "feature": "season",
+                "positiveCategoricalValue": "3_summer",
+                "negativeCategoricalValue": "2_spring",
+                "infoGain": 0.6108643020548935,
+                "type": "CATEGORICAL"
+            },
+            "hotel": {
+                "impact": 0.05040895370518996,
+                "rank": 20,
+                "feature": "hotel",
+                "positiveCategoricalValue": "Resort Hotel",
+                "negativeCategoricalValue": "City Hotel",
+                "infoGain": 0.6640641265641081,
+                "type": "CATEGORICAL"
+            }
+        }
+    }
+}

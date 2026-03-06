@@ -1,0 +1,82 @@
+{
+  "params": {
+    "ttPolicy": "SPLIT_SINGLE_DATASET",
+    "ssdSplitMode": "RANDOM",
+    "splitBeforePrepare": true,
+    "ssdSelection": {
+      "useMemTable": false,
+      "filter": {
+        "distinct": false,
+        "enabled": false
+      },
+      "partitionSelectionMethod": "ALL",
+      "latestPartitionsN": 1,
+      "ordering": {
+        "enabled": false,
+        "rules": []
+      },
+      "samplingMethod": "HEAD_SEQUENTIAL",
+      "maxRecords": 100000,
+      "targetRatio": 0.02,
+      "ascending": true,
+      "withinFirstN": -1,
+      "maxReadUncompressedBytes": -1,
+      "seed": 1337
+    },
+    "ssdTrainingRatio": 0.8,
+    "ssdStratified": false,
+    "ssdGrouped": false,
+    "ssdSeed": 1337,
+    "testOnLargerValues": true,
+    "streamAll": false,
+    "kfold": false,
+    "nFolds": 5,
+    "instanceIdRefresher": 0,
+    "subSamplingSeed": 1337
+  },
+  "generationDate": 1772808923208,
+  "policyId": "type\u003dSPLIT_SINGLE_DATASET,split\u003dRANDOM,splitBeforePrepare\u003dtrue,ds\u003dhotel_bookings_per_ml,sel\u003d(method\u003dhead-s,records\u003d100000),r\u003d0.8,s\u003d1337",
+  "instanceId": "9b511fdbf366249330dc2d5678d8a731-0",
+  "format": "csv1",
+  "schema": {
+    "columns": [
+      {"name":"hotel","type":"string"},
+      {"name":"booking_confirmed","type":"bigint"},
+      {"name":"lead_time","type":"bigint"},
+      {"name":"arrival_month_num","type":"bigint"},
+      {"name":"season","type":"string"},
+      {"name":"arrival_date_week_number","type":"bigint"},
+      {"name":"weekend_flag","type":"bigint"},
+      {"name":"trip_type","type":"string"},
+      {"name":"total_nights","type":"bigint"},
+      {"name":"stay_type","type":"string"},
+      {"name":"adults","type":"bigint"},
+      {"name":"has_children","type":"bigint"},
+      {"name":"guest_group","type":"string"},
+      {"name":"meal","type":"string"},
+      {"name":"country_group","type":"string"},
+      {"name":"market_segment","type":"string"},
+      {"name":"distribution_channel","type":"string"},
+      {"name":"is_repeated_guest","type":"bigint"},
+      {"name":"previous_cancellation_group","type":"string"},
+      {"name":"reserved_room_type","type":"string"},
+      {"name":"assigned_room_type","type":"string"},
+      {"name":"room_changed","type":"bigint"},
+      {"name":"booking_changes_group","type":"string"},
+      {"name":"deposit_type","type":"string"},
+      {"name":"agent_group","type":"string"},
+      {"name":"company_booking","type":"bigint"},
+      {"name":"has_waiting_list","type":"bigint"},
+      {"name":"customer_type","type":"string"},
+      {"name":"adr","type":"double"},
+      {"name":"needs_parking","type":"bigint"},
+      {"name":"special_requests_group","type":"string"}
+    ],
+    "userModified": false
+  },
+  "trainPath": "train-9b511fdbf366249330dc2d5678d8a731-0.csv.gz",
+  "testPath": "test-9b511fdbf366249330dc2d5678d8a731-0.csv.gz",
+  "trainRows": 79912,
+  "testRows": 20088,
+  "fullRows": 0
+}

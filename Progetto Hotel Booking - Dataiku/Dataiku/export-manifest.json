@@ -1,0 +1,136 @@
+{
+  "exportedWithOptions": {
+    "exportUploads": true,
+    "exportManagedFS": false,
+    "exportAnalysisModels": true,
+    "exportSavedModels": true,
+    "exportManagedFolders": false,
+    "exportModelEvaluationStores": false,
+    "exportProjectResources": true,
+    "exportLabelingTasks": false,
+    "exportAllInputDatasets": false,
+    "exportAllDatasets": false,
+    "exportAllInputManagedFolders": false,
+    "exportGitRepository": true,
+    "exportInsightsData": false,
+    "useManualPluginsInfo": false,
+    "exportSavedModelsRequiredVersions": false,
+    "exportNotebooksWithOutputs": true,
+    "exportForNewBranch": false,
+    "exportKnowledgeBanks": false,
+    "exportEditableDatasets": true,
+    "exportPromptStudioHistories": false,
+    "exportNotebooks": true,
+    "exportDatasetResources": true,
+    "includedDatasetsData": [],
+    "includedSavedModels": [],
+    "includedModelEvaluationStores": [],
+    "includedManagedFolders": [],
+    "includedCodeStudios": [],
+    "includedKnowledgeBanks": [],
+    "includedLabelingTasks": [],
+    "includedPromptStudiosHistories": [],
+    "shareAllInputDatasets": false,
+    "exportForeignObjectsReferences": true
+  },
+  "actualContent": {
+    "includedDatasets": [
+      {
+        "name": "hotel_bookings_2015-2017",
+        "type": "UploadedFiles",
+        "usedTransferMethod": "UPLOAD",
+        "size": 16855599
+      },
+      {
+        "name": "hotel_bookings_updated_2024",
+        "type": "UploadedFiles",
+        "usedTransferMethod": "UPLOAD",
+        "size": 21279413
+      }
+    ],
+    "includedSavedModels": [
+      {
+        "id": "FyT4tDmU",
+        "name": "Logistic Regretion",
+        "size": 3093066
+      },
+      {
+        "id": "Gji0IiZX",
+        "name": "LightGBM_con_preprocessing_manuale",
+        "size": 10218624
+      },
+      {
+        "id": "fy9ack3z",
+        "name": "LightGBM",
+        "size": 3627833
+      },
+      {
+        "id": "nQztJD0X",
+        "name": "Logistic_Regression_manuale",
+        "size": 4803082
+      },
+      {
+        "id": "xFomLnp3",
+        "name": "LightGBM_manuale",
+        "size": 5199640
+      }
+    ],
+    "includedManagedFolders": [],
+    "includedModelEvaluationStores": [],
+    "includedCodeStudios": [],
+    "includedKnowledgeBanks": [],
+    "includedLabelingTasks": [],
+    "includedPromptStudiosHistories": [],
+    "allAnalysisData": true,
+    "insightsData": false
+  },
+  "originalProjectKey": "COPYOFHOTEL",
+  "manifestVersion": 3,
+  "generatedWithDSSVersion": "14.3.0",
+  "generatedWithDSSConfVersion": "14300",
+  "foreignObjects": [],
+  "exportedWithPlugins": [
+    {
+      "pluginId": "project-standards",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "local-r-dev-setup",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "default-samples",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "builtin-macros",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "code-studio-blocks",
+      "version": "1.0.0"
+    },
+    {
+      "pluginId": "colorbrewer-palettes",
+      "version": "0.0.1"
+    },
+    {
+      "pluginId": "k8s-metrics-utils",
+      "version": "1.0.0"
+    }
+  ],
+  "exportedWithCodeStudioTemplates": [],
+  "requiredCodeStudioTemplates": [],
+  "requiredConnections": {
+    "filesystem_managed": {
+      "name": "filesystem_managed",
+      "type": "Filesystem",
+      "isMissing": false
+    }
+  },
+  "allowedMissingConnections": [],
+  "usedCodeEnvRefs": [],
+  "allowedMissingCodeEnvs": [],
+  "usedContainerExecConfs": [],
+  "hasPartitionedDataset": false
+}

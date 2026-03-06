@@ -1,0 +1,19 @@
+{
+    "details": {
+        "previous_cancellation_group": {
+            "levels": [
+                "no_previous",
+                "one_previous",
+                "multiple_previous"
+            ],
+            "with_others": true
+        },
+        "hotel": {
+            "levels": [
+                "City Hotel",
+                "Resort Hotel"
+            ],
+            "with_others": true
+        }
+    }
+}

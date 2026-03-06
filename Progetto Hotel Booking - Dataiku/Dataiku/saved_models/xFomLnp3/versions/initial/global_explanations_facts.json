@@ -1,0 +1,20 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "mark_segm_Online TA": {
+                "impact": 0.48862338297067803,
+                "rank": 3,
+                "feature": "mark_segm_Online TA",
+                "correlation": -0.7018347684753986,
+                "type": "NUMERICAL"
+            },
+            "total_nights": {
+                "impact": 0.048639110117301494,
+                "rank": 15,
+                "feature": "total_nights",
+                "correlation": -0.70549633464676,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

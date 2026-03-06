@@ -1,0 +1,40 @@
+{
+  "starred": false,
+  "clusterMetas": {},
+  "customMeta": {
+    "kv": {}
+  },
+  "tags": [],
+  "activeClassifierThreshold": 0.3,
+  "name": "LightGBM (Logistic Regression e LightGBM) - v2",
+  "labels": [
+    {
+      "key": "trainDataset:dataset-name",
+      "value": "hotel_bookings_normalise"
+    },
+    {
+      "key": "model:name",
+      "value": "LightGBM (Logistic Regression e LightGBM) - v2"
+    },
+    {
+      "key": "testDataset:dataset-name",
+      "value": "hotel_bookings_normalise"
+    },
+    {
+      "key": "model:algorithm",
+      "value": "LIGHTGBM_CLASSIFICATION"
+    },
+    {
+      "key": "model:date",
+      "value": "2026-03-06T08:37:29.031+0000"
+    },
+    {
+      "key": "evaluationDataset:dataset-name",
+      "value": "hotel_bookings_normalise"
+    },
+    {
+      "key": "evaluation:date",
+      "value": "2026-03-06T08:37:29.031+0000"
+    }
+  ]
+}

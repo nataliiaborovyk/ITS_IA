@@ -1,0 +1,539 @@
+{
+    "per_feature": {
+        "agent_group": {
+            "stats": {
+                "mostFrequentValue": "other_agent",
+                "leastFrequentValue": "agent_7"
+            },
+            "category_possible_values": [
+                "other_agent",
+                "agent_9",
+                "no_agent",
+                "agent_240",
+                "agent_1",
+                "agent_6",
+                "agent_14",
+                "agent_7"
+            ],
+            "category_possible_counts": [
+                27930,
+                18345,
+                11305,
+                11082,
+                5736,
+                2299,
+                1618,
+                1597
+            ]
+        },
+        "customer_type": {
+            "stats": {
+                "mostFrequentValue": "Transient",
+                "leastFrequentValue": "Group"
+            },
+            "category_possible_values": [
+                "Transient",
+                "Transient-Party",
+                "Contract",
+                "Group"
+            ],
+            "category_possible_counts": [
+                58864,
+                17439,
+                3214,
+                395
+            ]
+        },
+        "booking_changes_group": {
+            "stats": {
+                "mostFrequentValue": "0_change",
+                "leastFrequentValue": "2+_change"
+            },
+            "category_possible_values": [
+                "0_change",
+                "1_change",
+                "2+_change"
+            ],
+            "category_possible_counts": [
+                68519,
+                8035,
+                3358
+            ]
+        },
+        "needs_parking": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.06836269896886575,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.25236885180376073
+            },
+            "missing_impute_with_value": 0.06836269896886575
+        },
+        "market_segment": {
+            "stats": {
+                "mostFrequentValue": "Online TA",
+                "leastFrequentValue": "Aviation"
+            },
+            "category_possible_values": [
+                "Online TA",
+                "Offline TA/TO",
+                "Groups",
+                "Direct",
+                "Corporate",
+                "Complementary",
+                "Aviation"
+            ],
+            "category_possible_counts": [
+                35684,
+                17163,
+                14536,
+                8162,
+                3739,
+                504,
+                124
+            ]
+        },
+        "adults": {
+            "stats": {
+                "min": 0.0,
+                "average": 1.8567424166583242,
+                "median": 2.0,
+                "max": 55.0,
+                "p99": 3.0,
+                "std": 0.580322756280029
+            },
+            "missing_impute_with_value": 1.8567424166583242
+        },
+        "country_group": {
+            "stats": {
+                "mostFrequentValue": "PRT",
+                "leastFrequentValue": "POL"
+            },
+            "category_possible_values": [
+                "PRT",
+                "Other",
+                "GBR",
+                "FRA",
+                "ESP",
+                "DEU",
+                "IRL",
+                "BRA",
+                "NLD",
+                "CN",
+                "SWE",
+                "POL"
+            ],
+            "category_possible_counts": [
+                36802,
+                12458,
+                8011,
+                5882,
+                5863,
+                4061,
+                2307,
+                1301,
+                1195,
+                841,
+                599,
+                592
+            ]
+        },
+        "previous_cancellation_group": {
+            "stats": {
+                "mostFrequentValue": "no_previous",
+                "leastFrequentValue": "multiple_previous"
+            },
+            "category_possible_values": [
+                "no_previous",
+                "one_previous",
+                "multiple_previous"
+            ],
+            "category_possible_counts": [
+                74721,
+                4832,
+                359
+            ]
+        },
+        "room_changed": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.1295550105115627,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.3358153078173695
+            },
+            "missing_impute_with_value": 0.1295550105115627
+        },
+        "stay_type": {
+            "stats": {
+                "mostFrequentValue": "2_3_nights",
+                "leastFrequentValue": "8plus_nights"
+            },
+            "category_possible_values": [
+                "2_3_nights",
+                "4_7_nights",
+                "1_night",
+                "8plus_nights"
+            ],
+            "category_possible_counts": [
+                36913,
+                25013,
+                13991,
+                3995
+            ]
+        },
+        "reserved_room_type": {
+            "stats": {
+                "mostFrequentValue": "A",
+                "leastFrequentValue": "P"
+            },
+            "category_possible_values": [
+                "A",
+                "D",
+                "E",
+                "F",
+                "G",
+                "B",
+                "C",
+                "H",
+                "L",
+                "P"
+            ],
+            "category_possible_counts": [
+                57311,
+                12428,
+                4721,
+                1934,
+                1532,
+                752,
+                751,
+                476,
+                5,
+                2
+            ]
+        },
+        "total_nights": {
+            "stats": {
+                "min": 0.0,
+                "average": 3.4954700170187207,
+                "median": 3.0,
+                "max": 56.0,
+                "p99": 14.0,
+                "std": 2.665029249479733
+            },
+            "missing_impute_with_value": 3.4954700170187207
+        },
+        "trip_type": {
+            "stats": {
+                "mostFrequentValue": "mixed_trip",
+                "leastFrequentValue": "weekend_trip"
+            },
+            "category_possible_values": [
+                "mixed_trip",
+                "business_trip",
+                "weekend_trip"
+            ],
+            "category_possible_counts": [
+                40585,
+                34729,
+                4598
+            ]
+        },
+        "guest_group": {
+            "stats": {
+                "mostFrequentValue": "couple",
+                "leastFrequentValue": "large_group"
+            },
+            "category_possible_values": [
+                "couple",
+                "single",
+                "small_group",
+                "large_group"
+            ],
+            "category_possible_counts": [
+                55500,
+                15010,
+                9305,
+                97
+            ]
+        },
+        "lead_time": {
+            "stats": {
+                "min": 0.0,
+                "average": 106.78642757032736,
+                "median": 72.0,
+                "max": 737.0,
+                "p99": 440.0,
+                "std": 108.37850415753066
+            },
+            "missing_impute_with_value": 106.78642757032736
+        },
+        "company_booking": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.05796376013614977,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.23367637012938763
+            },
+            "missing_impute_with_value": 0.05796376013614977
+        },
+        "hotel": {
+            "stats": {
+                "mostFrequentValue": "City Hotel",
+                "leastFrequentValue": "Resort Hotel"
+            },
+            "category_possible_values": [
+                "City Hotel",
+                "Resort Hotel"
+            ],
+            "category_possible_counts": [
+                48222,
+                31690
+            ]
+        },
+        "season": {
+            "stats": {
+                "mostFrequentValue": "3_summer",
+                "leastFrequentValue": "1_winter"
+            },
+            "category_possible_values": [
+                "3_summer",
+                "2_spring",
+                "4_autumn",
+                "1_winter"
+            ],
+            "category_possible_counts": [
+                24756,
+                21072,
+                20858,
+                13226
+            ]
+        },
+        "assigned_room_type": {
+            "stats": {
+                "mostFrequentValue": "A",
+                "leastFrequentValue": "L"
+            },
+            "category_possible_values": [
+                "A",
+                "D",
+                "E",
+                "F",
+                "G",
+                "C",
+                "B",
+                "H",
+                "I",
+                "K",
+                "P",
+                "L"
+            ],
+            "category_possible_counts": [
+                48901,
+                16622,
+                5651,
+                2578,
+                1831,
+                1811,
+                1570,
+                557,
+                290,
+                98,
+                2,
+                1
+            ]
+        },
+        "deposit_type": {
+            "stats": {
+                "mostFrequentValue": "No Deposit",
+                "leastFrequentValue": "Refundable"
+            },
+            "category_possible_values": [
+                "No Deposit",
+                "Non Refund",
+                "Refundable"
+            ],
+            "category_possible_counts": [
+                68119,
+                11660,
+                133
+            ]
+        },
+        "has_children": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.07016468114926419,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.25542594836205534
+            },
+            "missing_impute_with_value": 0.07016468114926419
+        },
+        "has_waiting_list": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.03690309340274302,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.18852506427675922
+            },
+            "missing_impute_with_value": 0.03690309340274302
+        },
+        "is_repeated_guest": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.03621483631995195,
+                "median": 0.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.1868254766560001
+            },
+            "missing_impute_with_value": 0.03621483631995195
+        },
+        "adr": {
+            "stats": {
+                "min": -6.38,
+                "average": 99.54525565622183,
+                "median": 90.6,
+                "max": 5400.0,
+                "p99": 252.66229999999996,
+                "std": 52.20193711233539
+            },
+            "missing_impute_with_value": 99.54525565622183
+        },
+        "meal": {
+            "stats": {
+                "mostFrequentValue": "BB",
+                "leastFrequentValue": "FB"
+            },
+            "category_possible_values": [
+                "BB",
+                "HB",
+                "SC",
+                "Undefined",
+                "FB"
+            ],
+            "category_possible_counts": [
+                62301,
+                10529,
+                5499,
+                939,
+                644
+            ]
+        },
+        "weekend_flag": {
+            "stats": {
+                "min": 0.0,
+                "average": 0.565409450395435,
+                "median": 1.0,
+                "max": 1.0,
+                "p99": 1.0,
+                "std": 0.4957062423857701
+            },
+            "missing_impute_with_value": 0.565409450395435
+        },
+        "distribution_channel": {
+            "stats": {
+                "mostFrequentValue": "TA/TO",
+                "leastFrequentValue": "GDS"
+            },
+            "category_possible_values": [
+                "TA/TO",
+                "Direct",
+                "Corporate",
+                "GDS"
+            ],
+            "category_possible_counts": [
+                65468,
+                9704,
+                4666,
+                74
+            ]
+        },
+        "arrival_date_week_number": {
+            "stats": {
+                "min": 1.0,
+                "average": 27.663492341575733,
+                "median": 29.0,
+                "max": 53.0,
+                "p99": 53.0,
+                "std": 13.42270791484041
+            },
+            "missing_impute_with_value": 27.663492341575733
+        },
+        "special_requests_group": {
+            "stats": {
+                "mostFrequentValue": "0_request",
+                "leastFrequentValue": "4+_requests"
+            },
+            "category_possible_values": [
+                "0_request",
+                "1_request",
+                "2_requests",
+                "3_requests",
+                "4+_requests"
+            ],
+            "category_possible_counts": [
+                49722,
+                20737,
+                7859,
+                1379,
+                215
+            ]
+        },
+        "arrival_month_num": {
+            "stats": {
+                "min": 1.0,
+                "average": 6.653231054159575,
+                "median": 7.0,
+                "max": 12.0,
+                "p99": 12.0,
+                "std": 3.0603211045780525
+            },
+            "missing_impute_with_value": 6.653231054159575
+        },
+        "booking_confirmed": {
+            "stats": {}
+        }
+    },
+    "feature_order": [
+        "agent_group",
+        "customer_type",
+        "booking_changes_group",
+        "needs_parking",
+        "market_segment",
+        "adults",
+        "country_group",
+        "previous_cancellation_group",
+        "room_changed",
+        "stay_type",
+        "reserved_room_type",
+        "total_nights",
+        "trip_type",
+        "guest_group",
+        "lead_time",
+        "company_booking",
+        "hotel",
+        "season",
+        "assigned_room_type",
+        "deposit_type",
+        "has_children",
+        "has_waiting_list",
+        "is_repeated_guest",
+        "adr",
+        "meal",
+        "weekend_flag",
+        "distribution_channel",
+        "arrival_date_week_number",
+        "special_requests_group",
+        "arrival_month_num",
+        "booking_confirmed"
+    ]
+}

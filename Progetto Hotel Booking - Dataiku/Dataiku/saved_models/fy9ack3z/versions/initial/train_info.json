@@ -1,0 +1,124 @@
+{
+  "state": "DONE",
+  "preSearchDescription": {
+    "gridLength": 2,
+    "searchStrategy": "GRID",
+    "importantParams": [
+      {
+        "name": "boosting_type",
+        "vals": [
+          "gbdt"
+        ]
+      },
+      {
+        "name": "n_estimators",
+        "vals": [
+          "101"
+        ]
+      },
+      {
+        "name": "num_leaves",
+        "vals": [
+          "31"
+        ]
+      },
+      {
+        "name": "learning_rate",
+        "vals": [
+          "0.05"
+        ]
+      }
+    ]
+  },
+  "postSearchDescription": {
+    "importantParams": [
+      {
+        "name": "boosting_type",
+        "val": "gbdt"
+      },
+      {
+        "name": "n_estimators",
+        "val": "102"
+      },
+      {
+        "name": "num_leaves",
+        "val": "31"
+      },
+      {
+        "name": "learning_rate",
+        "val": "0.05"
+      }
+    ]
+  },
+  "resumed": false,
+  "timeOrderingEnabled": false,
+  "sampleWeightsEnabled": false,
+  "modelId": "m1",
+  "progress": {
+    "top_level_todo": [],
+    "stack": [],
+    "top_level_done": [
+      {
+        "name": "Loading train set",
+        "time": 354
+      },
+      {
+        "name": "Loading test set",
+        "time": 81
+      },
+      {
+        "name": "Collecting statistics",
+        "time": 112
+      },
+      {
+        "name": "Preprocessing train set",
+        "time": 325
+      },
+      {
+        "name": "Preprocessing test set",
+        "time": 93
+      },
+      {
+        "name": "Hyperparameter searching",
+        "time": 13317
+      },
+      {
+        "name": "Fitting model",
+        "time": 562
+      },
+      {
+        "name": "Saving model",
+        "time": 129
+      },
+      {
+        "name": "Scoring model",
+        "time": 2703
+      },
+      {
+        "name": "Preparing explainability",
+        "time": 6943
+      }
+    ]
+  },
+  "startTime": 1772809845035,
+  "endTime": 1772809869657,
+  "preprocessingTime": 967,
+  "trainingTime": 23655,
+  "hyperparamsSearchTime": 13317,
+  "pythonVersion": "3.9.25",
+  "packagesVersion": {
+    "pandas": "2.2.3",
+    "scikit-learn": "1.5.2",
+    "scipy": "1.13.1",
+    "lightgbm": "4.6.0",
+    "flask": "2.2.5",
+    "itsdangerous": "2.2.0",
+    "jinja2": "3.1.6",
+    "xgboost": "1.7.6",
+    "werkzeug": "3.1.3",
+    "statsmodels": "0.14.5",
+    "pillow": "11.3.0",
+    "markupsafe": "3.0.3",
+    "cloudpickle": "1.5.0"
+  }
+}

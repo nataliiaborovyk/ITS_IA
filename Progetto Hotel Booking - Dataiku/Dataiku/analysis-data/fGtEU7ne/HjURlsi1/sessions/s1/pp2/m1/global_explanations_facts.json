@@ -1,0 +1,74 @@
+{
+    "perClassFacts": {
+        "unique": {
+            "country_group": {
+                "impact": 0.6527972843332608,
+                "rank": 2,
+                "feature": "country_group",
+                "positiveCategoricalValue": "Other",
+                "negativeCategoricalValue": "PRT",
+                "infoGain": 0.6859298002523728,
+                "type": "CATEGORICAL"
+            },
+            "agent_group": {
+                "impact": 0.4946746243314516,
+                "rank": 3,
+                "feature": "agent_group",
+                "positiveCategoricalValue": "other_agent",
+                "negativeCategoricalValue": "agent_9",
+                "infoGain": 0.6534270385941541,
+                "type": "CATEGORICAL"
+            },
+            "lead_time": {
+                "impact": 0.36952518588573363,
+                "rank": 5,
+                "feature": "lead_time",
+                "correlation": -0.8165149210951342,
+                "type": "NUMERICAL"
+            },
+            "special_requests_group": {
+                "impact": 0.3029470930156996,
+                "rank": 6,
+                "feature": "special_requests_group",
+                "positiveCategoricalValue": "1_request",
+                "negativeCategoricalValue": "0_request",
+                "infoGain": 0.6571577614973405,
+                "type": "CATEGORICAL"
+            },
+            "market_segment": {
+                "impact": 0.2753345434392739,
+                "rank": 8,
+                "feature": "market_segment",
+                "positiveCategoricalValue": "Groups",
+                "negativeCategoricalValue": "Online TA",
+                "infoGain": 0.6132567664869777,
+                "type": "CATEGORICAL"
+            },
+            "customer_type": {
+                "impact": 0.20659255451290442,
+                "rank": 10,
+                "feature": "customer_type",
+                "positiveCategoricalValue": "Transient-Party",
+                "negativeCategoricalValue": "Transient",
+                "infoGain": 0.5269079614313803,
+                "type": "CATEGORICAL"
+            },
+            "hotel": {
+                "impact": 0.047106710405546065,
+                "rank": 16,
+                "feature": "hotel",
+                "positiveCategoricalValue": "Resort Hotel",
+                "negativeCategoricalValue": "City Hotel",
+                "infoGain": 0.6756223432913728,
+                "type": "CATEGORICAL"
+            },
+            "total_nights": {
+                "impact": 0.03220175848947397,
+                "rank": 17,
+                "feature": "total_nights",
+                "correlation": -0.8436697813092886,
+                "type": "NUMERICAL"
+            }
+        }
+    }
+}

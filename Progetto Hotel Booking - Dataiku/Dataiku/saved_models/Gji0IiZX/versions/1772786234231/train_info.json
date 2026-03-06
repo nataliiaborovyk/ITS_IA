@@ -1,0 +1,93 @@
+{
+  "state": "DONE",
+  "postSearchDescription": {
+    "importantParams": [
+      {
+        "name": "boosting_type",
+        "val": "gbdt"
+      },
+      {
+        "name": "n_estimators",
+        "val": "101"
+      },
+      {
+        "name": "num_leaves",
+        "val": "31"
+      },
+      {
+        "name": "learning_rate",
+        "val": "0.05"
+      }
+    ]
+  },
+  "resumed": false,
+  "timeOrderingEnabled": false,
+  "sampleWeightsEnabled": false,
+  "progress": {
+    "top_level_todo": [],
+    "stack": [],
+    "top_level_done": [
+      {
+        "name": "Loading train set",
+        "time": 932
+      },
+      {
+        "name": "Loading test set",
+        "time": 218
+      },
+      {
+        "name": "Collecting preprocessing data",
+        "time": 158
+      },
+      {
+        "name": "Preprocessing train set",
+        "time": 222
+      },
+      {
+        "name": "Preprocessing test set",
+        "time": 56
+      },
+      {
+        "name": "Hyperparameter searching",
+        "time": 4210
+      },
+      {
+        "name": "Fitting model",
+        "time": 504
+      },
+      {
+        "name": "Saving model",
+        "time": 79
+      },
+      {
+        "name": "Scoring model",
+        "time": 1397
+      },
+      {
+        "name": "Preparing explainability",
+        "time": 4273
+      }
+    ]
+  },
+  "startTime": 1772786236980,
+  "endTime": 1772786249031,
+  "preprocessingTime": 0,
+  "trainingTime": 12051,
+  "hyperparamsSearchTime": 4210,
+  "pythonVersion": "3.9.25",
+  "packagesVersion": {
+    "pandas": "2.2.3",
+    "scikit-learn": "1.5.2",
+    "scipy": "1.13.1",
+    "lightgbm": "4.6.0",
+    "flask": "2.2.5",
+    "itsdangerous": "2.2.0",
+    "jinja2": "3.1.6",
+    "xgboost": "1.7.6",
+    "werkzeug": "3.1.3",
+    "statsmodels": "0.14.5",
+    "pillow": "11.3.0",
+    "markupsafe": "3.0.3",
+    "cloudpickle": "1.5.0"
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "algorithm": "LIGHTGBM_CLASSIFICATION",
+  "lightgbm_classification_grid": {
+    "boosting_type": {
+      "values": {
+        "gbdt": {
+          "enabled": true
+        },
+        "goss": {
+          "enabled": false
+        }
+      }
+    },
+    "num_leaves": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 1
+      },
+      "values": [
+        31
+      ],
+      "range": {
+        "min": 20,
+        "max": 500,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "learning_rate": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 1.0E-23,
+        "max": 1.0
+      },
+      "values": [
+        0.05
+      ],
+      "range": {
+        "min": 0.1,
+        "max": 0.6,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "n_estimators": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 1
+      },
+      "values": [
+        101
+      ],
+      "range": {
+        "min": 50,
+        "max": 200,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "min_split_gain": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 0.0,
+        "max": 1.0
+      },
+      "values": [
+        0.0
+      ],
+      "range": {
+        "min": 0.0,
+        "max": 1.0,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "min_child_weight": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 1.0E-23,
+        "max": 1.0
+      },
+      "values": [
+        0.001
+      ],
+      "range": {
+        "min": 0.001,
+        "max": 1.0,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "min_child_samples": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 1
+      },
+      "values": [
+        31
+      ],
+      "range": {
+        "min": 1,
+        "max": 100,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "colsample_bytree": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 1.0E-23,
+        "max": 1.0
+      },
+      "values": [
+        0.7,
+        0.9
+      ],
+      "range": {
+        "min": 0.5,
+        "max": 1.0,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "reg_alpha": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 0.0
+      },
+      "values": [
+        0.0
+      ],
+      "range": {
+        "min": 0.0,
+        "max": 1.0,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "reg_lambda": {
+      "gridMode": "EXPLICIT",
+      "randomMode": "RANGE",
+      "limit": {
+        "min": 0.0
+      },
+      "values": [
+        0.0
+      ],
+      "range": {
+        "min": 0.0,
+        "max": 1.0,
+        "nbValues": 3,
+        "scaling": "LINEAR"
+      }
+    },
+    "early_stopping": true,
+    "early_stopping_rounds": 4,
+    "random_state": 1337,
+    "n_jobs": 4,
+    "max_depth": -1,
+    "subsample": 0.9,
+    "subsample_freq": 1,
+    "use_bagging": false,
+    "allow_sparse_matrices": true,
+    "enabled": true
+  },
+  "max_ensemble_nodes_serialized": 0,
+  "metrics": {
+    "customMetrics": [
+      {
+        "needsProbability": false,
+        "metricCode": "def score(y_valid, y_pred):\n    \"\"\"\n    Custom scoring function.\n    Must return a float quantifying the estimator prediction quality.\n    - y_valid is a pandas Series\n    - y_pred is a numpy ndarray with shape:\n        - (nb_records,) for regression problems and classification problems\n            where \u0027needs probas\u0027 (see below) is false\n            (for classification, the values are the numeric class indexes)\n        - (nb_records, nb_classes) for classification problems where\n            \u0027needs probas\u0027 is true\n    - [optional] X_valid is a dataframe with shape (nb_records, nb_input_features)\n    - [optional] sample_weight is a numpy ndarray with shape (nb_records,)\n        NB: this option requires a variable set as \"Sample weights\"\n    \"\"\"\n        ",
+        "greaterIsBetter": true,
+        "type": "MODEL",
+        "name": "Custom Metric #1",
+        "description": ""
+      }
+    ],
+    "evaluationMetric": "ROC_AUC",
+    "classAveragingMethod": "MACRO",
+    "thresholdOptimizationMetric": "F1",
+    "costMatrixWeights": {
+      "tpGain": 1.0,
+      "tnGain": 0.0,
+      "fpGain": -0.3,
+      "fnGain": 0.0
+    },
+    "liftPoint": 0.4,
+    "netUpliftPoint": 0.5,
+    "causalWeighting": "NO_WEIGHTING"
+  },
+  "autoOptimizeThreshold": true,
+  "forcedClassifierThreshold": 0.0,
+  "isShiftWindowsCompatible": true,
+  "gridLength": 2,
+  "grid_search_params": {
+    "mode": "KFOLD",
+    "splitRatio": 0.8,
+    "shuffleIterations": 1,
+    "nFolds": 5,
+    "cvSeed": 1337,
+    "stratified": true,
+    "grouped": false,
+    "strategy": "GRID",
+    "bayesianOptimizer": "SCIKIT_OPTIMIZE",
+    "randomized": true,
+    "seed": 1337,
+    "nIter": 0,
+    "nIterRandom": 5,
+    "timeout": 0,
+    "nJobs": 4,
+    "distributed": false,
+    "nContainers": 4,
+    "foldOffset": true,
+    "equalDurationFolds": false
+  },
+  "pluginAlgoCustomGridSearch": false,
+  "computeLearningCurves": false,
+  "skipExpensiveReports": false,
+  "propensityModeling": {
+    "enabled": true,
+    "calibrateProbabilities": false,
+    "calibrationDataRatio": 0.1
+  }
+}
