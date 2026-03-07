@@ -1,9 +1,0 @@
-{
-    "diagnostics": [
-        {
-            "type": "ML_DIAGNOSTICS_MODELING_PARAMETERS",
-            "message": "Calculation of 'Custom Metric #1' failed",
-            "step": "Scoring model"
-        }
-    ]
-}
