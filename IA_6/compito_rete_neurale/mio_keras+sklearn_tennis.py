@@ -346,12 +346,50 @@ print("\nTotale null: ", X.isnull().sum().sum())
 zero_cols = ["ACE.1","ACE.2","DBF.1","DBF.2"]
 mean_cols = [col for col in X.columns if col not in zero_cols]
 
-
+# versione 1
 preprocessor = ColumnTransformer(
     transformers=[
         ("mean_imp", SimpleImputer(strategy="mean"), mean_cols),
         ("zero_imp", SimpleImputer(strategy="constant", fill_value=0), zero_cols)
     ])
+
+# oppure 
+preprocessor = ColumnTransformer([
+        ("mean_imp", SimpleImputer(strategy="mean"), mean_cols),
+        ("zero_imp", SimpleImputer(strategy="constant", fill_value=0), zero_cols)
+    ])
+
+
+# versione 2
+        # mean_imputer = SimpleImputer(strategy="mean")
+
+        # zero_imputer = SimpleImputer(strategy="constant", fill_value=0)
+
+        # preprocessor = ColumnTransformer(
+        #     transformers=[
+        #         # (nome, trasformazione, colonne)
+        #         ("mean_imp", mean_imputer, mean_cols),
+        #         ("zero_imp", zero_imputer, zero_cols)
+        #     ]
+        # )
+
+# versione 3
+
+        # # mini-pipeline per colonne con imputazione media
+        # mean_pipeline = Pipeline([
+        #     ("imputer", SimpleImputer(strategy="mean"))
+        # ])
+
+        # # mini-pipeline per colonne con imputazione zero
+        # zero_pipeline = Pipeline([
+        #     ("imputer", SimpleImputer(strategy="constant", fill_value=0))
+        # ])
+
+        # # unisco le due mini-pipeline nel ColumnTransformer
+        # preprocessor = ColumnTransformer([
+        #     ("mean_part", mean_pipeline, mean_cols),
+        #     ("zero_part", zero_pipeline, zero_cols)
+        # ])
 
 # pipeline per classici
 
