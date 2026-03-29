@@ -1,0 +1,800 @@
+{
+  "name": "Generatore Proposte dopo Sales Call_2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b7c72283-ed5e-4180-b660-92297068131c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -336,
+        16
+      ],
+      "id": "e5533b28-fcae-4d84-afaa-101a251c22f2",
+      "name": "Webhook",
+      "webhookId": "b7c72283-ed5e-4180-b660-92297068131c"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Trascritto:\n{{ $json.Trascritto }}",
+        "options": {
+          "systemMessage": "=# Ruolo\nSei un Fractional Digital Executive esperto in data analytics, business intelligence ed applicazioni AI per casi d'uso aziendali. Il tuo compito è analizzare il trascritto grezzo di una discovery call o sales call e trasformarlo in una proposta commerciale professionale, persuasiva e pronta per il cliente.\n\n# Obiettivo\nUtilizzando il trascritto della call fornito, genera una proposta completa e convincente per un progetto di automazione o AI. Devi estrarre pain points reali, risultati desiderati, vincoli operativi e requisiti tecnici direttamente dalla conversazione e trasformarli in una narrativa business chiara che motivi il cliente a procedere.\n\n# Vincoli Importanti\n- Questa proposta è completamente client-facing.\n- NON includere domande di follow-up, note interne o commenti.\n- NON menzionare automazione AI generativa o che questo documento è stato prodotto da un sistema.\n- Fai assunzioni ragionevoli quando necessario e dichiarale chiaramente come parte della proposta.\n- Se mancano dati specifici, usa placeholder chiari come [Ore Stimate Risparmiate] o [Costo Annuale].\n\n# Tono e Stile\n- Professionale, chiaro e orientato al business.\n- Persuasivo ma basato sul linguaggio del cliente.\n- Empatico e specifico, dimostrando ascolto attivo e comprensione profonda.\n- Evita jargon non necessario a meno che il cliente non l'abbia esplicitamente usato.\n\n# Struttura Proposta Richiesta\nDevi generare la proposta esattamente nell'ordine seguente e separare chiaramente ogni sezione con intestazioni.\n\n---\n\n## 1. Titolo Proposta\n**Istruzioni:** Crea una sezione titolo pulita all'inizio della proposta.\n\n**Includi:**\n- Titolo proposta (esempio: Proposta di Trasformazione AI e Automazione)\n- Nome azienda cliente: {{ $json.Nome_Azienda }}\n- Preparata per: {{ $json.Nome_Cliente }}\n- Preparata da: Corrado Centrone\n- Data odierna: {{ $now.format('dd/MM/yyyy') }}\n\n---\n\n## 2. Executive Summary\n**Istruzioni:** Riassumi la proposta in 3-4 frasi concise.\n\n**Deve Includere:**\n- La sfida principale che l'azienda sta affrontando\n- La soluzione che il Consulente/fractional Manager propone\n- Il risultato atteso in termini di efficienza, risparmio o crescita\n\n---\n\n## 3. Problema e Sfide\n**Istruzioni:** Espandi il problema nel dettaglio.\n\n**Includi:**\n- Workflow attuali e processi manuali\n- Pain points chiave usando il linguaggio del cliente quando possibile\n- Impatto in termini di tempo, costi o operatività di queste sfide\n- Impatto emotivo o organizzativo come stress, colli di bottiglia o inefficienze\n\n---\n\n## 4. Soluzione Proposta da Corrado Centrone \n**Istruzioni:** Descrivi chiaramente come Corrado Centrone risolverà il problema.\n\n**Includi:**\n- Breve recap del workflow attuale\n- Descrizione dettagliata del futuro workflow automatizzato o assistito da AI\n- Spiegazione step-by-step di come opera la soluzione\n- Menziona eventuali tool, piattaforme o sistemi discussi durante la call (es. n8n, Claude, strumenti di scraping)\n\nConcentrati su workflow e risultati, non solo sulla tecnologia.\n\n---\n\n## 5. Return on Investment (ROI)\n**Istruzioni:** Quantifica il valore business della soluzione.\n\n**Includi:**\n- Ore risparmiate al giorno o alla settimana\n- Risparmi operativi settimanali o mensili\n- Traduzione del risparmio di tempo in risparmio costi annuale\n- Assunzioni chiare se i numeri esatti non sono stati forniti\n\n---\n\n## 6. Benefici Intangibili\n**Istruzioni:** Evidenzia benefici non finanziari.\n\n**Esempi:**\n- Riduzione dell'errore umano\n- Miglioramento dell'esperienza e morale dei dipendenti\n- Tempi di risposta più rapidi\n- Maggiore accuratezza e consistenza\n- Migliore sicurezza dei dati o compliance\n\n---\n\n## 7. Roadmap di Implementazione\n**Istruzioni:** Fornisci una timeline chiara suddivisa per settimane o fasi.\n\n**Includi:**\n- Durata stimata per ogni fase\n- Cosa viene realizzato durante ogni fase\n- Le fasi tipiche includono: discovery, sviluppo, testing, deployment e training\n\n---\n\n## 8. Metriche di Successo\n**Istruzioni:** Definisci come verrà misurato il successo.\n\n**Dichiara Esplicitamente:**\n- Quali metriche verranno tracciate\n- Esempi includono: tempo risparmiato, accuratezza, compliance, tempo di risposta, throughput\n- Come Corrado dimostrerà valore agli stakeholder\n\n---\n\n## 9. Perché Scegliere Corrado Centrone\n**Istruzioni:** Promuovi Corrado Centrone come partner giusto.\n\nDevi includere la seguente value proposition testualmente o leggermente adattata per fluidità:\n\n\"Corrado Centrone — Fractional Digital Executive\n\nSpecializzato in Data Analytics, AI e Process Automation. Affianco imprenditori e CEO nella progettazione di soluzioni reali — non demo, ma MVP funzionanti, scalabili e integrabili nei sistemi aziendali esistenti.Tecnologia che crea impatto reale\n\nNon consulenza generica, ma esecuzione diretta. Ogni progetto nasce da una necessità concreta e si traduce in strumenti misurabili, integrati nei processi aziendali esistenti — con focus su risultati tangibili e ROI verificabile.\n\nAutomazione dei Processi\nEliminazione dei task ripetitivi e orchestrazione intelligente dei flussi di lavoro aziendali.\n\nAI & Machine Learning\nModelli predittivi e sistemi di classificazione integrati nei prodotti e nelle piattaforme esistenti.\n\nConversational AI\nChatbot e agenti vocali H24 per gestione clienti, appuntamenti e qualificazione lead.\n\nBusiness Intelligence\nDashboard avanzate e analytics predittiva per decisioni manageriali basate sui dati.\"\n\nConcludi questa sezione con una chiusura sicura che posiziona Corrado come partner strategico a lungo termine.\n\n---\n\n# Output Finale\nIl tuo output deve contenere SOLO il testo della proposta in formato markdown, senza alcun preambolo, spiegazione o meta-commento. Non includere frasi come \"Poiché hai fornito...\", \"Ho generato...\", \"Ecco la proposta...\" o simili. Inizia direttamente con la sezione \"## 1. Titolo Proposta\" e termina con l'ultima frase della sezione \"## 9. Perché Scegliere Corrado Centrone\". Non aggiungere nulla prima o dopo il contenuto della proposta."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -320,
+        352
+      ],
+      "id": "bfd930e0-5fc4-4cb4-8cfb-beaf50ef08be",
+      "name": "Proposal Generator Agent"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1zdAtg-VuaRBc8MRCfqmzuqhWUuxTpzTPn4SlgSM07tQ",
+          "mode": "list",
+          "cachedResultName": "Prospect_list",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zdAtg-VuaRBc8MRCfqmzuqhWUuxTpzTPn4SlgSM07tQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Foglio1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zdAtg-VuaRBc8MRCfqmzuqhWUuxTpzTPn4SlgSM07tQ/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data/Ora": "={{ $('Estrai Trascritto').item.json.scheduled_start_time }}",
+            "Titolo": "={{ $('Estrai Trascritto').item.json.meeting_title }}",
+            "Riassunto": "={{ $('Estrai Trascritto').item.json.summary }}",
+            "Trascritto": "={{ $('Estrai Trascritto').item.json.transcript }}",
+            "Preventivo": "Mancante",
+            "Nome_Cliente": "={{ $json.transcript_raw[3].speaker.display_name }}",
+            "Nome_Azienda": "={{ $json.transcript_raw[5].speaker.matched_calendar_invitee_email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data/Ora",
+              "displayName": "Data/Ora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Titolo",
+              "displayName": "Titolo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome_Cliente",
+              "displayName": "Nome_Cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome_Azienda",
+              "displayName": "Nome_Azienda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Riassunto",
+              "displayName": "Riassunto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Trascritto",
+              "displayName": "Trascritto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Preventivo",
+              "displayName": "Preventivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Preventivo",
+              "displayName": "Link Preventivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        16
+      ],
+      "id": "abb0441f-740e-4275-95db-c5497564de17",
+      "name": "Log Meeting",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ibkCyT1a4kZeaZFj",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.all()[0];\nconst body = item.json.body;\nconst transcript = body.transcript;\n\nlet transcriptText = \"\";\nfor (const entry of transcript) {\n  const speaker = entry.speaker.display_name;\n  const timestamp = entry.timestamp;\n  const text = entry.text;\n  \n  transcriptText += `[${timestamp}] ${speaker}: ${text}\\n\\n`;\n}\n\nreturn [\n  {\n    json: {\n      transcript: transcriptText.trim(),\n      transcript_raw: transcript,\n      meeting_title: body.meeting_title,\n      scheduled_start_time: body.scheduled_start_time,\n      summary: body.default_summary.markdown_formatted\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        48,
+        16
+      ],
+      "id": "f91f88f4-f6bb-42b9-9852-f92ebb46e5ad",
+      "name": "Estrai Trascritto"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b981a33f-bb10-445d-a7e9-5eb4e0fa6606",
+              "name": "X-API-KEY",
+              "value": "sk-gamma-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -16,
+        304
+      ],
+      "id": "4af344ba-249c-43d6-a7ac-00178a14d077",
+      "name": "API Key"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://public-api.gamma.app/v1.0/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "={{ $json['X-API-KEY'] }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"inputText\": \"{{ $('Proposal Generator Agent').item.json.output.replace(/\\n/g, ' ').replace(/\"/g, '\\\\\"') }}\",\n  \"textMode\": \"preserve\",\n  \"format\": \"presentation\",\n  \"numCards\": 10,\n  \"additionalInstructions\": \"Una proposta di preventivo professionale\",\n  \"textOptions\": {\n    \"amount\": \"medium\",\n    \"tone\": \"professional, inspiring\",\n    \"audience\": \"business owner\",\n    \"language\": \"it\"\n  },\n  \"imageOptions\": {\n    \"source\": \"noImages\"\n  },\n  \"cardOptions\": {\n    \"dimensions\": \"16x9\"\n  },\n  \"sharingOptions\": {\n    \"workspaceAccess\": \"view\",\n    \"externalAccess\": \"comment\",\n    \"emailOptions\": {\n      \"recipients\": [\n        \"corradocentrone@gmail.com\"\n      ],\n      \"access\": \"comment\"\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        176,
+        304
+      ],
+      "id": "65a1fc37-7866-40a6-b0ed-3e2b4e809230",
+      "name": "Genera Deck"
+    },
+    {
+      "parameters": {
+        "url": "=https://public-api.gamma.app/v1.0/generations/{{ $json.generationId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "={{ $('API Key').item.json['X-API-KEY'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        352,
+        304
+      ],
+      "id": "589ec67d-8021-4895-b431-80e0609841fe",
+      "name": "Deck Generation"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -16,
+        512
+      ],
+      "id": "99f9585b-017c-432b-a079-d5a3f547009a",
+      "name": "Wait1",
+      "webhookId": "51fc69fb-bb19-4f41-b84a-c3f7d0298f5f"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3d82395d-528a-42b0-9675-d2f0ff7be27d",
+              "leftValue": "={{ $('Deck Generation').item.json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        176,
+        512
+      ],
+      "id": "6f35a272-b596-4e55-bd0e-88ee8b9a14be",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1zdAtg-VuaRBc8MRCfqmzuqhWUuxTpzTPn4SlgSM07tQ",
+          "mode": "list",
+          "cachedResultName": "Prospect_list",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zdAtg-VuaRBc8MRCfqmzuqhWUuxTpzTPn4SlgSM07tQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Foglio1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zdAtg-VuaRBc8MRCfqmzuqhWUuxTpzTPn4SlgSM07tQ/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Titolo": "={{ $('Log Meeting').item.json.Titolo }}",
+            "Preventivo": "Generato",
+            "Link Preventivo": "={{ $json.gammaUrl }}"
+          },
+          "matchingColumns": [
+            "Titolo"
+          ],
+          "schema": [
+            {
+              "id": "Data / Ora",
+              "displayName": "Data / Ora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Titolo",
+              "displayName": "Titolo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Riassunto",
+              "displayName": "Riassunto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Trascritto",
+              "displayName": "Trascritto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Preventivo",
+              "displayName": "Preventivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Preventivo",
+              "displayName": "Link Preventivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        368,
+        496
+      ],
+      "id": "03497071-0048-4aeb-a22b-8df47e29dccc",
+      "name": "Deck Generato",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ibkCyT1a4kZeaZFj",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 2) Gamma Creation\n",
+        "height": 432,
+        "width": 880,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        240
+      ],
+      "id": "442294d2-56df-4a0b-bbcb-4377842d8567",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## 1) Log Meeting\n",
+        "height": 256,
+        "width": 864,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        -64
+      ],
+      "id": "ef752a4a-150d-4ca1-9b96-9af56c06110b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -352,
+        560
+      ],
+      "id": "9da20083-d38d-4a20-a2bb-829b766a50f0",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "jQy4Hvs5L3tIKipu",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.example.com",
+            "user-agent": "curl/8.7.1",
+            "content-length": "7740",
+            "accept": "*/*",
+            "content-type": "application/json",
+            "x-forwarded-for": "203.0.113.10",
+            "x-forwarded-host": "n8n.example.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "ab40013c4782",
+            "x-real-ip": "203.0.113.10",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "title": "Discovery Call - Paolo Lead Generation",
+            "meeting_title": "Call con Paolo - Lead Generation AI Agent",
+            "recording_id": 123456789,
+            "url": "https://fathom.video/xyz123",
+            "share_url": "https://fathom.video/share/xyz123",
+            "created_at": "2025-02-16T15:30:00Z",
+            "scheduled_start_time": "2025-02-16T15:00:00Z",
+            "scheduled_end_time": "2025-02-16T16:00:00Z",
+            "recording_start_time": "2025-02-16T15:02:15Z",
+            "recording_end_time": "2025-02-16T15:58:30Z",
+            "calendar_invitees_domains_type": "one_or_more_external",
+            "transcript_language": "it",
+            "transcript": [
+              {
+                "speaker": {
+                  "display_name": "Corrado Centrone",
+                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                },
+                "text": "Ciao Paolo, grazie per il tempo. Raccontami un po' qual è la situazione attuale con la lead generation per la vostra azienda.",
+                "timestamp": "00:02:30"
+              },
+              {
+                "speaker": {
+                  "display_name": "Paolo Rossi",
+                  "matched_calendar_invitee_email": "Paolo@acme.it"
+                },
+                "text": "Allora Corrado, il problema principale è che nella nostra azienda Acme SRL spendiamo un sacco di tempo in ricerche manuali. Il mio team passa 15-20 ore a settimana solo a cercare lead su LinkedIn e altri database, poi altre 10 ore per fare enrichment dei dati. È un processo lentissimo.",
+                "timestamp": "00:02:45"
+              },
+              {
+                "speaker": {
+                  "display_name": "Corrado Centrone",
+                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                },
+                "text": "Capisco. E quanti lead riuscite a processare e gestire al mese con questo metodo?",
+                "timestamp": "00:03:15"
+              },
+              {
+                "speaker": {
+                  "display_name": "Paolo Rossi",
+                  "matched_calendar_invitee_email": "Paolo@acme.it"
+                },
+                "text": "Circa 200-250 lead al mese, ma la qualità non è sempre buona. Il tasso di risposta alle email è bassissimo, tipo 3-4%. E poi non  vengono personalizzate, mandiamo template standard.",
+                "timestamp": "00:03:25"
+              },
+              {
+                "speaker": {
+                  "display_name": "Corrado Centrone",
+                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                },
+                "text": "Ok, quindi il problema è duplice: da una parte il tempo speso manualmente, dall'altra la bassa qualità e personalizzazione. Che risultati vorresti ottenere?",
+                "timestamp": "00:03:55"
+              },
+              {
+                "speaker": {
+                  "display_name": "Paolo Rossi",
+                  "matched_calendar_invitee_email": "Paolo@acme.it"
+                },
+                "text": "Vorrei automatizzare tutto: lo scraping dei lead, l'enrichment con dati aggiornati tipo revenue, dimensione azienda, tecnologie usate, e poi email personalizzate in base al settore e ai pain points. L'obiettivo sarebbe processare almeno 1000 lead al mese con un tasso di risposta del 10-12%.",
+                "timestamp": "00:04:10"
+              },
+              {
+                "speaker": {
+                  "display_name": "Corrado Centrone",
+                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                },
+                "text": "Perfetto. Quindi ti serve un agente AI che fa scraping automatico, enrichment completo e invio massivo personalizzato. Possiamo costruirtelo con n8n e Claude. Quando vorresti partire?",
+                "timestamp": "00:04:45"
+              },
+              {
+                "speaker": {
+                  "display_name": "Paolo Rossi",
+                  "matched_calendar_invitee_email": "Paolo@acme.it"
+                },
+                "text": "Il prima possibile. Abbiamo budget da spendere adesso, vorremmo chiudere entro fine febbraio e partire operativi a marzo.",
+                "timestamp": "00:05:05"
+              }
+            ],
+            "default_summary": {
+              "template_name": "sales_call",
+              "markdown_formatted": "## Summary\n\nCorrado ha condotto una discovery call con Paolo Rossi per discutere l'implementazione di un agente AI per la lead generation.\n\n### Pain Points Identificati\n\n- **Tempo manuale eccessivo**: Il team di Paolo spende 25-30 ore/settimana tra ricerca lead (15-20h) e enrichment dati (10h)\n- **Volume limitato**: Processano solo 200-250 lead/mese con il metodo attuale\n- **Bassa qualità**: Tasso di risposta email del 3-4%, molto sotto la media di settore\n- **Zero personalizzazione**: Utilizzo di template standard senza customizzazione\n- **Dati obsoleti**: Difficoltà nel mantenere database aggiornati con informazioni accurate\n\n### Obiettivi e KPI Target\n\n- **Volume**: Passare da 250 a 1000+ lead processati/mese (4x)\n- **Response rate**: Aumentare dal 3-4% al 10-12% (3x)\n- **Efficienza**: Ridurre da 30h/settimana a ~2h/settimana di supervisione (15x)\n- **Personalizzazione**: Email customizzate per settore, dimensione azienda e pain points specifici\n- **Data accuracy**: Enrichment automatico con dati aggiornati (revenue, headcount, tech stack)\n\n### Soluzione Proposta\n\nAgente AI completo per lead generation basato su n8n e Claude che include:\n\n1. **Scraping automatico** dei lead da LinkedIn, database B2B e altre fonti\n2. **Lead enrichment** con dati firmografici, tecnologici e di contatto\n3. **Personalizzazione AI** delle email basata su settore, dimensione e pain points\n4. **Invio massivo** con tracking e follow-up automatizzati\n5. **Dashboard** con analytics e reportistica sui KPI\n\n### Next Steps\n\n- Budget disponibile Q1 2025\n- Target: chiusura contratto entro fine febbraio\n- Go-live operativo: marzo 2025\n- Follow-up: Corrado manderà proposta dettagliata entro 48h\n"
+            },
+            "action_items": [
+              {
+                "description": "Mandare proposta dettagliata con pricing, timeline e deliverables per l'agente AI lead generation",
+                "user_generated": false,
+                "completed": false,
+                "recording_timestamp": "00:05:20",
+                "recording_playback_url": "https://fathom.video/xyz123#t=320",
+                "assignee": {
+                  "name": "Corrado Centrone",
+                  "email": "corradocentrone@gmail.com",
+                  "team": "Sales"
+                }
+              },
+              {
+                "description": "Preparare demo tecnica dell'agente AI con esempio di scraping + enrichment + email personalizzata",
+                "user_generated": false,
+                "completed": false,
+                "recording_timestamp": "00:05:35",
+                "recording_playback_url": "https://fathom.video/xyz123#t=335",
+                "assignee": {
+                  "name": "Corrado Centrone",
+                  "email": "corradocentrone@gmail.com",
+                  "team": "Sales"
+                }
+              },
+              {
+                "description": "Condividere internamente info su budget Q1 disponibile e deadline fine febbraio",
+                "user_generated": false,
+                "completed": false,
+                "recording_timestamp": "00:05:45",
+                "recording_playback_url": "https://fathom.video/xyz123#t=345",
+                "assignee": {
+                  "name": "Paolo Rossi",
+                  "email": "paolo@acme.it",
+                  "team": "Marketing"
+                }
+              }
+            ],
+            "calendar_invitees": [
+              {
+                "name": "Corrado Centrone",
+                "matched_speaker_display_name": "Corrado Centrone",
+                "email": "corradocentrone@gmail.com",
+                "is_external": false,
+                "email_domain": "gmail.com"
+              },
+              {
+                "name": "Paolo Rossi",
+                "matched_speaker_display_name": "Paolo Rossi",
+                "email": "paolo@acme.it",
+                "is_external": true,
+                "email_domain": "acme.it"
+              }
+            ],
+            "recorded_by": {
+              "name": "Corrado Centrone",
+              "email": "corradocentrone@gmail.com",
+              "team": "Sales",
+              "email_domain": "gmail.com"
+            },
+            "crm_matches": {
+              "contacts": [
+                {
+                  "name": "Paolo Rossi",
+                  "email": "paolo@acme.it",
+                  "record_url": "https://app.hubspot.com/contacts/987654"
+                }
+              ],
+              "companies": [
+                {
+                  "name": "Acme SRL",
+                  "record_url": "https://app.hubspot.com/companies/123789"
+                }
+              ],
+              "deals": [
+                {
+                  "name": "AI Lead Generation Agent - Acme",
+                  "amount": 15000,
+                  "record_url": "https://app.hubspot.com/deals/456123"
+                }
+              ]
+            }
+          },
+          "webhookUrl": "https://n8n.example.com/webhook/abc123",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Proposal Generator Agent": {
+      "main": [
+        [
+          {
+            "node": "API Key",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Estrai Trascritto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estrai Trascritto": {
+      "main": [
+        [
+          {
+            "node": "Log Meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Meeting": {
+      "main": [
+        [
+          {
+            "node": "Proposal Generator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API Key": {
+      "main": [
+        [
+          {
+            "node": "Genera Deck",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Genera Deck": {
+      "main": [
+        [
+          {
+            "node": "Deck Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deck Generation": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Deck Generato",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Deck Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Proposal Generator Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "12841eac-571b-43b3-992a-07483939d258",
+  "meta": {
+    "instanceId": "6bcd93025a031fe09e15845e3871a1106904a3c87641feb41fbe1a32dee5bd17"
+  },
+  "id": "6GuFnIkDcbUVWdaj",
+  "tags": []
+}

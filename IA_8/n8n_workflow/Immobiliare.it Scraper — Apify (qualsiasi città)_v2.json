@@ -1,0 +1,481 @@
+{
+  "name": "Immobiliare.it Scraper — Apify (qualsiasi città)_v2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a184b50b-0263-49f5-a18d-e3a5c6b00e22",
+      "name": "Ricevi messaggio chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        48
+      ],
+      "webhookId": "cd7152c5-3511-435a-ba93-2c460afb423d"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ── Estrae città, zone e maxItems dall'input testuale ──────────────\n// Formati supportati:\n//   \"Milano\"                   → tutta la città, 50 pagine (default)\n//   \"Milano Brera\"             → una zona\n//   \"Milano Brera, Navigli\"    → più zone\n//   \"Milano Brera, Navigli, 100\" → più zone + maxItems esplicito\n//   \"Roma, 200\"                → tutta la città, 200 pagine\n//\n// maxItems = numero di pagine Apify da scrapare (~18 annunci/pagina).\n// Se l'ultima voce separata da virgola è un numero puro → è il maxItems.\n\nconst text = ($json.chatInput ?? '').trim();\nconst DEFAULT_MAX_ITEMS = 200;\n\nif (!text) return [{ json: { city: '', zones: [], maxItems: DEFAULT_MAX_ITEMS } }];\n\nconst entries = text.split(',').map(s => s.trim()).filter(Boolean);\n\n// Controlla se l'ultima voce è un numero puro → maxItems\nlet maxItems = DEFAULT_MAX_ITEMS;\nlet dataEntries = entries;\nif (entries.length > 0 && /^\\d+$/.test(entries[entries.length - 1])) {\n  maxItems = parseInt(entries[entries.length - 1], 10);\n  dataEntries = entries.slice(0, -1);\n}\n\nif (dataEntries.length === 0) return [{ json: { city: '', zones: [], maxItems } }];\n\n// La città è sempre il primo token della prima voce\nconst firstParts = dataEntries[0].split(/\\s+/);\nconst city = firstParts[0].toLowerCase();\nconst firstZone = firstParts.slice(1).join(' ').trim(); // eventuale zona nella prima voce\n\nconst zones = [];\nif (firstZone) zones.push(firstZone);\n\nfor (let i = 1; i < dataEntries.length; i++) {\n  const e = dataEntries[i].trim();\n  // Rimuove il prefisso città se presente (es. \"Roma Pigneto\" → \"Pigneto\")\n  const stripped = e.toLowerCase().startsWith(city + ' ')\n    ? e.slice(city.length + 1).trim()\n    : e.trim();\n  if (stripped) zones.push(stripped);\n}\n\nreturn [{ json: { city, zones, maxItems } }];\n"
+      },
+      "id": "ec3d93a0-62e5-4913-a83c-fab6a953bef3",
+      "name": "Parse Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -64,
+        32
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ── Costruisce le startUrls per Apify ───────────────────────────────\n// city  e zones arrivano dal nodo Parse Input.\n// Se non ci sono zone specifiche, cerca tutta la città.\n\nconst city     = ($json.city     ?? 'roma').toLowerCase().trim();\nconst zones    = ($json.zones    ?? []).map(z => String(z));\nconst maxItems = ($json.maxItems ?? 20);\n\nconst slug = (s) =>\n  s.toLowerCase().trim()\n    .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/'/g, '')\n    .replace(/[^a-z0-9\\s-]/g, '')\n    .replace(/\\s+/g, '-')\n    .replace(/-+/g, '-');\n\nconst citySlug = slug(city);\n\nconst startUrls = zones.length > 0\n  ? zones.map(z => ({ url: `https://www.immobiliare.it/vendita-case/${citySlug}/${slug(z)}/` }))\n  : [{ url: `https://www.immobiliare.it/vendita-case/${citySlug}/` }];\n\nreturn [{ json: { startUrls, maxItems } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        128,
+        32
+      ],
+      "id": "8bb65d9a-49be-4beb-88ec-bead919b34bb",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "p9QZzUdBCGXMDuKad",
+          "mode": "list",
+          "cachedResultName": "Immobiliare.it | Search | Detail Pages | Agencies [Only $0.85] (memo23/immobiliare-scraper)",
+          "cachedResultUrl": "https://console.apify.com/actors/p9QZzUdBCGXMDuKad/input"
+        },
+        "customBody": "={{ JSON.stringify($json) }}"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        288,
+        -96
+      ],
+      "id": "3ab28628-99cf-4eba-b4bb-f8c34dfba34a",
+      "name": "Run an Actor",
+      "credentials": {
+        "apifyApi": {
+          "id": "ISRe12wKKNOiXZDv",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{$json[\"defaultDatasetId\"]}}",
+        "offset": 0,
+        "limit": 9999
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        496,
+        -128
+      ],
+      "id": "dc9a4a4b-4423-40ec-8527-726eb33241c8",
+      "name": "Get dataset items",
+      "credentials": {
+        "apifyApi": {
+          "id": "ISRe12wKKNOiXZDv",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ── Flatten subProperties ───────────────────────────────────────────\n// L'actor Apify restituisce annunci di tipo \"Progetto\" (nuove costruzioni)\n// con le singole unità nidificate in subProperties.data[].\n// Questo nodo espande ogni unità in un item separato.\n// Gli annunci normali (senza subProperties) vengono passati invariati.\n\nconst output = [];\n\nfor (const item of $input.all()) {\n  const d = item.json;\n  const subs = d.subProperties && d.subProperties.data;\n\n  if (Array.isArray(subs) && subs.length > 0) {\n    // Progetto: espandi ogni unità, ereditando lastModified e creationDate dal padre\n    for (const sub of subs) {\n      output.push({\n        json: {\n          ...sub,\n          lastModified: sub.lastModified ?? d.lastModified,\n          creationDate: sub.creationDate ?? d.creationDate\n        }\n      });\n    }\n  } else {\n    // Annuncio normale: passa invariato\n    output.push({ json: d });\n  }\n}\n\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        608,
+        80
+      ],
+      "id": "bcb1db90-c80c-4e03-a334-496eb317c0d0",
+      "name": "Flatten SubProperties"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f775385a-2a96-4c8c-95b0-5463c83378c5",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "9d8be7d7-d81c-4311-a58c-f3b8755b94f5",
+              "name": "lastModified",
+              "value": "={{ $json.lastModified }}",
+              "type": "number"
+            },
+            {
+              "id": "7b8d453d-88b2-4f17-b32a-68ed4e436928",
+              "name": "creationDate",
+              "value": "={{ $json.creationDate }}",
+              "type": "number"
+            },
+            {
+              "id": "86b470a9-2304-4c8e-848e-958746787008",
+              "name": "analytics.price",
+              "value": "={{ $json.analytics.price }}",
+              "type": "string"
+            },
+            {
+              "id": "886d04f3-09e9-441f-84b0-1ffe26c86f96",
+              "name": "analytics.province",
+              "value": "={{ $json.analytics.province }}",
+              "type": "string"
+            },
+            {
+              "id": "e899085e-08f2-4fea-8183-afd1b2070a90",
+              "name": "analytics.macrozone",
+              "value": "={{ $json.analytics.macrozone }}",
+              "type": "string"
+            },
+            {
+              "id": "aada7aaf-d1bc-48fa-9fa3-cffa0b04ec95",
+              "name": "analytics.typology",
+              "value": "={{ $json.analytics.typology }}",
+              "type": "string"
+            },
+            {
+              "id": "c7e6d0bd-ba48-4d9d-b1c7-a3de85aac8f8",
+              "name": "analytics.category",
+              "value": "={{ $json.analytics.category }}",
+              "type": "string"
+            },
+            {
+              "id": "63122057-c668-4ece-9605-e3d804c9c267",
+              "name": "analytics.contract",
+              "value": "={{ $json.analytics.contract }}",
+              "type": "string"
+            },
+            {
+              "id": "8d69548e-872a-4107-8ebc-d876736be130",
+              "name": "analytics.advertiser",
+              "value": "={{ $json.analytics.advertiser }}",
+              "type": "string"
+            },
+            {
+              "id": "1bb14006-83e6-481a-b652-55b101a4ed08",
+              "name": "topology.surface.size",
+              "value": "={{ $json.topology.surface.size }}",
+              "type": "number"
+            },
+            {
+              "id": "3b663be6-bf4c-47f1-a693-04981da89a82",
+              "name": "geography.zipcode",
+              "value": "={{ $json.geography.zipcode }}",
+              "type": "string"
+            },
+            {
+              "id": "16dbf0a2-7550-4a3d-96e8-66ad67764300",
+              "name": "geography.street",
+              "value": "={{ $json.geography.street }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        752,
+        -16
+      ],
+      "id": "76f627bd-9298-4060-9f4f-d9a4d3588f9b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1aquxIDe450WXA_E0lZhnpwxzbJlVL1S8oM4Y7Rgmx_k",
+          "mode": "list",
+          "cachedResultName": "Analisi_immobiliare",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aquxIDe450WXA_E0lZhnpwxzbJlVL1S8oM4Y7Rgmx_k/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Foglio1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aquxIDe450WXA_E0lZhnpwxzbJlVL1S8oM4Y7Rgmx_k/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id }}",
+            "creationDate": "={{ $json.creationDate }}",
+            "lastModified": "={{ $json.lastModified }}",
+            "price": "={{ $json.analytics.price }}",
+            "macrozone": "={{ $json.analytics.macrozone }}",
+            "province": "={{ $json.analytics.province }}",
+            "microzone": "={{ $json.analytics.microzone }}",
+            "category": "={{ $json.analytics.category }}",
+            "typology": "={{ $json.analytics.typology }}",
+            "contract": "={{ $json.analytics.contract }}",
+            "surface": "={{ $json.topology.surface.size }}",
+            "advertiser": "={{ $json.analytics.advertiser }}",
+            "zipcode": "={{ $json.geography.zipcode }}",
+            "street": "={{ $json.geography.street }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastModified",
+              "displayName": "lastModified",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "creationDate",
+              "displayName": "creationDate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "price",
+              "displayName": "price",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "province",
+              "displayName": "province",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "macrozone",
+              "displayName": "macrozone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "microzone",
+              "displayName": "microzone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "typology",
+              "displayName": "typology",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category",
+              "displayName": "category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "contract",
+              "displayName": "contract",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "advertiser",
+              "displayName": "advertiser",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "surface",
+              "displayName": "surface",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zipcode",
+              "displayName": "zipcode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "street",
+              "displayName": "street",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        896,
+        32
+      ],
+      "id": "305b8579-b68b-4f3e-bcaf-16bd9c499f1a",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ibkCyT1a4kZeaZFj",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Ricevi messaggio chat": {
+      "main": [
+        [
+          {
+            "node": "Parse Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Input": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Run an Actor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run an Actor": {
+      "main": [
+        [
+          {
+            "node": "Get dataset items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get dataset items": {
+      "main": [
+        [
+          {
+            "node": "Flatten SubProperties",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flatten SubProperties": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "483e39a3-b7ce-48de-a3e8-9fab510dcb63",
+  "meta": {
+    "instanceId": "6bcd93025a031fe09e15845e3871a1106904a3c87641feb41fbe1a32dee5bd17"
+  },
+  "id": "JQ6crUBG3rwGiRnWh9ihU",
+  "tags": []
+}

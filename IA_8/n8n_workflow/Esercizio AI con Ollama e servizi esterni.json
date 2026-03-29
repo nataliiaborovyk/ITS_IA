@@ -1,0 +1,982 @@
+{
+  "name": "Esercizio AI con Ollama e servizi esterni",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f4f47fe7-fe30-47db-a117-3d8c745b272a",
+      "name": "Chat iniziale",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        -480,
+        288
+      ],
+      "typeVersion": 1.1,
+      "webhookId": "9a6b76b9-f5d9-4547-a42e-616efcafefa5"
+    },
+    {
+      "parameters": {
+        "content": "## Esercizio didattico\nQuesto workflow parte da una chat, usa **Ollama** per capire l'intento e poi instrada la richiesta verso servizi diversi.\n\nServizi inclusi:\n- meteo\n- notizie da RSS\n- orario\n- calcolo\n- risposta diretta\n",
+        "height": 220,
+        "width": 520,
+        "color": 5
+      },
+      "id": "00db0983-bbf6-4eed-9c48-9b308126d2b1",
+      "name": "Nota introduzione",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -320,
+        -48
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Come aggiornare il flusso\n1. Aggiungere un nuovo intento nel nodo **Classifica richiesta**\n2. Aggiungere una nuova regola nel nodo **Instrada intenzione**\n3. Duplicare un ramo esistente e collegare un nuovo servizio\n4. Aggiornare i prompt finali mantenendo la risposta in italiano\n",
+        "height": 260,
+        "width": 520,
+        "color": 4
+      },
+      "id": "d23aa216-ab96-4332-bf98-c584b8a6c018",
+      "name": "Nota modifiche studenti",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        704,
+        -48
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Servizi pubblici usati\n- **wttr.in** per il meteo\n- **RSS Feed Read** per le notizie\n- **worldtimeapi.org** per l'orario\n- **Code node** per il calcolo sicuro\n\nPer l'esercizio gli studenti possono sostituire il feed RSS o aggiungere altri servizi HTTP.",
+        "height": 260,
+        "width": 620,
+        "color": 7
+      },
+      "id": "dde191b5-ffa3-47e6-af73-8cfcb29a0021",
+      "name": "Nota servizi",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1568,
+        -48
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Modello locale\nTutti i nodi AI usano **Ollama** con il modello `gemma3:4b`.\n\nÈ sufficiente cambiare il modello nei nodi Ollama se vuoi fare confronti tra modelli diversi.",
+        "height": 200,
+        "width": 420,
+        "color": 3
+      },
+      "id": "51969b6d-d531-4be5-bbe8-e28795728241",
+      "name": "Nota Ollama",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        64,
+        512
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Analizza la richiesta dell’utente e restituisci **solo JSON valido** nel formato:\n\n{\n  \"intent\": \"DIRECT\" | \"WEATHER\" | \"NEWS\" | \"TIME\" | \"CALCULATOR\",\n  \"location\": \"<città o luogo oppure stringa vuota>\",\n  \"topic\": \"<argomento notizie oppure stringa vuota>\",\n  \"timezone\": \"<fuso orario o stringa vuota>\",\n  \"expression\": \"<espressione matematica oppure stringa vuota>\"\n}\n\nRegole:\n- WEATHER: richieste su meteo, temperatura, pioggia, vento o previsioni\n- NEWS: richieste su notizie, attualità, ultime news, titoli del giorno\n- TIME: richieste su ora, data, fuso orario\n- CALCULATOR: richieste di calcolo matematico semplice\n- DIRECT: tutte le altre richieste\n- `location`: valorizzalo per WEATHER e TIME quando la località è chiara\n- `topic`: valorizzalo solo per NEWS se la richiesta cita un argomento\n- `timezone`: valorizzalo solo se il testo contiene direttamente un fuso orario tipo Europe/Rome\n- `expression`: solo numeri, parentesi e operatori + - * / se presenti\n- Se un valore non è disponibile, usa stringa vuota\n- Non aggiungere spiegazioni\n- Non usare markdown\n- Restituisci solo JSON valido",
+              "role": "assistant"
+            },
+            {
+              "content": "={{ $json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "11ada83a-e4a4-424a-a18f-ec3383695df7",
+      "name": "Classifica richiesta",
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "position": [
+        -240,
+        288
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  let raw = $json.content || $json.output || $json.text || $json.response || '';\n  if (typeof raw !== 'string') raw = JSON.stringify(raw);\n\n  raw = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n\n  const firstBrace = raw.indexOf('{');\n  const lastBrace = raw.lastIndexOf('}');\n  if (firstBrace !== -1 && lastBrace !== -1) {\n    raw = raw.slice(firstBrace, lastBrace + 1);\n  }\n\n  let parsed = JSON.parse(raw);\n\n  parsed = {\n    intent: (parsed.intent || 'DIRECT').toString().trim().toUpperCase(),\n    location: (parsed.location || '').toString().trim(),\n    topic: (parsed.topic || '').toString().trim(),\n    timezone: (parsed.timezone || '').toString().trim(),\n    expression: (parsed.expression || '').toString().trim(),\n  };\n\n  const allowed = ['DIRECT', 'WEATHER', 'NEWS', 'TIME', 'CALCULATOR'];\n  if (!allowed.includes(parsed.intent)) parsed.intent = 'DIRECT';\n\n  return [{ json: parsed }];\n} catch (error) {\n  return [{\n    json: {\n      intent: 'DIRECT',\n      location: '',\n      topic: '',\n      timezone: '',\n      expression: '',\n      parsing_error: error.message\n    }\n  }];\n}"
+      },
+      "id": "be968630-9c07-4cd6-a12f-b19720e68095",
+      "name": "Normalizza classificazione",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        160,
+        288
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "DIRECT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "WEATHER",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "NEWS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "TIME",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "CALCULATOR",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5e39f482-1ac5-4db1-809f-efabe8b89e67",
+      "name": "Instrada intenzione",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        400,
+        240
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Rispondi in modo chiaro, utile e sintetico alla richiesta dell’utente. Non usare strumenti esterni. Rispondi sempre in italiano.",
+              "role": "assistant"
+            },
+            {
+              "content": "={{ $('Chat iniziale').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4f224bd3-2490-428b-9534-70933290fdcd",
+      "name": "Genera risposta diretta",
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "position": [
+        576,
+        -176
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  let raw = $json.content || $json.output || $json.text || $json.response || (($json.message || {}).content) || '';\n  if (typeof raw !== 'string') raw = JSON.stringify(raw);\n  raw = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n  return [{ json: { output: raw, text: raw } }];\n} catch (error) {\n  return [{ json: { output: 'Si è verificato un errore nella generazione della risposta.', text: 'Si è verificato un errore nella generazione della risposta.', error: error.message } }];\n}"
+      },
+      "id": "6015a07a-ddd6-4169-8b21-b1f2211dbb6d",
+      "name": "Imposta output diretto",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1120,
+        -160
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.location }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8a0cb623-133f-4f34-ad5c-329679620e75",
+      "name": "Verifica località meteo",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        784,
+        240
+      ],
+      "typeVersion": 2.3
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "output",
+              "type": "string",
+              "value": "Indicami la città per cui vuoi sapere il meteo."
+            },
+            {
+              "name": "text",
+              "type": "string",
+              "value": "Indicami la città per cui vuoi sapere il meteo."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7c188c35-1c37-44d6-9de3-b862a6c06cf8",
+      "name": "Chiedi città meteo",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1024,
+        176
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "url": "={{ 'https://wttr.in/' + encodeURIComponent($json.location) + '?format=j1' }}",
+        "options": {}
+      },
+      "id": "48f6315b-1f27-4813-8995-d5e0c93f0210",
+      "name": "Recupera meteo",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1024,
+        304
+      ],
+      "typeVersion": 4.4
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Sei un assistente che spiega il meteo in italiano.\nUsa i dati JSON ricevuti dal servizio meteo per dare una risposta breve, chiara e pratica.\nIncludi:\n- località\n- temperatura attuale\n- condizioni principali\n- eventuale consiglio pratico\nSe i dati sono incompleti, dillo con trasparenza.",
+              "role": "assistant"
+            },
+            {
+              "content": "=Richiesta utente: {{ $('Chat iniziale').item.json.chatInput }}\n\nLocalità: {{ $('Normalizza classificazione').item.json.location }}\n\nJSON meteo: {{ JSON.stringify($json) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "12232545-c007-44b3-a103-7197f5b26a3e",
+      "name": "Genera risposta meteo",
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "position": [
+        1264,
+        304
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  let raw = $json.content || $json.output || $json.text || $json.response || (($json.message || {}).content) || '';\n  if (typeof raw !== 'string') raw = JSON.stringify(raw);\n  raw = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n  return [{ json: { output: raw, text: raw } }];\n} catch (error) {\n  return [{ json: { output: 'Si è verificato un errore nella generazione della risposta.', text: 'Si è verificato un errore nella generazione della risposta.', error: error.message } }];\n}"
+      },
+      "id": "f5b816bc-7fcb-4e63-a695-4c3e67c7d264",
+      "name": "Imposta output meteo",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1664,
+        288
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "rss_url",
+              "type": "string",
+              "value": "https://www.ansa.it/sito/notizie/topnews/topnews_rss.xml"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "449866c7-e766-44d4-954f-fba2dc31a334",
+      "name": "Configura feed RSS",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        784,
+        496
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rss_url }}",
+        "options": {
+          "ignoreSSL": false
+        }
+      },
+      "id": "67b6dd65-b0bd-4704-a048-79f1a57dde1c",
+      "name": "Leggi feed notizie",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "position": [
+        1024,
+        496
+      ],
+      "typeVersion": 1.1,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  const topic = (($('Normalizza classificazione').first().json.topic || '') + '').toLowerCase().trim();\n  const feedItems = items\n    .map(item => item.json)\n    .filter(item => item && (item.title || item.link));\n\n  const normalized = feedItems.map(item => {\n    const title = (item.title || '').toString();\n    const content = (item.contentSnippet || item.content || item.summary || '').toString();\n    const link = (item.link || '').toString();\n    const dateRaw = item.isoDate || item.pubDate || '';\n    const ts = dateRaw ? new Date(dateRaw).getTime() : 0;\n    return {\n      title,\n      content,\n      link,\n      date: dateRaw,\n      ts: Number.isFinite(ts) ? ts : 0\n    };\n  }).sort((a, b) => b.ts - a.ts);\n\n  let selected = normalized;\n  if (topic) {\n    const filtered = normalized.filter(item => {\n      const hay = `${item.title} ${item.content}`.toLowerCase();\n      return hay.includes(topic);\n    });\n    if (filtered.length > 0) selected = filtered;\n  }\n\n  selected = selected.slice(0, 5);\n\n  return [{\n    json: {\n      topic,\n      articles: selected,\n      total_found: selected.length\n    }\n  }];\n} catch (error) {\n  return [{\n    json: {\n      topic: '',\n      articles: [],\n      total_found: 0,\n      error: error.message\n    }\n  }];\n}"
+      },
+      "id": "8f68c4d9-7526-43db-ab21-53f89e2440f2",
+      "name": "Filtra notizie RSS",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1264,
+        496
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Sei un assistente che riassume notizie di attualità in italiano.\nUsa solo gli articoli forniti.\nSe c'è un argomento richiesto, privilegialo.\nStruttura la risposta così:\n- una frase iniziale\n- 3-5 punti brevi con i titoli principali\n- chiusura finale\nSe non ci sono articoli utili, dillo chiaramente.",
+              "role": "assistant"
+            },
+            {
+              "content": "=Richiesta utente: {{ $('Chat iniziale').item.json.chatInput }}\n\nArgomento: {{ $json.topic }}\n\nArticoli selezionati: {{ JSON.stringify($json.articles) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "55456a2a-6da3-4362-ab24-33683d8badab",
+      "name": "Genera risposta notizie",
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "position": [
+        1504,
+        496
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  let raw = $json.content || $json.output || $json.text || $json.response || (($json.message || {}).content) || '';\n  if (typeof raw !== 'string') raw = JSON.stringify(raw);\n  raw = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n  return [{ json: { output: raw, text: raw } }];\n} catch (error) {\n  return [{ json: { output: 'Si è verificato un errore nella generazione della risposta.', text: 'Si è verificato un errore nella generazione della risposta.', error: error.message } }];\n}"
+      },
+      "id": "465532ba-e26d-4a7f-b93b-71b1edec44d3",
+      "name": "Imposta output notizie",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1744,
+        496
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  const rawLocation = (($json.location || $json.timezone || '') + '').trim().toLowerCase();\n  const mapping = {\n    'roma': 'Europe/Rome',\n    'rome': 'Europe/Rome',\n    'italia': 'Europe/Rome',\n    'milano': 'Europe/Rome',\n    'milan': 'Europe/Rome',\n    'londra': 'Europe/London',\n    'london': 'Europe/London',\n    'new york': 'America/New_York',\n    'newyork': 'America/New_York',\n    'tokyo': 'Asia/Tokyo',\n    'parigi': 'Europe/Paris',\n    'paris': 'Europe/Paris',\n    'berlino': 'Europe/Berlin',\n    'berlin': 'Europe/Berlin',\n    'madrid': 'Europe/Madrid',\n    'lisbona': 'Europe/Lisbon',\n    'lisbon': 'Europe/Lisbon'\n  };\n\n  let timezone = '';\n  if (!rawLocation) {\n    timezone = 'Europe/Rome';\n  } else if (rawLocation.includes('/')) {\n    timezone = rawLocation;\n  } else {\n    timezone = mapping[rawLocation] || '';\n  }\n\n  return [{\n    json: {\n      ...$json,\n      requested_location: rawLocation,\n      timezone\n    }\n  }];\n} catch (error) {\n  return [{\n    json: {\n      ...$json,\n      requested_location: '',\n      timezone: '',\n      error: error.message\n    }\n  }];\n}"
+      },
+      "id": "eebe0bc8-bffe-48cd-9f64-8a9053b53b80",
+      "name": "Mappa fuso orario",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        784,
+        752
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.timezone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a7528b2e-2c84-4ccf-9cb8-30fba79456e4",
+      "name": "Verifica fuso orario",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1024,
+        752
+      ],
+      "typeVersion": 2.3
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "output",
+              "type": "string",
+              "value": "Indicami una città supportata, ad esempio Roma, Londra, New York o Tokyo."
+            },
+            {
+              "name": "text",
+              "type": "string",
+              "value": "Indicami una città supportata, ad esempio Roma, Londra, New York o Tokyo."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "92ae615b-abfd-4738-a61a-e119203608da",
+      "name": "Chiedi città orario",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1280,
+        656
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "url": "={{ 'https://worldtimeapi.org/api/timezone/' + $json.timezone }}",
+        "options": {}
+      },
+      "id": "04ee37dc-562c-43a6-bb80-ae38908c2827",
+      "name": "Recupera orario",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1264,
+        816
+      ],
+      "typeVersion": 4.4
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Sei un assistente che risponde in italiano su data e ora.\nUsa il JSON del servizio orario e fornisci:\n- città o fuso richiesto\n- data\n- ora locale\n- eventuale nota sul fuso orario\nSe i dati non sono disponibili, dillo chiaramente.",
+              "role": "assistant"
+            },
+            {
+              "content": "=Richiesta utente: {{ $('Chat iniziale').item.json.chatInput }}\n\nFuso orario: {{ $('Mappa fuso orario').item.json.timezone }}\n\nJSON orario: {{ JSON.stringify($json) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e3a53e8d-bfaa-4256-a84f-5441c6175d75",
+      "name": "Genera risposta orario",
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "position": [
+        1504,
+        816
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  let raw = $json.content || $json.output || $json.text || $json.response || (($json.message || {}).content) || '';\n  if (typeof raw !== 'string') raw = JSON.stringify(raw);\n  raw = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n  return [{ json: { output: raw, text: raw } }];\n} catch (error) {\n  return [{ json: { output: 'Si è verificato un errore nella generazione della risposta.', text: 'Si è verificato un errore nella generazione della risposta.', error: error.message } }];\n}"
+      },
+      "id": "67057abf-8be8-4f5b-adc0-79220d8dd7ca",
+      "name": "Imposta output orario",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1936,
+        784
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  let expression = (($json.expression || '') + '').trim().replace(/,/g, '.');\n\n  if (!expression) {\n    return [{\n      json: {\n        ...$json,\n        valid: false,\n        result: null,\n        message: 'Non ho trovato un’espressione matematica da calcolare.'\n      }\n    }];\n  }\n\n  if (!/^[0-9+\\-*/().\\s]+$/.test(expression) || expression.includes('**') || expression.length > 100) {\n    return [{\n      json: {\n        ...$json,\n        valid: false,\n        result: null,\n        message: 'L’espressione contiene caratteri non consentiti.'\n      }\n    }];\n  }\n\n  const result = Function(`\"use strict\"; return (${expression})`)();\n\n  if (!Number.isFinite(result)) {\n    throw new Error('Il risultato non è numerico.');\n  }\n\n  return [{\n    json: {\n      ...$json,\n      valid: true,\n      result,\n      expression\n    }\n  }];\n} catch (error) {\n  return [{\n    json: {\n      ...$json,\n      valid: false,\n      result: null,\n      message: error.message\n    }\n  }];\n}"
+      },
+      "id": "ce2316f7-6959-4f81-b074-e54db29257f6",
+      "name": "Calcola espressione",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        784,
+        1024
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Sei un assistente che spiega un calcolo in italiano utilizza se necessario il tool calculator.\nSe `valid` è true, restituisci:\n- espressione\n- risultato\n- una frase finale molto breve\nSe `valid` è false, spiega in una frase semplice perché il calcolo non è stato eseguito.",
+              "role": "assistant"
+            },
+            {
+              "content": "=Richiesta utente: {{ $('Chat iniziale').item.json.chatInput }}\n\nDati calcolo: {{ JSON.stringify($json) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2dcff0c0-38a8-48b4-8ea2-1b108e00f157",
+      "name": "Genera risposta calcolo",
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "position": [
+        1024,
+        1040
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  let raw = $json.content || $json.output || $json.text || $json.response || (($json.message || {}).content) || '';\n  if (typeof raw !== 'string') raw = JSON.stringify(raw);\n  raw = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n  return [{ json: { output: raw, text: raw } }];\n} catch (error) {\n  return [{ json: { output: 'Si è verificato un errore nella generazione della risposta.', text: 'Si è verificato un errore nella generazione della risposta.', error: error.message } }];\n}"
+      },
+      "id": "bc7d4d47-016c-421b-87b4-95d560b54e91",
+      "name": "Imposta output calcolo",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1328,
+        1040
+      ],
+      "typeVersion": 2
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat iniziale": {
+      "main": [
+        [
+          {
+            "node": "Classifica richiesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classifica richiesta": {
+      "main": [
+        [
+          {
+            "node": "Normalizza classificazione",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizza classificazione": {
+      "main": [
+        [
+          {
+            "node": "Instrada intenzione",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instrada intenzione": {
+      "main": [
+        [
+          {
+            "node": "Genera risposta diretta",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Verifica località meteo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Configura feed RSS",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mappa fuso orario",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Calcola espressione",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Genera risposta diretta": {
+      "main": [
+        [
+          {
+            "node": "Imposta output diretto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica località meteo": {
+      "main": [
+        [
+          {
+            "node": "Chiedi città meteo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Recupera meteo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recupera meteo": {
+      "main": [
+        [
+          {
+            "node": "Genera risposta meteo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Genera risposta meteo": {
+      "main": [
+        [
+          {
+            "node": "Imposta output meteo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configura feed RSS": {
+      "main": [
+        [
+          {
+            "node": "Leggi feed notizie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leggi feed notizie": {
+      "main": [
+        [
+          {
+            "node": "Filtra notizie RSS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtra notizie RSS": {
+      "main": [
+        [
+          {
+            "node": "Genera risposta notizie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Genera risposta notizie": {
+      "main": [
+        [
+          {
+            "node": "Imposta output notizie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mappa fuso orario": {
+      "main": [
+        [
+          {
+            "node": "Verifica fuso orario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica fuso orario": {
+      "main": [
+        [
+          {
+            "node": "Chiedi città orario",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Recupera orario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recupera orario": {
+      "main": [
+        [
+          {
+            "node": "Genera risposta orario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Genera risposta orario": {
+      "main": [
+        [
+          {
+            "node": "Imposta output orario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcola espressione": {
+      "main": [
+        [
+          {
+            "node": "Genera risposta calcolo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Genera risposta calcolo": {
+      "main": [
+        [
+          {
+            "node": "Imposta output calcolo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "79489fcf-fd71-4b56-ad42-22e747d97450",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e3daa3bc670f4c6f89df4ccfe5c3f6f7661c794d1de53eb75e4917a998dbb616"
+  },
+  "id": "TfT9REPJWfjY7Dd9",
+  "tags": []
+}

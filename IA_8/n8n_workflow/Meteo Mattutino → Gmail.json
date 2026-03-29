@@ -1,0 +1,124 @@
+{
+  "name": "Meteo Mattutino → Gmail",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * *"
+            }
+          ]
+        }
+      },
+      "id": "01139034-c4df-4ff7-999a-20bf8f1f89cb",
+      "name": "Ogni Mattina alle 8:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://wttr.in/Roma?format=j1",
+        "options": {}
+      },
+      "id": "f35c6d3c-48ed-446c-a162-84001d789b00",
+      "name": "Recupera Meteo Roma",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        464,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const weather = $input.first().json;\nconst current = weather.current_condition[0];\nconst today = weather.weather[0];\n\nconst city = 'Roma';\nconst temp = current.temp_C;\nconst feelsLike = current.FeelsLikeC;\nconst description = current.weatherDesc[0].value;\nconst humidity = current.humidity;\nconst windSpeed = current.windspeedKmph;\nconst maxTemp = today.maxtempC;\nconst minTemp = today.mintempC;\n\nconst emojiMap = {\n  'Clear': '☀️', 'Sunny': '☀️',\n  'Partly cloudy': '⛅️', 'Partly Cloudy': '⛅️',\n  'Cloudy': '☁️', 'Overcast': '☁️',\n  'Mist': '🌫️', 'Fog': '🌫️',\n  'Rain': '🌧️', 'Drizzle': '🌦️', 'Light rain': '🌦️',\n  'Snow': '❄️', 'Blizzard': '🌨️',\n  'Thunder': '⛈️', 'Thunderstorm': '⛈️'\n};\n\nlet emoji = '🌤️';\nfor (const [key, val] of Object.entries(emojiMap)) {\n  if (description.includes(key)) { emoji = val; break; }\n}\n\nconst oggi = new Date().toLocaleDateString('it-IT', {\n  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'\n});\nconst oggiFormatted = oggi.charAt(0).toUpperCase() + oggi.slice(1);\n\nconst emailSubject = `${emoji} Meteo di oggi – ${city}`;\n\nconst emailBody = `<div style=\"font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; padding: 24px; background-color: #f0f7ff; border-radius: 12px;\">\n  <h2 style=\"color: #1a5276; margin-bottom: 4px;\">${emoji} Buongiorno!</h2>\n  <h3 style=\"color: #2980b9; margin-top: 0; font-size: 20px;\">Meteo di oggi – ${city}</h3>\n  <p style=\"color: #666; margin-top: -8px;\">📅 ${oggiFormatted}</p>\n  <table style=\"width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.1);\">\n    <tr style=\"background-color: #d6eaf8;\">\n      <td style=\"padding: 12px 16px;\">🌡️ <strong>Temperatura</strong></td>\n      <td style=\"padding: 12px 16px;\"><strong>${temp}°C</strong> &nbsp;(percepita ${feelsLike}°C)</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 12px 16px;\">📊 <strong>Min / Max</strong></td>\n      <td style=\"padding: 12px 16px;\">${minTemp}°C &nbsp;/&nbsp; ${maxTemp}°C</td>\n    </tr>\n    <tr style=\"background-color: #d6eaf8;\">\n      <td style=\"padding: 12px 16px;\">🌥️ <strong>Condizioni</strong></td>\n      <td style=\"padding: 12px 16px;\">${description}</td>\n    </tr>\n    <tr>\n      <td style=\"padding: 12px 16px;\">💧 <strong>Umidità</strong></td>\n      <td style=\"padding: 12px 16px;\">${humidity}%</td>\n    </tr>\n    <tr style=\"background-color: #d6eaf8;\">\n      <td style=\"padding: 12px 16px;\">💨 <strong>Vento</strong></td>\n      <td style=\"padding: 12px 16px;\">${windSpeed} km/h</td>\n    </tr>\n  </table>\n  <p style=\"color: #aaa; font-size: 11px; margin-top: 18px; text-align: center;\">Dati meteo forniti da <a href=\"https://wttr.in\" style=\"color: #aaa;\">wttr.in</a> · Inviato automaticamente da n8n</p>\n</div>`;\n\nreturn [{ json: { emailSubject, emailBody, city, temp, description } }];"
+      },
+      "id": "63bae666-10e6-4b0c-b222-fd4aa8085f50",
+      "name": "Formatta Messaggio Meteo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "corradocentrone@gmail.com",
+        "subject": "={{ $json.emailSubject }}",
+        "message": "={{ $json.emailBody }}",
+        "options": {}
+      },
+      "id": "0b16bd15-4c54-4d22-a37c-468ef608a2d9",
+      "name": "Invia Email Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        912,
+        304
+      ],
+      "webhookId": "7cd8eddf-5f89-403c-9328-cf476a2128eb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "SEnIZMBRzXrJRfRs",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Ogni Mattina alle 8:00": {
+      "main": [
+        [
+          {
+            "node": "Recupera Meteo Roma",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recupera Meteo Roma": {
+      "main": [
+        [
+          {
+            "node": "Formatta Messaggio Meteo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatta Messaggio Meteo": {
+      "main": [
+        [
+          {
+            "node": "Invia Email Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "4e620bd4-cef6-4829-8d24-d8909aa27dc5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6bcd93025a031fe09e15845e3871a1106904a3c87641feb41fbe1a32dee5bd17"
+  },
+  "id": "vpVtSzS2igaBN8Xe",
+  "tags": []
+}

@@ -1,0 +1,327 @@
+{
+  "name": "Build your first AI agent copy",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7a541ec6-5aae-4f62-af84-e5eca7e7db72",
+      "cid": "Ikx1Y2FzIFBleXJpbiI",
+      "name": "Example Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "creator": "Lucas Peyrin",
+      "position": [
+        -816,
+        352
+      ],
+      "webhookId": "fc041515-2da0-4118-bd5b-600a22906435",
+      "typeVersion": 1.1,
+      "notes": "© 2025 Lucas Peyrin"
+    },
+    {
+      "parameters": {
+        "url": "={{ 'https://wttr.in/' + encodeURIComponent($json.location) + '?format=j1' }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        512,
+        624
+      ],
+      "id": "07513b02-2c7d-49f1-93dc-c8e62dd29e81",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Analizza la richiesta dell’utente e restituisci solo JSON valido, senza testo aggiuntivo, nel formato:\n\n{\n  \"intent\": \"WEATHER\" | \"DIRECT\",\n  \"location\": \"<nome città oppure stringa vuota>\"\n}\n\nRegole:\n- Se l’utente chiede il meteo, il tempo, la temperatura o le condizioni atmosferiche, usa intent = \"WEATHER\"\n- Estrai solo la località principale\n- Se non c’è una località chiara, metti location = \"\"\n- Per tutte le altre richieste usa intent = \"DIRECT\"\n- Non aggiungere spiegazioni\n- Non usare markdown\n- Restituisci solo JSON valido",
+              "role": "assistant"
+            },
+            {
+              "content": "={{ $json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "typeVersion": 1,
+      "position": [
+        -592,
+        352
+      ],
+      "id": "59f4a45f-b23e-421e-8567-03dfd775452f",
+      "name": "Message a model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "DIRECT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "124f3be9-9d74-4155-bdb4-6d8e0e759c84"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "524c0ef7-18e2-4c16-99af-372cd5a311c1",
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "WEATHER",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -64,
+        352
+      ],
+      "id": "91015164-250c-43b2-b25e-e3014c19ec2e",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma3:4b",
+          "mode": "list",
+          "cachedResultName": "gemma3:4b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Rispondi in modo chiaro, utile e sintetico alla richiesta dell’utente.\nSe la richiesta non richiede strumenti esterni, rispondi direttamente.\nRispondi in italiano.",
+              "role": "assistant"
+            },
+            {
+              "content": "={{ $('Example Chat').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "typeVersion": 1,
+      "position": [
+        192,
+        208
+      ],
+      "id": "0c2de8a0-aa3a-4807-b70d-30e1e166e9ac",
+      "name": "Message a model1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "PLeSIs7I0NRGj4oz",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let raw = $json.content || $json.output || $json.text || $json.response || '';\n\nif (typeof raw !== 'string') {\n  raw = JSON.stringify(raw);\n}\n\n// rimuove blocchi markdown tipo ```json ... ```\nraw = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n\n// prova a prendere solo il blocco JSON tra prima { e ultima }\nconst firstBrace = raw.indexOf('{');\nconst lastBrace = raw.lastIndexOf('}');\n\nif (firstBrace !== -1 && lastBrace !== -1) {\n  raw = raw.slice(firstBrace, lastBrace + 1);\n}\n\nlet parsed;\n\ntry {\n  parsed = JSON.parse(raw);\n} catch (e) {\n  parsed = {\n    intent: 'DIRECT',\n    location: ''\n  };\n}\n\nreturn [\n  {\n    json: parsed\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        352
+      ],
+      "id": "dcdaa5ea-4faa-4722-be8b-9a3c7ed88edd",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "740e4b44-8e06-4fde-907b-80329820124a",
+              "leftValue": "={{ $json.location }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        528
+      ],
+      "id": "daada1a6-8b5d-49ea-9063-604a63f114d4",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c9ef9daf-0756-4b35-b48b-c0fb9e0f4155",
+              "name": "output",
+              "value": "immetti la città per cui vuoi sapere il meteo.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        512,
+        384
+      ],
+      "id": "bf7c1edd-46d6-41f6-95d1-1efdf9a2fdfb",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Example Chat": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "4187cb1e-d172-427e-b358-a102b75b0a85",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e3daa3bc670f4c6f89df4ccfe5c3f6f7661c794d1de53eb75e4917a998dbb616"
+  },
+  "id": "g1lbUGsNXocNS78Z",
+  "tags": []
+}
