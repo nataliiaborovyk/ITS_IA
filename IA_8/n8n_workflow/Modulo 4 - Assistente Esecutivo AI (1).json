@@ -71,9 +71,9 @@
         "operation": "getAll",
         "calendar": {
           "__rl": true,
-          "value": "corradocentrone@gmail.com",
+          "value": "email@gmail.com",
           "mode": "list",
-          "cachedResultName": "corradocentrone@gmail.com"
+          "cachedResultName": "email@gmail.com"
         },
         "options": {}
       },

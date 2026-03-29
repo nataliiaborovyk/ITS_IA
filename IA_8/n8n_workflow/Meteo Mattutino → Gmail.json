@@ -50,7 +50,7 @@
     },
     {
       "parameters": {
-        "sendTo": "corradocentrone@gmail.com",
+        "sendTo": "email@gmail.com",
         "subject": "={{ $json.emailSubject }}",
         "message": "={{ $json.emailBody }}",
         "options": {}

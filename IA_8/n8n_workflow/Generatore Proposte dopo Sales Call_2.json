@@ -22,7 +22,7 @@
         "promptType": "define",
         "text": "=Trascritto:\n{{ $json.Trascritto }}",
         "options": {
-          "systemMessage": "=# Ruolo\nSei un Fractional Digital Executive esperto in data analytics, business intelligence ed applicazioni AI per casi d'uso aziendali. Il tuo compito è analizzare il trascritto grezzo di una discovery call o sales call e trasformarlo in una proposta commerciale professionale, persuasiva e pronta per il cliente.\n\n# Obiettivo\nUtilizzando il trascritto della call fornito, genera una proposta completa e convincente per un progetto di automazione o AI. Devi estrarre pain points reali, risultati desiderati, vincoli operativi e requisiti tecnici direttamente dalla conversazione e trasformarli in una narrativa business chiara che motivi il cliente a procedere.\n\n# Vincoli Importanti\n- Questa proposta è completamente client-facing.\n- NON includere domande di follow-up, note interne o commenti.\n- NON menzionare automazione AI generativa o che questo documento è stato prodotto da un sistema.\n- Fai assunzioni ragionevoli quando necessario e dichiarale chiaramente come parte della proposta.\n- Se mancano dati specifici, usa placeholder chiari come [Ore Stimate Risparmiate] o [Costo Annuale].\n\n# Tono e Stile\n- Professionale, chiaro e orientato al business.\n- Persuasivo ma basato sul linguaggio del cliente.\n- Empatico e specifico, dimostrando ascolto attivo e comprensione profonda.\n- Evita jargon non necessario a meno che il cliente non l'abbia esplicitamente usato.\n\n# Struttura Proposta Richiesta\nDevi generare la proposta esattamente nell'ordine seguente e separare chiaramente ogni sezione con intestazioni.\n\n---\n\n## 1. Titolo Proposta\n**Istruzioni:** Crea una sezione titolo pulita all'inizio della proposta.\n\n**Includi:**\n- Titolo proposta (esempio: Proposta di Trasformazione AI e Automazione)\n- Nome azienda cliente: {{ $json.Nome_Azienda }}\n- Preparata per: {{ $json.Nome_Cliente }}\n- Preparata da: Corrado Centrone\n- Data odierna: {{ $now.format('dd/MM/yyyy') }}\n\n---\n\n## 2. Executive Summary\n**Istruzioni:** Riassumi la proposta in 3-4 frasi concise.\n\n**Deve Includere:**\n- La sfida principale che l'azienda sta affrontando\n- La soluzione che il Consulente/fractional Manager propone\n- Il risultato atteso in termini di efficienza, risparmio o crescita\n\n---\n\n## 3. Problema e Sfide\n**Istruzioni:** Espandi il problema nel dettaglio.\n\n**Includi:**\n- Workflow attuali e processi manuali\n- Pain points chiave usando il linguaggio del cliente quando possibile\n- Impatto in termini di tempo, costi o operatività di queste sfide\n- Impatto emotivo o organizzativo come stress, colli di bottiglia o inefficienze\n\n---\n\n## 4. Soluzione Proposta da Corrado Centrone \n**Istruzioni:** Descrivi chiaramente come Corrado Centrone risolverà il problema.\n\n**Includi:**\n- Breve recap del workflow attuale\n- Descrizione dettagliata del futuro workflow automatizzato o assistito da AI\n- Spiegazione step-by-step di come opera la soluzione\n- Menziona eventuali tool, piattaforme o sistemi discussi durante la call (es. n8n, Claude, strumenti di scraping)\n\nConcentrati su workflow e risultati, non solo sulla tecnologia.\n\n---\n\n## 5. Return on Investment (ROI)\n**Istruzioni:** Quantifica il valore business della soluzione.\n\n**Includi:**\n- Ore risparmiate al giorno o alla settimana\n- Risparmi operativi settimanali o mensili\n- Traduzione del risparmio di tempo in risparmio costi annuale\n- Assunzioni chiare se i numeri esatti non sono stati forniti\n\n---\n\n## 6. Benefici Intangibili\n**Istruzioni:** Evidenzia benefici non finanziari.\n\n**Esempi:**\n- Riduzione dell'errore umano\n- Miglioramento dell'esperienza e morale dei dipendenti\n- Tempi di risposta più rapidi\n- Maggiore accuratezza e consistenza\n- Migliore sicurezza dei dati o compliance\n\n---\n\n## 7. Roadmap di Implementazione\n**Istruzioni:** Fornisci una timeline chiara suddivisa per settimane o fasi.\n\n**Includi:**\n- Durata stimata per ogni fase\n- Cosa viene realizzato durante ogni fase\n- Le fasi tipiche includono: discovery, sviluppo, testing, deployment e training\n\n---\n\n## 8. Metriche di Successo\n**Istruzioni:** Definisci come verrà misurato il successo.\n\n**Dichiara Esplicitamente:**\n- Quali metriche verranno tracciate\n- Esempi includono: tempo risparmiato, accuratezza, compliance, tempo di risposta, throughput\n- Come Corrado dimostrerà valore agli stakeholder\n\n---\n\n## 9. Perché Scegliere Corrado Centrone\n**Istruzioni:** Promuovi Corrado Centrone come partner giusto.\n\nDevi includere la seguente value proposition testualmente o leggermente adattata per fluidità:\n\n\"Corrado Centrone — Fractional Digital Executive\n\nSpecializzato in Data Analytics, AI e Process Automation. Affianco imprenditori e CEO nella progettazione di soluzioni reali — non demo, ma MVP funzionanti, scalabili e integrabili nei sistemi aziendali esistenti.Tecnologia che crea impatto reale\n\nNon consulenza generica, ma esecuzione diretta. Ogni progetto nasce da una necessità concreta e si traduce in strumenti misurabili, integrati nei processi aziendali esistenti — con focus su risultati tangibili e ROI verificabile.\n\nAutomazione dei Processi\nEliminazione dei task ripetitivi e orchestrazione intelligente dei flussi di lavoro aziendali.\n\nAI & Machine Learning\nModelli predittivi e sistemi di classificazione integrati nei prodotti e nelle piattaforme esistenti.\n\nConversational AI\nChatbot e agenti vocali H24 per gestione clienti, appuntamenti e qualificazione lead.\n\nBusiness Intelligence\nDashboard avanzate e analytics predittiva per decisioni manageriali basate sui dati.\"\n\nConcludi questa sezione con una chiusura sicura che posiziona Corrado come partner strategico a lungo termine.\n\n---\n\n# Output Finale\nIl tuo output deve contenere SOLO il testo della proposta in formato markdown, senza alcun preambolo, spiegazione o meta-commento. Non includere frasi come \"Poiché hai fornito...\", \"Ho generato...\", \"Ecco la proposta...\" o simili. Inizia direttamente con la sezione \"## 1. Titolo Proposta\" e termina con l'ultima frase della sezione \"## 9. Perché Scegliere Corrado Centrone\". Non aggiungere nulla prima o dopo il contenuto della proposta."
+          "systemMessage": "=# Ruolo\nSei un Fractional Digital Executive esperto in data analytics, business intelligence ed applicazioni AI per casi d'uso aziendali. Il tuo compito è analizzare il trascritto grezzo di una discovery call o sales call e trasformarlo in una proposta commerciale professionale, persuasiva e pronta per il cliente.\n\n# Obiettivo\nUtilizzando il trascritto della call fornito, genera una proposta completa e convincente per un progetto di automazione o AI. Devi estrarre pain points reali, risultati desiderati, vincoli operativi e requisiti tecnici direttamente dalla conversazione e trasformarli in una narrativa business chiara che motivi il cliente a procedere.\n\n# Vincoli Importanti\n- Questa proposta è completamente client-facing.\n- NON includere domande di follow-up, note interne o commenti.\n- NON menzionare automazione AI generativa o che questo documento è stato prodotto da un sistema.\n- Fai assunzioni ragionevoli quando necessario e dichiarale chiaramente come parte della proposta.\n- Se mancano dati specifici, usa placeholder chiari come [Ore Stimate Risparmiate] o [Costo Annuale].\n\n# Tono e Stile\n- Professionale, chiaro e orientato al business.\n- Persuasivo ma basato sul linguaggio del cliente.\n- Empatico e specifico, dimostrando ascolto attivo e comprensione profonda.\n- Evita jargon non necessario a meno che il cliente non l'abbia esplicitamente usato.\n\n# Struttura Proposta Richiesta\nDevi generare la proposta esattamente nell'ordine seguente e separare chiaramente ogni sezione con intestazioni.\n\n---\n\n## 1. Titolo Proposta\n**Istruzioni:** Crea una sezione titolo pulita all'inizio della proposta.\n\n**Includi:**\n- Titolo proposta (esempio: Proposta di Trasformazione AI e Automazione)\n- Nome azienda cliente: {{ $json.Nome_Azienda }}\n- Preparata per: {{ $json.Nome_Cliente }}\n- Preparata da: Nome Cognome\n- Data odierna: {{ $now.format('dd/MM/yyyy') }}\n\n---\n\n## 2. Executive Summary\n**Istruzioni:** Riassumi la proposta in 3-4 frasi concise.\n\n**Deve Includere:**\n- La sfida principale che l'azienda sta affrontando\n- La soluzione che il Consulente/fractional Manager propone\n- Il risultato atteso in termini di efficienza, risparmio o crescita\n\n---\n\n## 3. Problema e Sfide\n**Istruzioni:** Espandi il problema nel dettaglio.\n\n**Includi:**\n- Workflow attuali e processi manuali\n- Pain points chiave usando il linguaggio del cliente quando possibile\n- Impatto in termini di tempo, costi o operatività di queste sfide\n- Impatto emotivo o organizzativo come stress, colli di bottiglia o inefficienze\n\n---\n\n## 4. Soluzione Proposta da Nome Cognome \n**Istruzioni:** Descrivi chiaramente come Nome Cognome risolverà il problema.\n\n**Includi:**\n- Breve recap del workflow attuale\n- Descrizione dettagliata del futuro workflow automatizzato o assistito da AI\n- Spiegazione step-by-step di come opera la soluzione\n- Menziona eventuali tool, piattaforme o sistemi discussi durante la call (es. n8n, Claude, strumenti di scraping)\n\nConcentrati su workflow e risultati, non solo sulla tecnologia.\n\n---\n\n## 5. Return on Investment (ROI)\n**Istruzioni:** Quantifica il valore business della soluzione.\n\n**Includi:**\n- Ore risparmiate al giorno o alla settimana\n- Risparmi operativi settimanali o mensili\n- Traduzione del risparmio di tempo in risparmio costi annuale\n- Assunzioni chiare se i numeri esatti non sono stati forniti\n\n---\n\n## 6. Benefici Intangibili\n**Istruzioni:** Evidenzia benefici non finanziari.\n\n**Esempi:**\n- Riduzione dell'errore umano\n- Miglioramento dell'esperienza e morale dei dipendenti\n- Tempi di risposta più rapidi\n- Maggiore accuratezza e consistenza\n- Migliore sicurezza dei dati o compliance\n\n---\n\n## 7. Roadmap di Implementazione\n**Istruzioni:** Fornisci una timeline chiara suddivisa per settimane o fasi.\n\n**Includi:**\n- Durata stimata per ogni fase\n- Cosa viene realizzato durante ogni fase\n- Le fasi tipiche includono: discovery, sviluppo, testing, deployment e training\n\n---\n\n## 8. Metriche di Successo\n**Istruzioni:** Definisci come verrà misurato il successo.\n\n**Dichiara Esplicitamente:**\n- Quali metriche verranno tracciate\n- Esempi includono: tempo risparmiato, accuratezza, compliance, tempo di risposta, throughput\n- Come Nome dimostrerà valore agli stakeholder\n\n---\n\n## 9. Perché Scegliere Nome cognome\n**Istruzioni:** Promuovi Nome Cognome come partner giusto.\n\nDevi includere la seguente value proposition testualmente o leggermente adattata per fluidità:\n\n\"Nome Cognome — Fractional Digital Executive\n\nSpecializzato in Data Analytics, AI e Process Automation. Affianco imprenditori e CEO nella progettazione di soluzioni reali — non demo, ma MVP funzionanti, scalabili e integrabili nei sistemi aziendali esistenti.Tecnologia che crea impatto reale\n\nNon consulenza generica, ma esecuzione diretta. Ogni progetto nasce da una necessità concreta e si traduce in strumenti misurabili, integrati nei processi aziendali esistenti — con focus su risultati tangibili e ROI verificabile.\n\nAutomazione dei Processi\nEliminazione dei task ripetitivi e orchestrazione intelligente dei flussi di lavoro aziendali.\n\nAI & Machine Learning\nModelli predittivi e sistemi di classificazione integrati nei prodotti e nelle piattaforme esistenti.\n\nConversational AI\nChatbot e agenti vocali H24 per gestione clienti, appuntamenti e qualificazione lead.\n\nBusiness Intelligence\nDashboard avanzate e analytics predittiva per decisioni manageriali basate sui dati.\"\n\nConcludi questa sezione con una chiusura sicura che posiziona Nome come partner strategico a lungo termine.\n\n---\n\n# Output Finale\nIl tuo output deve contenere SOLO il testo della proposta in formato markdown, senza alcun preambolo, spiegazione o meta-commento. Non includere frasi come \"Poiché hai fornito...\", \"Ho generato...\", \"Ecco la proposta...\" o simili. Inizia direttamente con la sezione \"## 1. Titolo Proposta\" e termina con l'ultima frase della sezione \"## 9. Perché Scegliere Nome Cognome\". Non aggiungere nulla prima o dopo il contenuto della proposta."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -216,7 +216,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"inputText\": \"{{ $('Proposal Generator Agent').item.json.output.replace(/\\n/g, ' ').replace(/\"/g, '\\\\\"') }}\",\n  \"textMode\": \"preserve\",\n  \"format\": \"presentation\",\n  \"numCards\": 10,\n  \"additionalInstructions\": \"Una proposta di preventivo professionale\",\n  \"textOptions\": {\n    \"amount\": \"medium\",\n    \"tone\": \"professional, inspiring\",\n    \"audience\": \"business owner\",\n    \"language\": \"it\"\n  },\n  \"imageOptions\": {\n    \"source\": \"noImages\"\n  },\n  \"cardOptions\": {\n    \"dimensions\": \"16x9\"\n  },\n  \"sharingOptions\": {\n    \"workspaceAccess\": \"view\",\n    \"externalAccess\": \"comment\",\n    \"emailOptions\": {\n      \"recipients\": [\n        \"corradocentrone@gmail.com\"\n      ],\n      \"access\": \"comment\"\n    }\n  }\n}",
+        "jsonBody": "={\n  \"inputText\": \"{{ $('Proposal Generator Agent').item.json.output.replace(/\\n/g, ' ').replace(/\"/g, '\\\\\"') }}\",\n  \"textMode\": \"preserve\",\n  \"format\": \"presentation\",\n  \"numCards\": 10,\n  \"additionalInstructions\": \"Una proposta di preventivo professionale\",\n  \"textOptions\": {\n    \"amount\": \"medium\",\n    \"tone\": \"professional, inspiring\",\n    \"audience\": \"business owner\",\n    \"language\": \"it\"\n  },\n  \"imageOptions\": {\n    \"source\": \"noImages\"\n  },\n  \"cardOptions\": {\n    \"dimensions\": \"16x9\"\n  },\n  \"sharingOptions\": {\n    \"workspaceAccess\": \"view\",\n    \"externalAccess\": \"comment\",\n    \"emailOptions\": {\n      \"recipients\": [\n        \"email@gmail.com\"\n      ],\n      \"access\": \"comment\"\n    }\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -511,8 +511,8 @@
             "transcript": [
               {
                 "speaker": {
-                  "display_name": "Corrado Centrone",
-                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                  "display_name": "Nome Cognome",
+                  "matched_calendar_invitee_email": "email@gmail.com"
                 },
                 "text": "Ciao Paolo, grazie per il tempo. Raccontami un po' qual è la situazione attuale con la lead generation per la vostra azienda.",
                 "timestamp": "00:02:30"
@@ -522,13 +522,13 @@
                   "display_name": "Paolo Rossi",
                   "matched_calendar_invitee_email": "Paolo@acme.it"
                 },
-                "text": "Allora Corrado, il problema principale è che nella nostra azienda Acme SRL spendiamo un sacco di tempo in ricerche manuali. Il mio team passa 15-20 ore a settimana solo a cercare lead su LinkedIn e altri database, poi altre 10 ore per fare enrichment dei dati. È un processo lentissimo.",
+                "text": "Allora Nome, il problema principale è che nella nostra azienda Acme SRL spendiamo un sacco di tempo in ricerche manuali. Il mio team passa 15-20 ore a settimana solo a cercare lead su LinkedIn e altri database, poi altre 10 ore per fare enrichment dei dati. È un processo lentissimo.",
                 "timestamp": "00:02:45"
               },
               {
                 "speaker": {
-                  "display_name": "Corrado Centrone",
-                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                  "display_name": "Nome Cognome",
+                  "matched_calendar_invitee_email": "email@gmail.com"
                 },
                 "text": "Capisco. E quanti lead riuscite a processare e gestire al mese con questo metodo?",
                 "timestamp": "00:03:15"
@@ -543,8 +543,8 @@
               },
               {
                 "speaker": {
-                  "display_name": "Corrado Centrone",
-                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                  "display_name": "Nome Cognome",
+                  "matched_calendar_invitee_email": "email@gmail.com"
                 },
                 "text": "Ok, quindi il problema è duplice: da una parte il tempo speso manualmente, dall'altra la bassa qualità e personalizzazione. Che risultati vorresti ottenere?",
                 "timestamp": "00:03:55"
@@ -559,8 +559,8 @@
               },
               {
                 "speaker": {
-                  "display_name": "Corrado Centrone",
-                  "matched_calendar_invitee_email": "corradocentrone@gmail.com"
+                  "display_name": "Nome Cognome",
+                  "matched_calendar_invitee_email": "email@gmail.com"
                 },
                 "text": "Perfetto. Quindi ti serve un agente AI che fa scraping automatico, enrichment completo e invio massivo personalizzato. Possiamo costruirtelo con n8n e Claude. Quando vorresti partire?",
                 "timestamp": "00:04:45"
@@ -576,7 +576,7 @@
             ],
             "default_summary": {
               "template_name": "sales_call",
-              "markdown_formatted": "## Summary\n\nCorrado ha condotto una discovery call con Paolo Rossi per discutere l'implementazione di un agente AI per la lead generation.\n\n### Pain Points Identificati\n\n- **Tempo manuale eccessivo**: Il team di Paolo spende 25-30 ore/settimana tra ricerca lead (15-20h) e enrichment dati (10h)\n- **Volume limitato**: Processano solo 200-250 lead/mese con il metodo attuale\n- **Bassa qualità**: Tasso di risposta email del 3-4%, molto sotto la media di settore\n- **Zero personalizzazione**: Utilizzo di template standard senza customizzazione\n- **Dati obsoleti**: Difficoltà nel mantenere database aggiornati con informazioni accurate\n\n### Obiettivi e KPI Target\n\n- **Volume**: Passare da 250 a 1000+ lead processati/mese (4x)\n- **Response rate**: Aumentare dal 3-4% al 10-12% (3x)\n- **Efficienza**: Ridurre da 30h/settimana a ~2h/settimana di supervisione (15x)\n- **Personalizzazione**: Email customizzate per settore, dimensione azienda e pain points specifici\n- **Data accuracy**: Enrichment automatico con dati aggiornati (revenue, headcount, tech stack)\n\n### Soluzione Proposta\n\nAgente AI completo per lead generation basato su n8n e Claude che include:\n\n1. **Scraping automatico** dei lead da LinkedIn, database B2B e altre fonti\n2. **Lead enrichment** con dati firmografici, tecnologici e di contatto\n3. **Personalizzazione AI** delle email basata su settore, dimensione e pain points\n4. **Invio massivo** con tracking e follow-up automatizzati\n5. **Dashboard** con analytics e reportistica sui KPI\n\n### Next Steps\n\n- Budget disponibile Q1 2025\n- Target: chiusura contratto entro fine febbraio\n- Go-live operativo: marzo 2025\n- Follow-up: Corrado manderà proposta dettagliata entro 48h\n"
+              "markdown_formatted": "## Summary\n\nNome ha condotto una discovery call con Paolo Rossi per discutere l'implementazione di un agente AI per la lead generation.\n\n### Pain Points Identificati\n\n- **Tempo manuale eccessivo**: Il team di Paolo spende 25-30 ore/settimana tra ricerca lead (15-20h) e enrichment dati (10h)\n- **Volume limitato**: Processano solo 200-250 lead/mese con il metodo attuale\n- **Bassa qualità**: Tasso di risposta email del 3-4%, molto sotto la media di settore\n- **Zero personalizzazione**: Utilizzo di template standard senza customizzazione\n- **Dati obsoleti**: Difficoltà nel mantenere database aggiornati con informazioni accurate\n\n### Obiettivi e KPI Target\n\n- **Volume**: Passare da 250 a 1000+ lead processati/mese (4x)\n- **Response rate**: Aumentare dal 3-4% al 10-12% (3x)\n- **Efficienza**: Ridurre da 30h/settimana a ~2h/settimana di supervisione (15x)\n- **Personalizzazione**: Email customizzate per settore, dimensione azienda e pain points specifici\n- **Data accuracy**: Enrichment automatico con dati aggiornati (revenue, headcount, tech stack)\n\n### Soluzione Proposta\n\nAgente AI completo per lead generation basato su n8n e Claude che include:\n\n1. **Scraping automatico** dei lead da LinkedIn, database B2B e altre fonti\n2. **Lead enrichment** con dati firmografici, tecnologici e di contatto\n3. **Personalizzazione AI** delle email basata su settore, dimensione e pain points\n4. **Invio massivo** con tracking e follow-up automatizzati\n5. **Dashboard** con analytics e reportistica sui KPI\n\n### Next Steps\n\n- Budget disponibile Q1 2025\n- Target: chiusura contratto entro fine febbraio\n- Go-live operativo: marzo 2025\n- Follow-up: Nome manderà proposta dettagliata entro 48h\n"
             },
             "action_items": [
               {
@@ -586,8 +586,8 @@
                 "recording_timestamp": "00:05:20",
                 "recording_playback_url": "https://fathom.video/xyz123#t=320",
                 "assignee": {
-                  "name": "Corrado Centrone",
-                  "email": "corradocentrone@gmail.com",
+                  "name": "Nome Cognome",
+                  "email": "email@gmail.com",
                   "team": "Sales"
                 }
               },
@@ -598,8 +598,8 @@
                 "recording_timestamp": "00:05:35",
                 "recording_playback_url": "https://fathom.video/xyz123#t=335",
                 "assignee": {
-                  "name": "Corrado Centrone",
-                  "email": "corradocentrone@gmail.com",
+                  "name": "Nome Cognome",
+                  "email": "email@gmail.com",
                   "team": "Sales"
                 }
               },
@@ -618,9 +618,9 @@
             ],
             "calendar_invitees": [
               {
-                "name": "Corrado Centrone",
-                "matched_speaker_display_name": "Corrado Centrone",
-                "email": "corradocentrone@gmail.com",
+                "name": "Nome Cognome",
+                "matched_speaker_display_name": "Nome Cognome",
+                "email": "email@gmail.com",
                 "is_external": false,
                 "email_domain": "gmail.com"
               },
@@ -633,8 +633,8 @@
               }
             ],
             "recorded_by": {
-              "name": "Corrado Centrone",
-              "email": "corradocentrone@gmail.com",
+              "name": "Nome cognome",
+              "email": "email@gmail.com",
               "team": "Sales",
               "email_domain": "gmail.com"
             },
